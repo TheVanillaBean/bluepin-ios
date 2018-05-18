@@ -13,8 +13,9 @@
 		5A68BB4520A98EDE00BC0509 /* Lato-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5A68BB3F20A98EDD00BC0509 /* Lato-Regular.ttf */; };
 		5A68BB4620A98EDE00BC0509 /* Lato-Semibold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5A68BB4020A98EDD00BC0509 /* Lato-Semibold.ttf */; };
 		5A68BB4720A98EDE00BC0509 /* Lato-Thin.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5A68BB4120A98EDD00BC0509 /* Lato-Thin.ttf */; };
+		5A68BB4F20ACD7A000BC0509 /* CategoryBtnShadow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A68BB4E20ACD7A000BC0509 /* CategoryBtnShadow.swift */; };
 		5A9BABB720A5827A000F3976 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A9BABB620A5827A000F3976 /* AppDelegate.swift */; };
-		5A9BABB920A5827A000F3976 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A9BABB820A5827A000F3976 /* ViewController.swift */; };
+		5A9BABB920A5827A000F3976 /* MyReminders.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A9BABB820A5827A000F3976 /* MyReminders.swift */; };
 		5A9BABBC20A5827A000F3976 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5A9BABBA20A5827A000F3976 /* Main.storyboard */; };
 		5A9BABBE20A5827A000F3976 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5A9BABBD20A5827A000F3976 /* Assets.xcassets */; };
 		5A9BABC120A5827A000F3976 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5A9BABBF20A5827A000F3976 /* LaunchScreen.storyboard */; };
@@ -27,9 +28,10 @@
 		5A68BB3F20A98EDD00BC0509 /* Lato-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-Regular.ttf"; sourceTree = "<group>"; };
 		5A68BB4020A98EDD00BC0509 /* Lato-Semibold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-Semibold.ttf"; sourceTree = "<group>"; };
 		5A68BB4120A98EDD00BC0509 /* Lato-Thin.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-Thin.ttf"; sourceTree = "<group>"; };
+		5A68BB4E20ACD7A000BC0509 /* CategoryBtnShadow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryBtnShadow.swift; sourceTree = "<group>"; };
 		5A9BABB320A5827A000F3976 /* bluepin.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = bluepin.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5A9BABB620A5827A000F3976 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		5A9BABB820A5827A000F3976 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		5A9BABB820A5827A000F3976 /* MyReminders.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyReminders.swift; sourceTree = "<group>"; };
 		5A9BABBB20A5827A000F3976 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		5A9BABBD20A5827A000F3976 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		5A9BABC020A5827A000F3976 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -47,7 +49,7 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		5A68BB3B20A98EDD00BC0509 /* Lato */ = {
+		5A68BB3B20A98EDD00BC0509 /* lato */ = {
 			isa = PBXGroup;
 			children = (
 				5A68BB3C20A98EDD00BC0509 /* Lato-Bold.ttf */,
@@ -57,7 +59,31 @@
 				5A68BB4020A98EDD00BC0509 /* Lato-Semibold.ttf */,
 				5A68BB4120A98EDD00BC0509 /* Lato-Thin.ttf */,
 			);
-			path = Lato;
+			path = lato;
+			sourceTree = "<group>";
+		};
+		5A68BB4B20ACD76100BC0509 /* model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = model;
+			sourceTree = "<group>";
+		};
+		5A68BB4C20ACD76600BC0509 /* view */ = {
+			isa = PBXGroup;
+			children = (
+				5A68BB4E20ACD7A000BC0509 /* CategoryBtnShadow.swift */,
+			);
+			path = view;
+			sourceTree = "<group>";
+		};
+		5A68BB4D20ACD76A00BC0509 /* controller */ = {
+			isa = PBXGroup;
+			children = (
+				5A9BABB620A5827A000F3976 /* AppDelegate.swift */,
+				5A9BABB820A5827A000F3976 /* MyReminders.swift */,
+			);
+			path = controller;
 			sourceTree = "<group>";
 		};
 		5A9BABAA20A5827A000F3976 = {
@@ -79,9 +105,10 @@
 		5A9BABB520A5827A000F3976 /* bluepin */ = {
 			isa = PBXGroup;
 			children = (
-				5A68BB3B20A98EDD00BC0509 /* Lato */,
-				5A9BABB620A5827A000F3976 /* AppDelegate.swift */,
-				5A9BABB820A5827A000F3976 /* ViewController.swift */,
+				5A68BB4D20ACD76A00BC0509 /* controller */,
+				5A68BB4C20ACD76600BC0509 /* view */,
+				5A68BB4B20ACD76100BC0509 /* model */,
+				5A68BB3B20A98EDD00BC0509 /* lato */,
 				5A9BABBA20A5827A000F3976 /* Main.storyboard */,
 				5A9BABBD20A5827A000F3976 /* Assets.xcassets */,
 				5A9BABBF20A5827A000F3976 /* LaunchScreen.storyboard */,
@@ -168,7 +195,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5A9BABB920A5827A000F3976 /* ViewController.swift in Sources */,
+				5A9BABB920A5827A000F3976 /* MyReminders.swift in Sources */,
+				5A68BB4F20ACD7A000BC0509 /* CategoryBtnShadow.swift in Sources */,
 				5A9BABB720A5827A000F3976 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
