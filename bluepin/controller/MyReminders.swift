@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  MyReminders.swift
 //  bluepin
 //
 //  Created by Alex on 5/11/18.
@@ -12,14 +12,30 @@ class MyReminders: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+        
+        UNService.shared.requestAuthorization(forOptions: [.badge, .sound, .alert])
+        
     }
+    
+    @IBAction func plusBtnPressed(_ sender: Any) {
+        
+        UNService.shared.cancelAll()
+        
+        var components = DateComponents()
+        components.second = 0
+        
+        let notification = BluepinNotification(body: "This is a test notification")
+        notification.title = "This is a test title"
+        notification.badge = 5
+        notification.repeats = .second
+        
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+        let retrievedNotification = UNService.shared.notification(withIdentifier: notification.identifier)
+
+        print("\(retrievedNotification?.title)")
+        
     }
-
+    
 
 }
 

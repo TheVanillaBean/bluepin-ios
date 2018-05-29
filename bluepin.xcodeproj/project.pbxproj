@@ -14,12 +14,31 @@
 		5A68BB4620A98EDE00BC0509 /* Lato-Semibold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5A68BB4020A98EDD00BC0509 /* Lato-Semibold.ttf */; };
 		5A68BB4720A98EDE00BC0509 /* Lato-Thin.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5A68BB4120A98EDD00BC0509 /* Lato-Thin.ttf */; };
 		5A68BB4F20ACD7A000BC0509 /* CategoryBtnShadow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A68BB4E20ACD7A000BC0509 /* CategoryBtnShadow.swift */; };
+		5A68BB5320AEB46700BC0509 /* UNService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A68BB5220AEB46700BC0509 /* UNService.swift */; };
+		5A68BB5720B3606C00BC0509 /* NotificationAuthorizationOptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A68BB5620B3606C00BC0509 /* NotificationAuthorizationOptions.swift */; };
+		5A68BB5920B362F100BC0509 /* BluepinNotification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A68BB5820B362F100BC0509 /* BluepinNotification.swift */; };
+		5A68BB5D20B363E500BC0509 /* Date+Scheduler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A68BB5C20B363E500BC0509 /* Date+Scheduler.swift */; };
+		5A68BB5F20B364A900BC0509 /* NotificationSound.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A68BB5E20B364A900BC0509 /* NotificationSound.swift */; };
+		5A68BB6120B36DF600BC0509 /* NotificationRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A68BB6020B36DF600BC0509 /* NotificationRequest.swift */; };
+		5A68BB6920BA907800BC0509 /* bluepinTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A68BB6820BA907800BC0509 /* bluepinTests.swift */; };
+		5A68BB7120BA90C900BC0509 /* NotificationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A68BB7020BA90C900BC0509 /* NotificationTests.swift */; };
 		5A9BABB720A5827A000F3976 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A9BABB620A5827A000F3976 /* AppDelegate.swift */; };
 		5A9BABB920A5827A000F3976 /* MyReminders.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A9BABB820A5827A000F3976 /* MyReminders.swift */; };
 		5A9BABBC20A5827A000F3976 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5A9BABBA20A5827A000F3976 /* Main.storyboard */; };
 		5A9BABBE20A5827A000F3976 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5A9BABBD20A5827A000F3976 /* Assets.xcassets */; };
 		5A9BABC120A5827A000F3976 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5A9BABBF20A5827A000F3976 /* LaunchScreen.storyboard */; };
+		5AAD5C8620BBDA4E00E86806 /* NotificationScheduleTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AAD5C8520BBDA4E00E86806 /* NotificationScheduleTests.swift */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		5A68BB6B20BA907900BC0509 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 5A9BABAB20A5827A000F3976 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 5A9BABB220A5827A000F3976;
+			remoteInfo = bluepin;
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		5A68BB3C20A98EDD00BC0509 /* Lato-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-Bold.ttf"; sourceTree = "<group>"; };
@@ -29,6 +48,16 @@
 		5A68BB4020A98EDD00BC0509 /* Lato-Semibold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-Semibold.ttf"; sourceTree = "<group>"; };
 		5A68BB4120A98EDD00BC0509 /* Lato-Thin.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-Thin.ttf"; sourceTree = "<group>"; };
 		5A68BB4E20ACD7A000BC0509 /* CategoryBtnShadow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryBtnShadow.swift; sourceTree = "<group>"; };
+		5A68BB5220AEB46700BC0509 /* UNService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UNService.swift; sourceTree = "<group>"; };
+		5A68BB5620B3606C00BC0509 /* NotificationAuthorizationOptions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationAuthorizationOptions.swift; sourceTree = "<group>"; };
+		5A68BB5820B362F100BC0509 /* BluepinNotification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BluepinNotification.swift; sourceTree = "<group>"; };
+		5A68BB5C20B363E500BC0509 /* Date+Scheduler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Scheduler.swift"; sourceTree = "<group>"; };
+		5A68BB5E20B364A900BC0509 /* NotificationSound.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationSound.swift; sourceTree = "<group>"; };
+		5A68BB6020B36DF600BC0509 /* NotificationRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationRequest.swift; sourceTree = "<group>"; };
+		5A68BB6620BA907600BC0509 /* bluepinTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = bluepinTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		5A68BB6820BA907800BC0509 /* bluepinTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = bluepinTests.swift; sourceTree = "<group>"; };
+		5A68BB6A20BA907900BC0509 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		5A68BB7020BA90C900BC0509 /* NotificationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationTests.swift; sourceTree = "<group>"; };
 		5A9BABB320A5827A000F3976 /* bluepin.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = bluepin.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5A9BABB620A5827A000F3976 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5A9BABB820A5827A000F3976 /* MyReminders.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyReminders.swift; sourceTree = "<group>"; };
@@ -36,9 +65,17 @@
 		5A9BABBD20A5827A000F3976 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		5A9BABC020A5827A000F3976 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		5A9BABC220A5827A000F3976 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		5AAD5C8520BBDA4E00E86806 /* NotificationScheduleTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationScheduleTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		5A68BB6320BA907600BC0509 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		5A9BABB020A5827A000F3976 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -86,10 +123,50 @@
 			path = controller;
 			sourceTree = "<group>";
 		};
+		5A68BB5120AEB45100BC0509 /* service */ = {
+			isa = PBXGroup;
+			children = (
+				5A68BB5220AEB46700BC0509 /* UNService.swift */,
+				5A68BB5620B3606C00BC0509 /* NotificationAuthorizationOptions.swift */,
+				5A68BB5820B362F100BC0509 /* BluepinNotification.swift */,
+				5A68BB6020B36DF600BC0509 /* NotificationRequest.swift */,
+			);
+			path = service;
+			sourceTree = "<group>";
+		};
+		5A68BB5A20B363C700BC0509 /* util */ = {
+			isa = PBXGroup;
+			children = (
+				5A68BB5B20B363CD00BC0509 /* extensions */,
+				5A68BB5E20B364A900BC0509 /* NotificationSound.swift */,
+			);
+			path = util;
+			sourceTree = "<group>";
+		};
+		5A68BB5B20B363CD00BC0509 /* extensions */ = {
+			isa = PBXGroup;
+			children = (
+				5A68BB5C20B363E500BC0509 /* Date+Scheduler.swift */,
+			);
+			path = extensions;
+			sourceTree = "<group>";
+		};
+		5A68BB6720BA907800BC0509 /* bluepinTests */ = {
+			isa = PBXGroup;
+			children = (
+				5A68BB7020BA90C900BC0509 /* NotificationTests.swift */,
+				5AAD5C8520BBDA4E00E86806 /* NotificationScheduleTests.swift */,
+				5A68BB6820BA907800BC0509 /* bluepinTests.swift */,
+				5A68BB6A20BA907900BC0509 /* Info.plist */,
+			);
+			path = bluepinTests;
+			sourceTree = "<group>";
+		};
 		5A9BABAA20A5827A000F3976 = {
 			isa = PBXGroup;
 			children = (
 				5A9BABB520A5827A000F3976 /* bluepin */,
+				5A68BB6720BA907800BC0509 /* bluepinTests */,
 				5A9BABB420A5827A000F3976 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -98,6 +175,7 @@
 			isa = PBXGroup;
 			children = (
 				5A9BABB320A5827A000F3976 /* bluepin.app */,
+				5A68BB6620BA907600BC0509 /* bluepinTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -105,6 +183,8 @@
 		5A9BABB520A5827A000F3976 /* bluepin */ = {
 			isa = PBXGroup;
 			children = (
+				5A68BB5A20B363C700BC0509 /* util */,
+				5A68BB5120AEB45100BC0509 /* service */,
 				5A68BB4D20ACD76A00BC0509 /* controller */,
 				5A68BB4C20ACD76600BC0509 /* view */,
 				5A68BB4B20ACD76100BC0509 /* model */,
@@ -120,6 +200,24 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		5A68BB6520BA907600BC0509 /* bluepinTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 5A68BB6D20BA907900BC0509 /* Build configuration list for PBXNativeTarget "bluepinTests" */;
+			buildPhases = (
+				5A68BB6220BA907600BC0509 /* Sources */,
+				5A68BB6320BA907600BC0509 /* Frameworks */,
+				5A68BB6420BA907600BC0509 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				5A68BB6C20BA907900BC0509 /* PBXTargetDependency */,
+			);
+			name = bluepinTests;
+			productName = bluepinTests;
+			productReference = 5A68BB6620BA907600BC0509 /* bluepinTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 		5A9BABB220A5827A000F3976 /* bluepin */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 5A9BABC520A5827A000F3976 /* Build configuration list for PBXNativeTarget "bluepin" */;
@@ -147,6 +245,11 @@
 				LastUpgradeCheck = 0920;
 				ORGANIZATIONNAME = "Alex Alimov";
 				TargetAttributes = {
+					5A68BB6520BA907600BC0509 = {
+						CreatedOnToolsVersion = 9.2;
+						ProvisioningStyle = Automatic;
+						TestTargetID = 5A9BABB220A5827A000F3976;
+					};
 					5A9BABB220A5827A000F3976 = {
 						CreatedOnToolsVersion = 9.2;
 						ProvisioningStyle = Automatic;
@@ -167,11 +270,19 @@
 			projectRoot = "";
 			targets = (
 				5A9BABB220A5827A000F3976 /* bluepin */,
+				5A68BB6520BA907600BC0509 /* bluepinTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		5A68BB6420BA907600BC0509 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		5A9BABB120A5827A000F3976 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -191,17 +302,41 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		5A68BB6220BA907600BC0509 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5A68BB7120BA90C900BC0509 /* NotificationTests.swift in Sources */,
+				5A68BB6920BA907800BC0509 /* bluepinTests.swift in Sources */,
+				5AAD5C8620BBDA4E00E86806 /* NotificationScheduleTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		5A9BABAF20A5827A000F3976 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				5A9BABB920A5827A000F3976 /* MyReminders.swift in Sources */,
 				5A68BB4F20ACD7A000BC0509 /* CategoryBtnShadow.swift in Sources */,
+				5A68BB5F20B364A900BC0509 /* NotificationSound.swift in Sources */,
+				5A68BB5920B362F100BC0509 /* BluepinNotification.swift in Sources */,
+				5A68BB5720B3606C00BC0509 /* NotificationAuthorizationOptions.swift in Sources */,
+				5A68BB5320AEB46700BC0509 /* UNService.swift in Sources */,
 				5A9BABB720A5827A000F3976 /* AppDelegate.swift in Sources */,
+				5A68BB6120B36DF600BC0509 /* NotificationRequest.swift in Sources */,
+				5A68BB5D20B363E500BC0509 /* Date+Scheduler.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		5A68BB6C20BA907900BC0509 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 5A9BABB220A5827A000F3976 /* bluepin */;
+			targetProxy = 5A68BB6B20BA907900BC0509 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		5A9BABBA20A5827A000F3976 /* Main.storyboard */ = {
@@ -223,6 +358,38 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		5A68BB6E20BA907900BC0509 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = M2D39CNGJ2;
+				INFOPLIST_FILE = bluepinTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.bluepinapp.bluepinTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/bluepin.app/bluepin";
+			};
+			name = Debug;
+		};
+		5A68BB6F20BA907900BC0509 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = M2D39CNGJ2;
+				INFOPLIST_FILE = bluepinTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.bluepinapp.bluepinTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/bluepin.app/bluepin";
+			};
+			name = Release;
+		};
 		5A9BABC320A5827A000F3976 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -365,6 +532,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		5A68BB6D20BA907900BC0509 /* Build configuration list for PBXNativeTarget "bluepinTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5A68BB6E20BA907900BC0509 /* Debug */,
+				5A68BB6F20BA907900BC0509 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		5A9BABAE20A5827A000F3976 /* Build configuration list for PBXProject "bluepin" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
