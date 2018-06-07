@@ -39,8 +39,7 @@ public class UNService: NSObject {
     }
 
     //TODO: Remove .seconds, set back to 0
-    
-    
+
     private func trigger(forDate date: Date, repeats: Repeats) -> UNCalendarNotificationTrigger {
         var dateComponents: DateComponents = DateComponents()
         let shouldRepeat: Bool             = repeats != .none
@@ -102,14 +101,16 @@ public class UNService: NSObject {
         
         content.badge                              = notification.badge
         
-        let trigger: UNCalendarNotificationTrigger = self.trigger(forDate: notification.date, repeats: notification.repeats)
+        let trigger = self.trigger(forDate: notification.date, repeats: notification.repeats)
         
         let request: UNNotificationRequest         = UNNotificationRequest(identifier: notification.identifier, content: content, trigger: trigger)
         unCenter.add(request, withCompletionHandler: nil)
         notification.scheduled                     = true
         
         return notification
+       
     }
+    
     
     func reschedule(notification: BluepinNotification) -> BluepinNotification? {
         self.cancel(notification: notification)

@@ -10,7 +10,6 @@ import Foundation
 
 public enum Repeats: String {
     case none  = "None"
-    case second = "Second"
     case hour  = "Hour"
     case day   = "Day"
     case week  = "Week"
@@ -38,7 +37,7 @@ public class BluepinNotification: NSObject {
     public var sound: NotificationSound = NotificationSound()
     
     public var repeats: Repeats                = .none
-    
+        
     internal(set) public var scheduled: Bool   = false
     
     public static let identifierKey: String    = "NotificationIdentifierKey"

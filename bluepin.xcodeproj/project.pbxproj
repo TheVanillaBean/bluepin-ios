@@ -28,6 +28,9 @@
 		5A9BABBE20A5827A000F3976 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5A9BABBD20A5827A000F3976 /* Assets.xcassets */; };
 		5A9BABC120A5827A000F3976 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5A9BABBF20A5827A000F3976 /* LaunchScreen.storyboard */; };
 		5AAD5C8620BBDA4E00E86806 /* NotificationScheduleTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AAD5C8520BBDA4E00E86806 /* NotificationScheduleTests.swift */; };
+		5AAD5C8820BFD99600E86806 /* SortedArray.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AAD5C8720BFD99500E86806 /* SortedArray.swift */; };
+		5DE0977A21C3C3BE53603D00 /* Pods_bluepinTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DF0D040215200B99F16452E /* Pods_bluepinTests.framework */; };
+		FB148E54D5F4D729AA7FD1F2 /* Pods_bluepin.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AB82EABDB47B33DCD2DCB862 /* Pods_bluepin.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -41,6 +44,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		172DB99B0711A3FA9E5040E4 /* Pods-bluepin.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-bluepin.release.xcconfig"; path = "Pods/Target Support Files/Pods-bluepin/Pods-bluepin.release.xcconfig"; sourceTree = "<group>"; };
+		1DF0D040215200B99F16452E /* Pods_bluepinTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_bluepinTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		21BF6B9718972D558FA58FAB /* Pods-bluepinTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-bluepinTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-bluepinTests/Pods-bluepinTests.debug.xcconfig"; sourceTree = "<group>"; };
 		5A68BB3C20A98EDD00BC0509 /* Lato-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-Bold.ttf"; sourceTree = "<group>"; };
 		5A68BB3D20A98EDD00BC0509 /* Lato-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-Light.ttf"; sourceTree = "<group>"; };
 		5A68BB3E20A98EDD00BC0509 /* Lato-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-Medium.ttf"; sourceTree = "<group>"; };
@@ -66,6 +72,10 @@
 		5A9BABC020A5827A000F3976 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		5A9BABC220A5827A000F3976 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5AAD5C8520BBDA4E00E86806 /* NotificationScheduleTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationScheduleTests.swift; sourceTree = "<group>"; };
+		5AAD5C8720BFD99500E86806 /* SortedArray.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SortedArray.swift; sourceTree = "<group>"; };
+		A177FD89C421EE26BCB0D26D /* Pods-bluepinTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-bluepinTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-bluepinTests/Pods-bluepinTests.release.xcconfig"; sourceTree = "<group>"; };
+		AB82EABDB47B33DCD2DCB862 /* Pods_bluepin.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_bluepin.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		BDF68BA3CB2DBB09EF10A0C7 /* Pods-bluepin.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-bluepin.debug.xcconfig"; path = "Pods/Target Support Files/Pods-bluepin/Pods-bluepin.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -73,6 +83,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5DE0977A21C3C3BE53603D00 /* Pods_bluepinTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -80,6 +91,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FB148E54D5F4D729AA7FD1F2 /* Pods_bluepin.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -139,6 +151,7 @@
 			children = (
 				5A68BB5B20B363CD00BC0509 /* extensions */,
 				5A68BB5E20B364A900BC0509 /* NotificationSound.swift */,
+				5AAD5C8720BFD99500E86806 /* SortedArray.swift */,
 			);
 			path = util;
 			sourceTree = "<group>";
@@ -168,6 +181,8 @@
 				5A9BABB520A5827A000F3976 /* bluepin */,
 				5A68BB6720BA907800BC0509 /* bluepinTests */,
 				5A9BABB420A5827A000F3976 /* Products */,
+				8B05332F08711FF4B0959126 /* Pods */,
+				E26C55FEA1CAD37A7B0B1EB1 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -197,6 +212,26 @@
 			path = bluepin;
 			sourceTree = "<group>";
 		};
+		8B05332F08711FF4B0959126 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				BDF68BA3CB2DBB09EF10A0C7 /* Pods-bluepin.debug.xcconfig */,
+				172DB99B0711A3FA9E5040E4 /* Pods-bluepin.release.xcconfig */,
+				21BF6B9718972D558FA58FAB /* Pods-bluepinTests.debug.xcconfig */,
+				A177FD89C421EE26BCB0D26D /* Pods-bluepinTests.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		E26C55FEA1CAD37A7B0B1EB1 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				AB82EABDB47B33DCD2DCB862 /* Pods_bluepin.framework */,
+				1DF0D040215200B99F16452E /* Pods_bluepinTests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -204,6 +239,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 5A68BB6D20BA907900BC0509 /* Build configuration list for PBXNativeTarget "bluepinTests" */;
 			buildPhases = (
+				C0C93F0133B1281AF8D2D505 /* [CP] Check Pods Manifest.lock */,
 				5A68BB6220BA907600BC0509 /* Sources */,
 				5A68BB6320BA907600BC0509 /* Frameworks */,
 				5A68BB6420BA907600BC0509 /* Resources */,
@@ -222,9 +258,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 5A9BABC520A5827A000F3976 /* Build configuration list for PBXNativeTarget "bluepin" */;
 			buildPhases = (
+				8738D9E2CE07B9CA9219DDAA /* [CP] Check Pods Manifest.lock */,
 				5A9BABAF20A5827A000F3976 /* Sources */,
 				5A9BABB020A5827A000F3976 /* Frameworks */,
 				5A9BABB120A5827A000F3976 /* Resources */,
+				CBDE4AD4BFF021DD3DFCB7D2 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -301,6 +339,63 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		8738D9E2CE07B9CA9219DDAA /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-bluepin-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		C0C93F0133B1281AF8D2D505 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-bluepinTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		CBDE4AD4BFF021DD3DFCB7D2 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-bluepin/Pods-bluepin-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/SwiftDate/SwiftDate.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftDate.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-bluepin/Pods-bluepin-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		5A68BB6220BA907600BC0509 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -320,6 +415,7 @@
 				5A68BB4F20ACD7A000BC0509 /* CategoryBtnShadow.swift in Sources */,
 				5A68BB5F20B364A900BC0509 /* NotificationSound.swift in Sources */,
 				5A68BB5920B362F100BC0509 /* BluepinNotification.swift in Sources */,
+				5AAD5C8820BFD99600E86806 /* SortedArray.swift in Sources */,
 				5A68BB5720B3606C00BC0509 /* NotificationAuthorizationOptions.swift in Sources */,
 				5A68BB5320AEB46700BC0509 /* UNService.swift in Sources */,
 				5A9BABB720A5827A000F3976 /* AppDelegate.swift in Sources */,
@@ -360,6 +456,7 @@
 /* Begin XCBuildConfiguration section */
 		5A68BB6E20BA907900BC0509 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 21BF6B9718972D558FA58FAB /* Pods-bluepinTests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
@@ -376,6 +473,7 @@
 		};
 		5A68BB6F20BA907900BC0509 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = A177FD89C421EE26BCB0D26D /* Pods-bluepinTests.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
@@ -499,6 +597,7 @@
 		};
 		5A9BABC620A5827A000F3976 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = BDF68BA3CB2DBB09EF10A0C7 /* Pods-bluepin.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -515,6 +614,7 @@
 		};
 		5A9BABC720A5827A000F3976 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 172DB99B0711A3FA9E5040E4 /* Pods-bluepin.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;

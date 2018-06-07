@@ -7,6 +7,7 @@
 //
 
 import XCTest
+import SwiftDate
 @testable import bluepin
 
 class NotificationTests: XCTestCase {
@@ -137,6 +138,43 @@ class NotificationTests: XCTestCase {
         
         XCTAssertFalse(doesNotPrecede)
     }
+    
+    
+    func testNotificationSort() {
+        let notification1 = BluepinNotification(body: "This is a test notification")
+        notification1.date                   = Date()
+        
+        let notification2 = BluepinNotification(body: "This is a test notification 2")
+        notification2.date                   = Date()
+        
+        let notification3 = BluepinNotification(body: "This is a test notification 3")
+        notification3.date                   = Date() + 3.hours
+        
+        let notification4 = BluepinNotification(body: "This is a test notification 4")
+        notification4.date                   = Date().next(day: .friday)
+        
+        let notification5 = BluepinNotification(body: "This is a test notification 5")
+        notification5.date                   = Date().next(days: 5)
+        
+        var sut = SortedArray<BluepinNotification> { $0.date < $1.date }
+        sut.insert(notification1)
+        sut.insert(notification2)
+        sut.insert(notification3)
+        sut.insert(notification4)
+        sut.insert(notification5)
+        
+        print(sut[0].body)
+        print(sut[1].body)
+        print(sut[2].body)
+        print(sut[3].date.description)
+        print(sut[4].body)
+        
+        XCTAssertTrue((notification1.body != nil), "This is a test notification")
+        
+    }
+    
+    
+    
 }
 
 
