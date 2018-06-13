@@ -7,6 +7,8 @@
 //
 
 import Foundation
+import SwiftDate
+import UserNotifications
 
 public enum Repeats: String {
     case none  = "None"
@@ -14,6 +16,13 @@ public enum Repeats: String {
     case day   = "Day"
     case week  = "Week"
     case month = "Month"
+}
+
+public enum RepeatMethod: String {
+    case once  = "Once"
+    case daily  = "Daily"
+    case weekly   = "Weekly"
+    case monthly  = "Monthly"
 }
 
 public class BluepinNotification: NSObject {
@@ -39,6 +48,12 @@ public class BluepinNotification: NSObject {
     public var repeats: Repeats                = .none
         
     internal(set) public var scheduled: Bool   = false
+    
+    public var repeatMethod: RepeatMethod = .once
+    
+    public var repeatInterval: Int = 0
+    
+    public var repeatTrigger: UNCalendarNotificationTrigger?
     
     public static let identifierKey: String    = "NotificationIdentifierKey"
     
@@ -74,7 +89,26 @@ public class BluepinNotification: NSObject {
             BluepinNotification.dateKey : self.date
         ]
     }
-
+    
+    public init(identifier: String = UUID().uuidString, body: String, date: Date = Date().next(hours: 1), repeatMethod: RepeatMethod, repeatInterval: Int, repeatTrigger: UNCalendarNotificationTrigger?) {
+        self.identifier = identifier
+        self.body = body
+        self.date = date
+        self.userInfo = [
+            BluepinNotification.identifierKey : self.identifier,
+            BluepinNotification.dateKey : self.date
+        ]
+        self.repeatMethod = repeatMethod
+        self.repeatInterval = repeatInterval
+        
+        if repeatTrigger == nil {
+            let components = Calendar.current.dateComponents([.year, .month, .day, .hour, .minute], from: date)
+            self.repeatTrigger = UNCalendarNotificationTrigger(dateMatching: components, repeats: false)
+        }else{
+            self.repeatTrigger = repeatTrigger
+        }
+    }
+    
     public static func notification(withRequest sytemNotification: SystemNotification) -> BluepinNotification? {
         return sytemNotification.notification()
     }

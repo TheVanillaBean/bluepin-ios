@@ -173,9 +173,79 @@ class NotificationTests: XCTestCase {
         
     }
     
+    func testReminderRepeatOnce(){
+        let reminder = UNService.shared.reminder(withBody: "This is a one time reminder", startingDate: Date())
+        print(reminder![0].description)
+        XCTAssertTrue(reminder?.count == 1)
+    }
+    
+    func testReminderRepeatDailyAfterMoreThanFourDays(){
+        let reminder = UNService.shared.reminder(withBody: "This is a daily reminder that will start in 4 days", startingDate: Date() + 4.days, repeatMethod: .daily, repeatInterval: 3)
+        print(reminder![0].description)
+        XCTAssertTrue(reminder?.count == 1)
+    }
+    
+    func testReminderRepeatDailyAfterLessThanFourDays(){
+        let reminders = UNService.shared.reminder(withBody: "This is a daily reminder that will start in 3 days", startingDate: Date() + 2.days, repeatMethod: .daily, repeatInterval: 3)
+        
+        print(reminders![0].description)
+        print(reminders![1].description)
+        print(reminders![2].description)
+        print(reminders![3].description)
+
+        XCTAssertTrue(reminders?.count == 4)
+    }
+    
+    func testReminderRepeatEveryFourDays(){
+        let reminders = UNService.shared.reminder(withBody: "This is a daily reminder that will start now", startingDate: Date(), repeatMethod: .daily, repeatInterval: 3)
+        
+        print(reminders![0].description)
+        print(reminders![1].description)
+        print(reminders![2].description)
+        print(reminders![3].description)
+        
+        XCTAssertTrue(reminders?.count == 4)
+    }
+    
+    func testReminderRepeatDailyEveryFiveDays(){
+        let reminders = UNService.shared.reminder(withBody: "This is a every 4 days reminder that will start now", startingDate: Date(), repeatMethod: .daily, repeatInterval: 4)
+        
+        print(reminders![0].description)
+        
+        XCTAssertTrue(reminders?.count == 1)
+    }
+    
+    func testReminderRepeatMonthlyEveryThreeMonths(){
+        let reminders = UNService.shared.reminder(withBody: "This is a every 3 months reminder that will start now", startingDate: Date(), repeatMethod: .monthly, repeatInterval: 3)
+        
+        print(reminders![0].description)
+        
+        XCTAssertTrue(reminders?.count == 1)
+    }
+    
+    func testReminderRepeatEveryMonday(){
+        let reminders = UNService.shared.reminder(withBody: "This reminder repeats every Wednesday and Friday", startingDate: Date(), repeatMethod: .weekly, repeatInterval: 2, weekdaySet: IndexSet([4, 7]))
+        
+        print(reminders![0].description)
+        print(reminders![1].description)
+
+        XCTAssertTrue(reminders?.count == 2)
+    }
+    
     
     
 }
+
+
+
+
+
+
+
+
+
+
+
 
 
 

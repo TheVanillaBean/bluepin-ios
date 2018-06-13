@@ -36,11 +36,11 @@ extension UNNotificationRequest: SystemNotification {
         }
         
         if let trigger = self.trigger as? UNCalendarNotificationTrigger {
+            notification.repeatTrigger = trigger
             var date: Date?
             if let originalDate    = notification.userInfo[BluepinNotification.dateKey] as? Date {
                 date               = originalDate
             }
-            print("Repeats is Set: \(trigger))")
             notification.repeats   = self.repeats(dateComponents: trigger.dateComponents)
             notification.date      = self.date(fromDateComponents: trigger.dateComponents, repeats: notification.repeats, originalDate: date)
         }
@@ -108,15 +108,6 @@ extension UNNotificationRequest: SystemNotification {
             components.month = comps.month
             components.day   = comps.day
             components.hour  = comps.hour
-            
-            return calendar.date(from: components)!
-        case .second:
-            let comps        = calendar.dateComponents([.year, .month, .day, .hour, .second], from: date)
-            components.year  = comps.year
-            components.month = comps.month
-            components.day   = comps.day
-            components.hour  = comps.hour
-            components.second = comps.second
             
             return calendar.date(from: components)!
         }

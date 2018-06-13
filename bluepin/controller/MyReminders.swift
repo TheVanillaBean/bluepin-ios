@@ -27,7 +27,6 @@ class MyReminders: UIViewController {
         let notification = BluepinNotification(body: "This is a test notification")
         notification.title = "This is a test title"
         notification.badge = 5
-        notification.repeats = .second
         
 
         let retrievedNotification = UNService.shared.notification(withIdentifier: notification.identifier)
