@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		5A511E4220D050D1002EAC07 /* ReminderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A511E4120D050D1002EAC07 /* ReminderTests.swift */; };
 		5A68BB4220A98EDE00BC0509 /* Lato-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5A68BB3C20A98EDD00BC0509 /* Lato-Bold.ttf */; };
 		5A68BB4320A98EDE00BC0509 /* Lato-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5A68BB3D20A98EDD00BC0509 /* Lato-Light.ttf */; };
 		5A68BB4420A98EDE00BC0509 /* Lato-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5A68BB3E20A98EDD00BC0509 /* Lato-Medium.ttf */; };
@@ -23,6 +22,8 @@
 		5A68BB6120B36DF600BC0509 /* NotificationRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A68BB6020B36DF600BC0509 /* NotificationRequest.swift */; };
 		5A68BB6920BA907800BC0509 /* bluepinTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A68BB6820BA907800BC0509 /* bluepinTests.swift */; };
 		5A68BB7120BA90C900BC0509 /* NotificationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A68BB7020BA90C900BC0509 /* NotificationTests.swift */; };
+		5A741DE320E41134000790C8 /* NotificationPersistedQueue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A741DE220E41134000790C8 /* NotificationPersistedQueue.swift */; };
+		5A741DE420E43926000790C8 /* ReminderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A511E4120D050D1002EAC07 /* ReminderTests.swift */; };
 		5A9BABB720A5827A000F3976 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A9BABB620A5827A000F3976 /* AppDelegate.swift */; };
 		5A9BABB920A5827A000F3976 /* MyReminders.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A9BABB820A5827A000F3976 /* MyReminders.swift */; };
 		5A9BABBC20A5827A000F3976 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5A9BABBA20A5827A000F3976 /* Main.storyboard */; };
@@ -66,6 +67,7 @@
 		5A68BB6820BA907800BC0509 /* bluepinTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = bluepinTests.swift; sourceTree = "<group>"; };
 		5A68BB6A20BA907900BC0509 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5A68BB7020BA90C900BC0509 /* NotificationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationTests.swift; sourceTree = "<group>"; };
+		5A741DE220E41134000790C8 /* NotificationPersistedQueue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationPersistedQueue.swift; sourceTree = "<group>"; };
 		5A9BABB320A5827A000F3976 /* bluepin.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = bluepin.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5A9BABB620A5827A000F3976 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5A9BABB820A5827A000F3976 /* MyReminders.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyReminders.swift; sourceTree = "<group>"; };
@@ -144,6 +146,7 @@
 				5A68BB5820B362F100BC0509 /* BluepinNotification.swift */,
 				5A68BB6020B36DF600BC0509 /* NotificationRequest.swift */,
 				5A68BB5620B3606C00BC0509 /* NotificationAuthorizationOptions.swift */,
+				5A741DE220E41134000790C8 /* NotificationPersistedQueue.swift */,
 			);
 			path = service;
 			sourceTree = "<group>";
@@ -407,7 +410,7 @@
 				5A68BB7120BA90C900BC0509 /* NotificationTests.swift in Sources */,
 				5A68BB6920BA907800BC0509 /* bluepinTests.swift in Sources */,
 				5AAD5C8620BBDA4E00E86806 /* NotificationScheduleTests.swift in Sources */,
-				5A511E4220D050D1002EAC07 /* ReminderTests.swift in Sources */,
+				5A741DE420E43926000790C8 /* ReminderTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -423,6 +426,7 @@
 				5A68BB5720B3606C00BC0509 /* NotificationAuthorizationOptions.swift in Sources */,
 				5A68BB5320AEB46700BC0509 /* UNService.swift in Sources */,
 				5A9BABB720A5827A000F3976 /* AppDelegate.swift in Sources */,
+				5A741DE320E41134000790C8 /* NotificationPersistedQueue.swift in Sources */,
 				5A68BB6120B36DF600BC0509 /* NotificationRequest.swift in Sources */,
 				5A68BB5D20B363E500BC0509 /* Date+Scheduler.swift in Sources */,
 			);

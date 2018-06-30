@@ -4,11 +4,19 @@ import Foundation // Needed for ComparisonResult (used privately)
 public struct SortedArray<Element> {
     /// The backing store
     fileprivate var _elements: [Element]
-
+    
+    public var elements: [Element] {
+        return _elements
+    }
+    
     public typealias Comparator<A> = (A, A) -> Bool
 
     /// The predicate that determines the array's sort order.
     fileprivate let areInIncreasingOrder: Comparator<Element>
+    
+    private enum CodingKeys: String, CodingKey {
+        case _elements
+    }
 
     /// Initializes an empty array.
     ///

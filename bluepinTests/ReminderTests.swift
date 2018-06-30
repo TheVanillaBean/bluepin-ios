@@ -24,10 +24,13 @@ class ReminderTests: XCTestCase {
         super.tearDown()
     }
     
+    //--------------ONCE-------------------
+
     func testReminderRepeatOnce1(){
         date = Calendar.current.date(bySettingHour: 12, minute: 0, second: 0, of: Date())
         let reminder = UNService.shared.reminder(withBody: body, startingDate: date + 1.day)
         print("Reminder FireDate: \(reminder![0].date.inDefaultRegion())")
+        
         XCTAssertTrue(reminder?.count == 1)
     }
     
@@ -35,10 +38,11 @@ class ReminderTests: XCTestCase {
         date = Calendar.current.date(bySettingHour: 0, minute: 0, second: 0, of: Date())
         let reminder = UNService.shared.reminder(withBody: body, startingDate: date + 1.month + 13.days)
         print("Reminder FireDate: \(reminder![0].date.inDefaultRegion())")
+        
         XCTAssertTrue(reminder?.count == 1)
     }
     
-    //---------------------------------------
+    //--------------DAILY------------------
     
     func testReminderDaily1(){
         date = Calendar.current.date(bySettingHour: 5, minute: 0, second: 0, of: Date())
@@ -49,7 +53,7 @@ class ReminderTests: XCTestCase {
         XCTAssertTrue(reminders?.count == 1)
     }
     
-    func testReminderDaily2(){
+    func testReminderDaily2() {
         date = Calendar.current.date(bySettingHour: 5, minute: 0, second: 0, of: Date())
         let reminders = UNService.shared.reminder(withBody: body, startingDate: date, repeatMethod: .daily, repeatInterval: 3)
         for notifcation in reminders! {
@@ -76,7 +80,7 @@ class ReminderTests: XCTestCase {
         XCTAssertTrue(reminders?.count == 4)
     }
     
-    //---------------------------------------
+    //--------------WEEKLY-------------------
 
     func testReminderWeekly1(){
         date = Calendar.current.date(bySettingHour: 5, minute: 0, second: 0, of: Date())
@@ -114,11 +118,12 @@ class ReminderTests: XCTestCase {
         for notifcation in reminders! {
             print("Reminder FireDate: \(notifcation.date.inDefaultRegion())")
             print("FireDate: Weekday: \(notifcation.date.inDefaultRegion().weekdayName)")
+            print("FireDate: Weekday: \(notifcation.description)")
         }
         XCTAssertTrue(reminders?.count == 1)
     }
     
-    //---------------------------------------
+    //--------------MONTHLY-------------------
 
     func testReminderMonthly1(){
         date = Calendar.current.date(bySettingHour: 5, minute: 0, second: 0, of: Date())
@@ -139,4 +144,21 @@ class ReminderTests: XCTestCase {
         }
         XCTAssertTrue(reminders?.count == 1)
     }
+    
+    //--------------SCHEDULE----------------
+    
+    func testReminderWeeklyPersisted(){
+        date = Calendar.current.date(bySettingHour: 5, minute: 0, second: 0, of: Date())
+        let reminders = UNService.shared.reminder(withBody: body, startingDate: date, repeatMethod: .weekly, repeatInterval: 1, weekdaySet: IndexSet([3, 5]))
+        NotificationPersistedQueue.shared.insert(reminders!)
+        
+        for notification in NotificationPersistedQueue.shared.notificationsQueue() {
+            print("Reminder FireDate: \(notification.date.inDefaultRegion())")
+            print("FireDate: Weekday: \(notification.date.inDefaultRegion().weekdayName)")
+        }
+        XCTAssertTrue(reminders?.count == 2)
+        XCTAssertTrue(NotificationPersistedQueue.shared.notificationsQueue().count == 2)
+    }
+    
+
 }

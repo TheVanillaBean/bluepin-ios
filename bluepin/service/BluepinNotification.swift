@@ -10,7 +10,7 @@ import Foundation
 import SwiftDate
 import UserNotifications
 
-public enum Repeats: String {
+public enum Repeats: String, Codable {
     case none  = "None"
     case hour  = "Hour"
     case day   = "Day"
@@ -18,14 +18,27 @@ public enum Repeats: String {
     case month = "Month"
 }
 
-public enum RepeatMethod: String {
+public enum RepeatMethod: String, Codable {
     case once  = "Once"
     case daily  = "Daily"
     case weekly   = "Weekly"
     case monthly  = "Monthly"
 }
 
-public class BluepinNotification: NSObject {
+public class BluepinNotification: NSObject, Codable {
+    
+    public static let identifierKey: String    = "NotificationIdentifierKey"
+    
+    public static let dateKey: String          = "NotificationDateKey"
+    
+    public static let defaultSoundName: String = "NotificationDefaultSound"
+    
+    public static let repeatMethodKey: String = "NotificationRepeatMethod"
+    
+    public static let repeatIntervalKey: String = "NotificationRepeatInterval"
+    
+    public static let repeatWeekdayKey: String = "NotificationRepeatWeekdaySet"
+    
     
     fileprivate(set) public var identifier: String!
     
@@ -55,11 +68,29 @@ public class BluepinNotification: NSObject {
     
     public var repeatTrigger: UNCalendarNotificationTrigger?
     
-    public static let identifierKey: String    = "NotificationIdentifierKey"
+    private enum CodingKeys: String, CodingKey {
+        case identifier
+        case body
+//        case date
+//        case userInfo
+//        case title
+//        case badge
+//        case sound
+//        case repeats
+//        case scheduled
+//        case repeatMethod
+//        case repeatInterval
+//        case repeatTrigger
+    }
     
-    public static let dateKey: String          = "NotificationDateKey"
+    public required init(from decoder: Decoder) throws {
+        print("Called")
+        let values = try decoder.container(keyedBy: CodingKeys.self)
+        identifier = try values.decode(String.self, forKey: .identifier)
+        body = try values.decode(String.self, forKey: .body)
+    }
     
-    public static let defaultSoundName: String = "NotificationDefaultSound"
+    
     
     public override var description: String {
         var result  = ""
@@ -81,6 +112,7 @@ public class BluepinNotification: NSObject {
     }
     
     public init(identifier: String = UUID().uuidString, body: String, date: Date = Date().next(hours: 1)) {
+        super.init()
         self.identifier = identifier
         self.body = body
         self.date = date
@@ -88,25 +120,29 @@ public class BluepinNotification: NSObject {
             BluepinNotification.identifierKey : self.identifier,
             BluepinNotification.dateKey : self.date
         ]
+        self.repeatTrigger = trigger(forTrigger: nil, date: date)
     }
     
-    public init(identifier: String = UUID().uuidString, body: String, date: Date = Date().next(hours: 1), repeatMethod: RepeatMethod, repeatInterval: Int, repeatTrigger: UNCalendarNotificationTrigger?) {
-        self.identifier = identifier
-        self.body = body
-        self.date = date
-        self.userInfo = [
-            BluepinNotification.identifierKey : self.identifier,
-            BluepinNotification.dateKey : self.date
-        ]
+    public convenience init(identifier: String = UUID().uuidString, body: String, date: Date = Date().next(hours: 1), repeatMethod: RepeatMethod, repeatInterval: Int, repeatTrigger: UNCalendarNotificationTrigger?, weekdaySet: IndexSet = IndexSet([1, 2])) {
+        self.init(identifier: identifier, body: body, date: date)
         self.repeatMethod = repeatMethod
         self.repeatInterval = repeatInterval
-        
-        if repeatTrigger == nil {
-            let components = Calendar.current.dateComponents([.year, .month, .day, .hour, .minute], from: date)
-            self.repeatTrigger = UNCalendarNotificationTrigger(dateMatching: components, repeats: false)
-        }else{
-            self.repeatTrigger = repeatTrigger
+        self.repeatTrigger = trigger(forTrigger: repeatTrigger, date: date)
+        self.userInfo[BluepinNotification.repeatMethodKey] = self.repeatMethod
+        self.userInfo[BluepinNotification.repeatIntervalKey] = self.repeatInterval
+        if self.repeatMethod == .weekly {
+            self.userInfo[BluepinNotification.repeatWeekdayKey] = weekdaySet
         }
+    }
+    
+    func trigger(forTrigger trigger: UNCalendarNotificationTrigger?, date: Date) -> UNCalendarNotificationTrigger{
+        if let notificationTrigger = trigger {
+            return notificationTrigger
+        }
+        
+        let components = Calendar.current.dateComponents([.year, .month, .day, .hour, .minute], from: date)
+        return UNCalendarNotificationTrigger(dateMatching: components, repeats: false)
+        
     }
     
     public static func notification(withRequest sytemNotification: SystemNotification) -> BluepinNotification? {
@@ -139,4 +175,24 @@ public func ==(lhs: BluepinNotification, rhs: BluepinNotification) -> Bool {
 public func <(lhs: BluepinNotification, rhs: BluepinNotification) -> Bool {
     return lhs.date.compare(rhs.date) == ComparisonResult.orderedAscending
 }
+
+extension BluepinNotification{
+    public func encode(to encoder: Encoder) throws {
+        print("Called")
+        var container = encoder.container(keyedBy: CodingKeys.self)
+        try container.encode(identifier, forKey: .identifier)
+        try container.encode(body, forKey: .body)
+//        try container.encode(date, forKey: .date)
+//        try container.encode(userInfo, forKey: .userInfo)
+//        try container.encode(title, forKey: .title)
+//        try container.encode(badge, forKey: .badge)
+//        try container.encode(sound, forKey: .sound)
+//        try container.encode(repeats, forKey: .repeats)
+//        try container.encode(scheduled, forKey: .scheduled)
+//        try container.encode(repeatMethod, forKey: .repeatMethod)
+//        try container.encode(repeatInterval, forKey: .repeatInterval)
+//        try container.encode(repeatTrigger, forKey: .repeatTrigger)
+    }
+}
+
 

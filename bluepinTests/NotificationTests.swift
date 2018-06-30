@@ -163,6 +163,7 @@ class NotificationTests: XCTestCase {
         sut.insert(notification4)
         sut.insert(notification5)
         
+        
         print(sut[0].body)
         print(sut[1].body)
         print(sut[2].body)
@@ -180,8 +181,8 @@ class NotificationTests: XCTestCase {
     }
     
     func testReminderRepeatDailyAfterMoreThanFourDays(){
-        let reminder = UNService.shared.reminder(withBody: "This is a daily reminder that will start in 4 days", startingDate: Date() + 4.days, repeatMethod: .daily, repeatInterval: 3)
-        print(reminder![0].description)
+        let reminder = UNService.shared.reminder(withBody: "This is a daily reminder that will start in 4 days", startingDate: Date() + 5.days, repeatMethod: .daily, repeatInterval: 3)
+        print(reminder![0].userInfo)
         XCTAssertTrue(reminder?.count == 1)
     }
     

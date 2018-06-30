@@ -38,40 +38,12 @@ public class UNService: NSObject {
         }
         
     }
-
-    private func trigger(forDate date: Date, repeats: Repeats) -> UNCalendarNotificationTrigger {
-        var dateComponents: DateComponents = DateComponents()
-        let shouldRepeat: Bool             = repeats != .none
-        let calendar: Calendar             = Calendar.current
-        
-        switch repeats {
-        case .none:
-            dateComponents                 = calendar.dateComponents([.year, .month, .day, .hour, .minute], from: date)
-        case .month:
-            dateComponents                 = calendar.dateComponents([.day, .hour, .minute], from: date)
-        case .week:
-            dateComponents.weekday         = calendar.component(.weekday, from: date)
-            fallthrough
-        case .day:
-            dateComponents.hour            = calendar.component(.hour, from: date)
-            fallthrough
-        case .hour:
-            dateComponents.minute          = calendar.component(.minute, from: date)
-            dateComponents.second          = 0
-        }
-        
-        return UNCalendarNotificationTrigger(dateMatching: dateComponents, repeats: shouldRepeat)
-    }
     
     private func weekday(weekdaySet: IndexSet, date: Date) -> Date{
         let calendar = Calendar.current
-        var weekday =  calendar.component(.weekday, from: date)
+        var weekday = calendar.component(.weekday, from: date)
         
-        if let nextWeekday = weekdaySet.integerGreaterThan(weekday) {
-            weekday = nextWeekday
-        } else {
-            weekday = weekdaySet.first!
-        }
+        weekday = weekdaySet.integerGreaterThan(weekday) ?? weekdaySet.first!
         
         var components = calendar.dateComponents([.hour, .minute], from: date)
         components.weekday = weekday
@@ -86,16 +58,15 @@ public class UNService: NSObject {
         let calendar: Calendar = Calendar.current
         var nextFireDate: Date!
         
-        if repeatMethod == .daily {
+        switch repeatMethod {
+        case .daily:
             nextFireDate = date + repeatInterval.days
-        }
-        
-        if repeatMethod == .monthly {
-            nextFireDate = date + repeatInterval.months
-        }
-        
-        if repeatMethod == .weekly {
+        case .weekly:
             nextFireDate = weekday(weekdaySet: weekdaySet, date: date)
+        case .monthly:
+            nextFireDate = date + repeatInterval.months
+        case .once:
+            nextFireDate = date
         }
         
         dateComponents = calendar.dateComponents([.year, .month, .day, .hour, .minute], from: nextFireDate)
@@ -103,6 +74,7 @@ public class UNService: NSObject {
         
         return UNCalendarNotificationTrigger(dateMatching: dateComponents, repeats: false)
     }
+
     
     func reminder(withBody body: String, startingDate: Date, repeatMethod: RepeatMethod = .once, repeatInterval: Int = 0, weekdaySet: IndexSet = IndexSet([1, 2])) -> [BluepinNotification]? {
         
@@ -114,23 +86,17 @@ public class UNService: NSObject {
         }
         
         if startingDate >= Date() + 4.days {
-            let notification = BluepinNotification(identifier: "\(identifer)_1", body: body, date: startingDate, repeatMethod: repeatMethod, repeatInterval: repeatInterval, repeatTrigger: nil)
+            let notification = BluepinNotification(identifier: "\(identifer)_1", body: body, date: startingDate, repeatMethod: repeatMethod, repeatInterval: repeatInterval, repeatTrigger: nil, weekdaySet: weekdaySet)
             return [notification]
         }
         
         var notifications = [BluepinNotification]()
         
-        
         if repeatMethod == .daily && repeatInterval < 4 {
             
-            var startDate = startingDate < Date() + 5.minutes ? startingDate + repeatInterval.day : startingDate
-            
-            let notification = BluepinNotification(identifier: "\(identifer)_1", body: body, date: startDate, repeatMethod: repeatMethod, repeatInterval: repeatInterval, repeatTrigger: nil)
-            notifications.append(notification)
+            var startDate = startingDate > Date() + 5.minutes ? startingDate - repeatInterval.days : startingDate
 
-            startDate = (notification.repeatTrigger?.nextTriggerDate())!
-
-            for i in 2...4 {
+            for i in 1...4 {
                 let nextFireDate = trigger(forStartingDate: startDate, repeatMethod: repeatMethod, repeatInterval: repeatInterval, weekdaySet: weekdaySet)
                 let notification = BluepinNotification(identifier: "\(identifer)_\(i)", body: body, date: nextFireDate.nextTriggerDate()!, repeatMethod: repeatMethod, repeatInterval: repeatInterval, repeatTrigger: nextFireDate)
                 notifications.append(notification)
@@ -143,20 +109,23 @@ public class UNService: NSObject {
 
             for i in 1...weekdaySet.count {
                 let nextFireDate = trigger(forStartingDate: startDate, repeatMethod: repeatMethod, repeatInterval: repeatInterval, weekdaySet: weekdaySet)
-                let notification = BluepinNotification(identifier: "\(identifer)_\(i)", body: body, date: nextFireDate.nextTriggerDate()!, repeatMethod: repeatMethod, repeatInterval: repeatInterval, repeatTrigger: nextFireDate)
+                let notification = BluepinNotification(identifier: "\(identifer)_\(i)", body: body, date: nextFireDate.nextTriggerDate()!, repeatMethod: repeatMethod, repeatInterval: repeatInterval, repeatTrigger: nextFireDate, weekdaySet: weekdaySet)
                 notifications.append(notification)
                 startDate = nextFireDate.nextTriggerDate()!
             }
             
         } else {
+            
             let nextFireDate = trigger(forStartingDate: startingDate, repeatMethod: repeatMethod, repeatInterval: repeatInterval, weekdaySet: weekdaySet)
-            let notification = BluepinNotification(identifier: "\(identifer)_1", body: body, date: nextFireDate.nextTriggerDate()!, repeatMethod: repeatMethod, repeatInterval: repeatInterval, repeatTrigger: nextFireDate)
+            let notification = BluepinNotification(identifier: "\(identifer)_1", body: body, date: nextFireDate.nextTriggerDate()!, repeatMethod: repeatMethod, repeatInterval: repeatInterval, repeatTrigger: nextFireDate, weekdaySet: weekdaySet)
             notifications.append(notification)
+            
         }
                 
         return notifications
         
     }
+    
     
     func schedule(notification: BluepinNotification) -> BluepinNotification? {
         if notification.scheduled == true {
@@ -191,7 +160,7 @@ public class UNService: NSObject {
         
         content.badge                              = notification.badge
         
-        let trigger = self.trigger(forDate: notification.date, repeats: notification.repeats)
+        let trigger                                = notification.repeatTrigger
         
         let request: UNNotificationRequest         = UNNotificationRequest(identifier: notification.identifier, content: content, trigger: trigger)
         unCenter.add(request, withCompletionHandler: nil)
@@ -282,7 +251,6 @@ public class UNService: NSObject {
         
         let _ = semaphore.wait(timeout: DispatchTime.distantFuture)
     }
-    
     
 }
 
