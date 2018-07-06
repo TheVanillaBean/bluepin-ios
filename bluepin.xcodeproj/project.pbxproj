@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5A03A4B020E8CEFF00BC46EC /* BPNotificationInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A03A4AF20E8CEFF00BC46EC /* BPNotificationInfo.swift */; };
+		5A175BC320ECA6240007DC67 /* GMStepper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A175BC220ECA6240007DC67 /* GMStepper.swift */; };
+		5A175BC520ED71A40007DC67 /* DatePickerPopupVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A175BC420ED71A40007DC67 /* DatePickerPopupVC.swift */; };
+		5A3F09CA20EC20FD0041AA49 /* ReminderDescBorder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A3F09C920EC20FD0041AA49 /* ReminderDescBorder.swift */; };
 		5A68BB4220A98EDE00BC0509 /* Lato-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5A68BB3C20A98EDD00BC0509 /* Lato-Bold.ttf */; };
 		5A68BB4320A98EDE00BC0509 /* Lato-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5A68BB3D20A98EDD00BC0509 /* Lato-Light.ttf */; };
 		5A68BB4420A98EDE00BC0509 /* Lato-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5A68BB3E20A98EDD00BC0509 /* Lato-Medium.ttf */; };
@@ -24,8 +28,16 @@
 		5A68BB7120BA90C900BC0509 /* NotificationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A68BB7020BA90C900BC0509 /* NotificationTests.swift */; };
 		5A741DE320E41134000790C8 /* NotificationPersistedQueue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A741DE220E41134000790C8 /* NotificationPersistedQueue.swift */; };
 		5A741DE420E43926000790C8 /* ReminderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A511E4120D050D1002EAC07 /* ReminderTests.swift */; };
+		5A8B043C20E9D7830073387C /* ReminderCategoriesVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A8B043B20E9D7830073387C /* ReminderCategoriesVC.swift */; };
+		5A8B043E20E9D7D10073387C /* CategoryRemindersVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A8B043D20E9D7D10073387C /* CategoryRemindersVC.swift */; };
+		5A8B044020E9D8460073387C /* ReminderDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A8B043F20E9D8460073387C /* ReminderDetailVC.swift */; };
+		5A8B044220E9D85E0073387C /* ReminderConfigurationVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A8B044120E9D85E0073387C /* ReminderConfigurationVC.swift */; };
+		5A8B044520E9E9390073387C /* DailyConfigVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A8B044420E9E9390073387C /* DailyConfigVC.swift */; };
+		5A8B044720E9E94B0073387C /* WeeklyConfigVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A8B044620E9E94B0073387C /* WeeklyConfigVC.swift */; };
+		5A8B044920E9E95B0073387C /* MonthlyConfigVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A8B044820E9E95B0073387C /* MonthlyConfigVC.swift */; };
+		5A8B044B20E9E9720073387C /* OnceConfigVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A8B044A20E9E9720073387C /* OnceConfigVC.swift */; };
 		5A9BABB720A5827A000F3976 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A9BABB620A5827A000F3976 /* AppDelegate.swift */; };
-		5A9BABB920A5827A000F3976 /* MyReminders.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A9BABB820A5827A000F3976 /* MyReminders.swift */; };
+		5A9BABB920A5827A000F3976 /* MyRemindersVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A9BABB820A5827A000F3976 /* MyRemindersVC.swift */; };
 		5A9BABBC20A5827A000F3976 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5A9BABBA20A5827A000F3976 /* Main.storyboard */; };
 		5A9BABBE20A5827A000F3976 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5A9BABBD20A5827A000F3976 /* Assets.xcassets */; };
 		5A9BABC120A5827A000F3976 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5A9BABBF20A5827A000F3976 /* LaunchScreen.storyboard */; };
@@ -49,6 +61,10 @@
 		172DB99B0711A3FA9E5040E4 /* Pods-bluepin.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-bluepin.release.xcconfig"; path = "Pods/Target Support Files/Pods-bluepin/Pods-bluepin.release.xcconfig"; sourceTree = "<group>"; };
 		1DF0D040215200B99F16452E /* Pods_bluepinTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_bluepinTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		21BF6B9718972D558FA58FAB /* Pods-bluepinTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-bluepinTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-bluepinTests/Pods-bluepinTests.debug.xcconfig"; sourceTree = "<group>"; };
+		5A03A4AF20E8CEFF00BC46EC /* BPNotificationInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BPNotificationInfo.swift; sourceTree = "<group>"; };
+		5A175BC220ECA6240007DC67 /* GMStepper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GMStepper.swift; sourceTree = "<group>"; };
+		5A175BC420ED71A40007DC67 /* DatePickerPopupVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatePickerPopupVC.swift; sourceTree = "<group>"; };
+		5A3F09C920EC20FD0041AA49 /* ReminderDescBorder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReminderDescBorder.swift; sourceTree = "<group>"; };
 		5A511E4120D050D1002EAC07 /* ReminderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReminderTests.swift; sourceTree = "<group>"; };
 		5A68BB3C20A98EDD00BC0509 /* Lato-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-Bold.ttf"; sourceTree = "<group>"; };
 		5A68BB3D20A98EDD00BC0509 /* Lato-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-Light.ttf"; sourceTree = "<group>"; };
@@ -68,9 +84,17 @@
 		5A68BB6A20BA907900BC0509 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5A68BB7020BA90C900BC0509 /* NotificationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationTests.swift; sourceTree = "<group>"; };
 		5A741DE220E41134000790C8 /* NotificationPersistedQueue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationPersistedQueue.swift; sourceTree = "<group>"; };
+		5A8B043B20E9D7830073387C /* ReminderCategoriesVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReminderCategoriesVC.swift; sourceTree = "<group>"; };
+		5A8B043D20E9D7D10073387C /* CategoryRemindersVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryRemindersVC.swift; sourceTree = "<group>"; };
+		5A8B043F20E9D8460073387C /* ReminderDetailVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReminderDetailVC.swift; sourceTree = "<group>"; };
+		5A8B044120E9D85E0073387C /* ReminderConfigurationVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReminderConfigurationVC.swift; sourceTree = "<group>"; };
+		5A8B044420E9E9390073387C /* DailyConfigVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyConfigVC.swift; sourceTree = "<group>"; };
+		5A8B044620E9E94B0073387C /* WeeklyConfigVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeeklyConfigVC.swift; sourceTree = "<group>"; };
+		5A8B044820E9E95B0073387C /* MonthlyConfigVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonthlyConfigVC.swift; sourceTree = "<group>"; };
+		5A8B044A20E9E9720073387C /* OnceConfigVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnceConfigVC.swift; sourceTree = "<group>"; };
 		5A9BABB320A5827A000F3976 /* bluepin.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = bluepin.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5A9BABB620A5827A000F3976 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		5A9BABB820A5827A000F3976 /* MyReminders.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyReminders.swift; sourceTree = "<group>"; };
+		5A9BABB820A5827A000F3976 /* MyRemindersVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyRemindersVC.swift; sourceTree = "<group>"; };
 		5A9BABBB20A5827A000F3976 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		5A9BABBD20A5827A000F3976 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		5A9BABC020A5827A000F3976 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -102,6 +126,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		5A03A4AE20E8A1D200BC46EC /* model */ = {
+			isa = PBXGroup;
+			children = (
+				5A03A4AF20E8CEFF00BC46EC /* BPNotificationInfo.swift */,
+			);
+			path = model;
+			sourceTree = "<group>";
+		};
 		5A68BB3B20A98EDD00BC0509 /* lato */ = {
 			isa = PBXGroup;
 			children = (
@@ -115,17 +147,12 @@
 			path = lato;
 			sourceTree = "<group>";
 		};
-		5A68BB4B20ACD76100BC0509 /* model */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = model;
-			sourceTree = "<group>";
-		};
 		5A68BB4C20ACD76600BC0509 /* view */ = {
 			isa = PBXGroup;
 			children = (
+				5A175BC220ECA6240007DC67 /* GMStepper.swift */,
 				5A68BB4E20ACD7A000BC0509 /* CategoryBtnShadow.swift */,
+				5A3F09C920EC20FD0041AA49 /* ReminderDescBorder.swift */,
 			);
 			path = view;
 			sourceTree = "<group>";
@@ -134,7 +161,11 @@
 			isa = PBXGroup;
 			children = (
 				5A9BABB620A5827A000F3976 /* AppDelegate.swift */,
-				5A9BABB820A5827A000F3976 /* MyReminders.swift */,
+				5A9BABB820A5827A000F3976 /* MyRemindersVC.swift */,
+				5A8B043B20E9D7830073387C /* ReminderCategoriesVC.swift */,
+				5A8B043D20E9D7D10073387C /* CategoryRemindersVC.swift */,
+				5A8B043F20E9D8460073387C /* ReminderDetailVC.swift */,
+				5A8B044320E9E9170073387C /* ConfigurationVC */,
 			);
 			path = controller;
 			sourceTree = "<group>";
@@ -181,6 +212,19 @@
 			path = bluepinTests;
 			sourceTree = "<group>";
 		};
+		5A8B044320E9E9170073387C /* ConfigurationVC */ = {
+			isa = PBXGroup;
+			children = (
+				5A8B044120E9D85E0073387C /* ReminderConfigurationVC.swift */,
+				5A8B044A20E9E9720073387C /* OnceConfigVC.swift */,
+				5A8B044420E9E9390073387C /* DailyConfigVC.swift */,
+				5A8B044620E9E94B0073387C /* WeeklyConfigVC.swift */,
+				5A8B044820E9E95B0073387C /* MonthlyConfigVC.swift */,
+				5A175BC420ED71A40007DC67 /* DatePickerPopupVC.swift */,
+			);
+			path = ConfigurationVC;
+			sourceTree = "<group>";
+		};
 		5A9BABAA20A5827A000F3976 = {
 			isa = PBXGroup;
 			children = (
@@ -207,8 +251,8 @@
 				5A68BB5A20B363C700BC0509 /* util */,
 				5A68BB5120AEB45100BC0509 /* service */,
 				5A68BB4D20ACD76A00BC0509 /* controller */,
+				5A03A4AE20E8A1D200BC46EC /* model */,
 				5A68BB4C20ACD76600BC0509 /* view */,
-				5A68BB4B20ACD76100BC0509 /* model */,
 				5A68BB3B20A98EDD00BC0509 /* lato */,
 				5A9BABBA20A5827A000F3976 /* Main.storyboard */,
 				5A9BABBD20A5827A000F3976 /* Assets.xcassets */,
@@ -286,7 +330,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0920;
-				LastUpgradeCheck = 0920;
+				LastUpgradeCheck = 0940;
 				ORGANIZATIONNAME = "Alex Alimov";
 				TargetAttributes = {
 					5A68BB6520BA907600BC0509 = {
@@ -296,6 +340,7 @@
 					};
 					5A9BABB220A5827A000F3976 = {
 						CreatedOnToolsVersion = 9.2;
+						LastSwiftMigration = 0940;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -389,10 +434,16 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-bluepin/Pods-bluepin-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/DynamicBlurView/DynamicBlurView.framework",
+				"${BUILT_PRODUCTS_DIR}/Pageboy/Pageboy.framework",
+				"${BUILT_PRODUCTS_DIR}/PopupDialog/PopupDialog.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftDate/SwiftDate.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/DynamicBlurView.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Pageboy.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PopupDialog.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftDate.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -418,17 +469,29 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5A9BABB920A5827A000F3976 /* MyReminders.swift in Sources */,
+				5A03A4B020E8CEFF00BC46EC /* BPNotificationInfo.swift in Sources */,
+				5A8B044920E9E95B0073387C /* MonthlyConfigVC.swift in Sources */,
+				5A8B044020E9D8460073387C /* ReminderDetailVC.swift in Sources */,
+				5A9BABB920A5827A000F3976 /* MyRemindersVC.swift in Sources */,
 				5A68BB4F20ACD7A000BC0509 /* CategoryBtnShadow.swift in Sources */,
 				5A68BB5F20B364A900BC0509 /* NotificationSound.swift in Sources */,
+				5A3F09CA20EC20FD0041AA49 /* ReminderDescBorder.swift in Sources */,
 				5A68BB5920B362F100BC0509 /* BluepinNotification.swift in Sources */,
 				5AAD5C8820BFD99600E86806 /* SortedArray.swift in Sources */,
 				5A68BB5720B3606C00BC0509 /* NotificationAuthorizationOptions.swift in Sources */,
 				5A68BB5320AEB46700BC0509 /* UNService.swift in Sources */,
+				5A8B043E20E9D7D10073387C /* CategoryRemindersVC.swift in Sources */,
+				5A8B043C20E9D7830073387C /* ReminderCategoriesVC.swift in Sources */,
+				5A8B044720E9E94B0073387C /* WeeklyConfigVC.swift in Sources */,
+				5A8B044520E9E9390073387C /* DailyConfigVC.swift in Sources */,
+				5A175BC520ED71A40007DC67 /* DatePickerPopupVC.swift in Sources */,
 				5A9BABB720A5827A000F3976 /* AppDelegate.swift in Sources */,
 				5A741DE320E41134000790C8 /* NotificationPersistedQueue.swift in Sources */,
 				5A68BB6120B36DF600BC0509 /* NotificationRequest.swift in Sources */,
+				5A8B044B20E9E9720073387C /* OnceConfigVC.swift in Sources */,
 				5A68BB5D20B363E500BC0509 /* Date+Scheduler.swift in Sources */,
+				5A8B044220E9D85E0073387C /* ReminderConfigurationVC.swift in Sources */,
+				5A175BC320ECA6240007DC67 /* GMStepper.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -510,6 +573,7 @@
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
@@ -517,6 +581,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
@@ -567,6 +632,7 @@
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
@@ -574,6 +640,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
@@ -608,6 +675,7 @@
 			baseConfigurationReference = BDF68BA3CB2DBB09EF10A0C7 /* Pods-bluepin.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = M2D39CNGJ2;
@@ -617,6 +685,8 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.bluepinapp.bluepin;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -627,6 +697,7 @@
 			baseConfigurationReference = 172DB99B0711A3FA9E5040E4 /* Pods-bluepin.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = M2D39CNGJ2;
@@ -636,6 +707,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.bluepinapp.bluepin;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};

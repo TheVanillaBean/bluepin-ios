@@ -7,8 +7,9 @@ target 'bluepin' do
 
   # Pods for bluepin
 
-  pod 'SwiftDate', '~> 4.5.1'
-
+  pod 'SwiftDate', '~> 5.0'
+  pod 'Pageboy', '~> 2.0'
+  pod 'PopupDialog', '~> 0.7'
 
   target 'bluepinTests' do
     inherit! :search_paths

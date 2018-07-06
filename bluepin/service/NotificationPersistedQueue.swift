@@ -11,7 +11,7 @@ import Foundation
 public class NotificationPersistedQueue: NSObject {
     
     fileprivate var notifQueue = SortedArray<BluepinNotification> { $0.date < $1.date }
-    let ArchiveURL = FileManager().urls(for: .documentDirectory, in: .userDomainMask).first!.appendingPathComponent("notifications")
+    let ArchiveURL = FileManager().urls(for: .documentDirectory, in: .userDomainMask).first!.appendingPathComponent("notifications.json")
     
     fileprivate static let instance = NotificationPersistedQueue()
     public static var shared: NotificationPersistedQueue {
@@ -70,7 +70,13 @@ public class NotificationPersistedQueue: NSObject {
     }
     
     public func load() -> [BluepinNotification]? {
-        //decode from json
-        return NSKeyedUnarchiver.unarchiveObject(withFile: ArchiveURL.path) as? [BluepinNotification]
+        guard let data = NSKeyedUnarchiver.unarchiveObject(withFile: ArchiveURL.path) as? Data else { return nil }
+        do {
+            let notifications = try JSONDecoder().decode([BluepinNotification].self, from: data)
+            return notifications
+        } catch {
+            print("Retrieve Failed")
+            return nil
+        }
     }
 }

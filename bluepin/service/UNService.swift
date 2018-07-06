@@ -156,7 +156,7 @@ public class UNService: NSObject {
         }
         content.sound                              = sound
         
-        content.userInfo                           = notification.userInfo
+        content.userInfo                           = notification.userInfo()
         
         content.badge                              = notification.badge
         
@@ -169,7 +169,6 @@ public class UNService: NSObject {
         return notification
        
     }
-    
     
     func reschedule(notification: BluepinNotification) -> BluepinNotification? {
         self.cancel(notification: notification)
@@ -230,8 +229,6 @@ public class UNService: NSObject {
         
         return count
     }
-    
-    //    MARK:- Testing
     
     func printScheduled() {
         if (self.scheduledCount() == 0) {

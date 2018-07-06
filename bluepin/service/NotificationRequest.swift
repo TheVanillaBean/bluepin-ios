@@ -27,9 +27,8 @@ extension UNNotificationRequest: SystemNotification {
         let notification           = BluepinNotification(identifier: self.identifier, body: content.body, date: Date())
         
         let userInfo = content.userInfo
-        for (key, value) in userInfo {
-            notification.setUserInfo(value: value, forKey: key)
-        }
+
+        notification.notificationInfo = notification.notificationInfo(withUserInfo: userInfo)
         
         if !content.title.trimmingCharacters(in: .whitespaces).isEmpty {
             notification.title     = content.title
@@ -38,7 +37,7 @@ extension UNNotificationRequest: SystemNotification {
         if let trigger = self.trigger as? UNCalendarNotificationTrigger {
             notification.repeatTrigger = trigger
             var date: Date?
-            if let originalDate    = notification.userInfo[BluepinNotification.dateKey] as? Date {
+            if let originalDate    = notification.notificationInfo?.date {
                 date               = originalDate
             }
             notification.repeats   = self.repeats(dateComponents: trigger.dateComponents)

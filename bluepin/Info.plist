@@ -47,5 +47,7 @@
 	</array>
 	<key>Item 0</key>
 	<string>Lato.ttf</string>
+	<key>UIViewControllerBasedStatusBarAppearance</key>
+	<true/>
 </dict>
 </plist>

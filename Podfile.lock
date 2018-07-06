@@ -1,16 +1,28 @@
 PODS:
-  - SwiftDate (4.5.1)
+  - DynamicBlurView (2.0.2)
+  - Pageboy (2.5.2)
+  - PopupDialog (0.7.1):
+    - DynamicBlurView (~> 2.0)
+  - SwiftDate (5.0.0)
 
 DEPENDENCIES:
-  - SwiftDate (~> 4.5.1)
+  - Pageboy (~> 2.0)
+  - PopupDialog (~> 0.7)
+  - SwiftDate (~> 5.0)
 
 SPEC REPOS:
-  https://github.com/CocoaPods/Specs.git:
+  https://github.com/cocoapods/specs.git:
+    - DynamicBlurView
+    - Pageboy
+    - PopupDialog
     - SwiftDate
 
 SPEC CHECKSUMS:
-  SwiftDate: 7b56d42a221f582047287deb256b23fc5ed49a60
+  DynamicBlurView: aa6db4defc6e537eb86fc5e58dd3991666178399
+  Pageboy: dd62a213a5cfb9cf3f97a0845e8703c0b8377a9a
+  PopupDialog: 39598b7d41719f5c025b4b70e62728bae7734fef
+  SwiftDate: 1efb57cf6a7657fdbd00c3b80d5f724bbca6428d
 
-PODFILE CHECKSUM: 5a9e0516a753e3952ed3da05221466d43a265d06
+PODFILE CHECKSUM: a1d38e53f3230d738f0bde2f3c79ace89e52c324
 
-COCOAPODS: 1.5.0
+COCOAPODS: 1.5.3

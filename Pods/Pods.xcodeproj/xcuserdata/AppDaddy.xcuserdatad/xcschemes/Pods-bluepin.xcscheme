@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "D222A4766CEC79D6262175C3BFBB9F14"
+               BlueprintIdentifier = "E0C58D18C775B4ACC54DA86CF336D98B"
                BuildableName = "Pods_bluepin.framework"
                BlueprintName = "Pods-bluepin"
                ReferencedContainer = "container:Pods.xcodeproj">
@@ -26,7 +26,6 @@
       buildConfiguration = "Debug"
       selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
-      language = ""
       shouldUseLaunchSchemeArgsEnv = "YES">
       <Testables>
       </Testables>
@@ -37,7 +36,6 @@
       buildConfiguration = "Debug"
       selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
-      language = ""
       launchStyle = "0"
       useCustomWorkingDirectory = "NO"
       ignoresPersistentStateOnLaunch = "NO"
@@ -47,7 +45,7 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "D222A4766CEC79D6262175C3BFBB9F14"
+            BlueprintIdentifier = "E0C58D18C775B4ACC54DA86CF336D98B"
             BuildableName = "Pods_bluepin.framework"
             BlueprintName = "Pods-bluepin"
             ReferencedContainer = "container:Pods.xcodeproj">
