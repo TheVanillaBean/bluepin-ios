@@ -28,7 +28,7 @@ class ReminderTests: XCTestCase {
 
     func testReminderRepeatOnce1(){
         date = Calendar.current.date(bySettingHour: 12, minute: 0, second: 0, of: Date())
-        let reminder = UNService.shared.reminder(withBody: body, startingDate: date + 1.day)
+        let reminder = UNService.shared.reminder(withBody: body, startingDate: date + 1.days)
         print("Reminder FireDate: \(reminder![0].date.inDefaultRegion())")
         
         XCTAssertTrue(reminder?.count == 1)
@@ -36,7 +36,7 @@ class ReminderTests: XCTestCase {
     
     func testReminderRepeatOnce2(){
         date = Calendar.current.date(bySettingHour: 0, minute: 0, second: 0, of: Date())
-        let reminder = UNService.shared.reminder(withBody: body, startingDate: date + 1.month + 13.days)
+        let reminder = UNService.shared.reminder(withBody: body, startingDate: date + 1.months + 13.days)
         print("Reminder FireDate: \(reminder![0].date.inDefaultRegion())")
         
         XCTAssertTrue(reminder?.count == 1)

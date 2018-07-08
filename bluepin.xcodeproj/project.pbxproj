@@ -43,6 +43,7 @@
 		5A9BABC120A5827A000F3976 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5A9BABBF20A5827A000F3976 /* LaunchScreen.storyboard */; };
 		5AAD5C8620BBDA4E00E86806 /* NotificationScheduleTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AAD5C8520BBDA4E00E86806 /* NotificationScheduleTests.swift */; };
 		5AAD5C8820BFD99600E86806 /* SortedArray.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AAD5C8720BFD99500E86806 /* SortedArray.swift */; };
+		5AB1EC5E20EF7630003F64C3 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AB1EC5D20EF7630003F64C3 /* Constants.swift */; };
 		5DE0977A21C3C3BE53603D00 /* Pods_bluepinTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DF0D040215200B99F16452E /* Pods_bluepinTests.framework */; };
 		FB148E54D5F4D729AA7FD1F2 /* Pods_bluepin.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AB82EABDB47B33DCD2DCB862 /* Pods_bluepin.framework */; };
 /* End PBXBuildFile section */
@@ -101,6 +102,7 @@
 		5A9BABC220A5827A000F3976 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5AAD5C8520BBDA4E00E86806 /* NotificationScheduleTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationScheduleTests.swift; sourceTree = "<group>"; };
 		5AAD5C8720BFD99500E86806 /* SortedArray.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SortedArray.swift; sourceTree = "<group>"; };
+		5AB1EC5D20EF7630003F64C3 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		A177FD89C421EE26BCB0D26D /* Pods-bluepinTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-bluepinTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-bluepinTests/Pods-bluepinTests.release.xcconfig"; sourceTree = "<group>"; };
 		AB82EABDB47B33DCD2DCB862 /* Pods_bluepin.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_bluepin.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BDF68BA3CB2DBB09EF10A0C7 /* Pods-bluepin.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-bluepin.debug.xcconfig"; path = "Pods/Target Support Files/Pods-bluepin/Pods-bluepin.debug.xcconfig"; sourceTree = "<group>"; };
@@ -188,6 +190,7 @@
 				5A68BB5B20B363CD00BC0509 /* extensions */,
 				5A68BB5E20B364A900BC0509 /* NotificationSound.swift */,
 				5AAD5C8720BFD99500E86806 /* SortedArray.swift */,
+				5AB1EC5D20EF7630003F64C3 /* Constants.swift */,
 			);
 			path = util;
 			sourceTree = "<group>";
@@ -492,6 +495,7 @@
 				5A68BB5D20B363E500BC0509 /* Date+Scheduler.swift in Sources */,
 				5A8B044220E9D85E0073387C /* ReminderConfigurationVC.swift in Sources */,
 				5A175BC320ECA6240007DC67 /* GMStepper.swift in Sources */,
+				5AB1EC5E20EF7630003F64C3 /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -63,13 +63,13 @@ public class NotificationPersistedQueue: NSObject {
         return NotificationPersistedQueue.shared.save()
     }
     
-    public func save() -> Bool {
+    private func save() -> Bool {
         let encoder = JSONEncoder()
         let encodedQueue = try! encoder.encode(self.notifQueue.elements)
         return NSKeyedArchiver.archiveRootObject(encodedQueue, toFile: ArchiveURL.path)
     }
     
-    public func load() -> [BluepinNotification]? {
+    private func load() -> [BluepinNotification]? {
         guard let data = NSKeyedUnarchiver.unarchiveObject(withFile: ArchiveURL.path) as? Data else { return nil }
         do {
             let notifications = try JSONDecoder().decode([BluepinNotification].self, from: data)

@@ -11,8 +11,8 @@ import UserNotifications
 public class NotificationSound: Codable {
     internal var name: String?
     internal var sound: UNNotificationSound?
-
-    public init(named name: String = BluepinNotification.defaultSoundName) {
+    
+    public init(named name: String = DefaultSoundName) {
         self.name = name
     }
 

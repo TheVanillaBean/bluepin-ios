@@ -146,7 +146,7 @@ public class UNService: NSObject {
         
         var sound: UNNotificationSound             = UNNotificationSound.default()
         if let name = notification.sound.name {
-            if name != BluepinNotification.defaultSoundName {
+            if name != DefaultSoundName {
                 sound                              = UNNotificationSound(named: name)
             }
         } else {
@@ -156,14 +156,16 @@ public class UNService: NSObject {
         }
         content.sound                              = sound
         
-        content.userInfo                           = notification.userInfo()
+        content.userInfo                           = notification.notificationDictionary()
         
         content.badge                              = notification.badge
         
         let trigger                                = notification.repeatTrigger
         
         let request: UNNotificationRequest         = UNNotificationRequest(identifier: notification.identifier, content: content, trigger: trigger)
+        
         unCenter.add(request, withCompletionHandler: nil)
+        
         notification.scheduled                     = true
         
         return notification

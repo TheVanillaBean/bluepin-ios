@@ -10,14 +10,6 @@ import Foundation
 import SwiftDate
 import UserNotifications
 
-public enum Repeats: String, Codable {
-    case none  = "None"
-    case hour  = "Hour"
-    case day   = "Day"
-    case week  = "Week"
-    case month = "Month"
-}
-
 public enum RepeatMethod: String, Codable {
     case once  = "Once"
     case daily  = "Daily"
@@ -26,18 +18,6 @@ public enum RepeatMethod: String, Codable {
 }
 
 public class BluepinNotification: NSObject, Codable {
-    
-    public static let identifierKey: String    = "NotificationIdentifierKey"
-    
-    public static let dateKey: String          = "NotificationDateKey"
-    
-    public static let defaultSoundName: String = "NotificationDefaultSound"
-    
-    public static let repeatMethodKey: String = "NotificationRepeatMethod"
-    
-    public static let repeatIntervalKey: String = "NotificationRepeatInterval"
-    
-    public static let repeatWeekdayKey: String = "NotificationRepeatWeekdaySet"
     
     fileprivate(set) public var identifier: String!
     
@@ -57,8 +37,6 @@ public class BluepinNotification: NSObject, Codable {
     
     public var sound: NotificationSound = NotificationSound()
     
-    public var repeats: Repeats                = .none
-        
     internal(set) public var scheduled: Bool   = false
     
     public var repeatMethod: RepeatMethod = .once
@@ -75,11 +53,25 @@ public class BluepinNotification: NSObject, Codable {
         case title
         case badge
         case sound
-        case repeats
         case scheduled
         case repeatMethod
         case repeatInterval
         case repeatTrigger
+    }
+    
+    public func encode(to encoder: Encoder) throws {
+        var container = encoder.container(keyedBy: CodingKeys.self)
+        try container.encode(identifier, forKey: .identifier)
+        try container.encode(body, forKey: .body)
+        try container.encode(date, forKey: .date)
+        try container.encode(notificationInfo, forKey: .notificationInfo)
+        try container.encode(title, forKey: .title)
+        try container.encode(badge?.intValue, forKey: .badge)
+        try container.encode(sound, forKey: .sound)
+        try container.encode(scheduled, forKey: .scheduled)
+        try container.encode(repeatMethod, forKey: .repeatMethod)
+        try container.encode(repeatInterval, forKey: .repeatInterval)
+        try container.encode(repeatTrigger?.nextTriggerDate(), forKey: .repeatTrigger)
     }
     
     public required init(from decoder: Decoder) throws {
@@ -92,7 +84,6 @@ public class BluepinNotification: NSObject, Codable {
         title = try values.decode(String.self, forKey: .title)
         badge = try NSNumber(value: values.decode(Int.self, forKey: .badge))
         sound = try values.decode(NotificationSound.self, forKey: .sound)
-        repeats = try values.decode(Repeats.self, forKey: .repeats)
         scheduled = try values.decode(Bool.self, forKey: .scheduled)
         repeatMethod = try values.decode(RepeatMethod.self, forKey: .repeatMethod)
         repeatInterval = try values.decode(Int.self, forKey: .repeatInterval)
@@ -112,13 +103,12 @@ public class BluepinNotification: NSObject, Codable {
             result += "\tBadge: \(badge)\n"
         }
         result += "\tSound name: \(self.sound)\n"
-        result += "\tRepeats every: \(self.repeats.rawValue)\n"
         result += "\tScheduled: \(self.scheduled)"
         
         return result
     }
     
-    public init(identifier: String = UUID().uuidString, body: String, date: Date = Date().next(hours: 1)) {
+    public init(identifier: String = UUID().uuidString, body: String, date: Date) {
         super.init()
         self.identifier = identifier
         self.body = body
@@ -129,11 +119,11 @@ public class BluepinNotification: NSObject, Codable {
         self.repeatTrigger = trigger(forTrigger: nil, date: date)
     }
     
-    public convenience init(identifier: String = UUID().uuidString, body: String, date: Date = Date().next(hours: 1), repeatMethod: RepeatMethod, repeatInterval: Int, repeatTrigger: UNCalendarNotificationTrigger?, weekdaySet: IndexSet = IndexSet([1, 2])) {
+    public convenience init(identifier: String = UUID().uuidString, body: String, date: Date, repeatMethod: RepeatMethod, repeatInterval: Int, repeatTrigger: UNCalendarNotificationTrigger?, weekdaySet: IndexSet = IndexSet([1, 2])) {
         self.init(identifier: identifier, body: body, date: date)
         self.repeatMethod = repeatMethod
         self.repeatInterval = repeatInterval
-        self.repeatTrigger = trigger(forTrigger: repeatTrigger, date: date)
+        self.repeatTrigger = repeatTrigger != nil ? trigger(forTrigger: repeatTrigger, date: date) : self.repeatTrigger
         self.notificationInfo?.repeatMethod = self.repeatMethod
         self.notificationInfo?.repeatInterval = self.repeatInterval
         if self.repeatMethod == .weekly {
@@ -155,43 +145,25 @@ public class BluepinNotification: NSObject, Codable {
         return sytemNotification.notification()
     }
     
-    public func userInfo() -> [AnyHashable : Any]{
+    public func notificationDictionary() -> [AnyHashable : Any]{
         var userInfo: [AnyHashable : Any] = [AnyHashable : Any]()
-        userInfo[BluepinNotification.identifierKey] = self.notificationInfo?.identifier
-        userInfo[BluepinNotification.dateKey] = self.notificationInfo?.date
-        userInfo[BluepinNotification.repeatMethodKey] = self.notificationInfo?.repeatMethod
-        userInfo[BluepinNotification.repeatIntervalKey] = self.notificationInfo?.repeatInterval
-        userInfo[BluepinNotification.repeatWeekdayKey] = self.notificationInfo?.repeatWeekdayInterval
+        userInfo[IdentifierKey] = self.notificationInfo?.identifier
+        userInfo[DateKey] = self.notificationInfo?.date
+        userInfo[RepeatMethodKey] = self.notificationInfo?.repeatMethod
+        userInfo[RepeatIntervalKey] = self.notificationInfo?.repeatInterval
+        userInfo[RepeatWeekdayKey] = self.notificationInfo?.repeatWeekdayInterval
         return userInfo
     }
     
-    public func notificationInfo(withUserInfo userInfo: [AnyHashable : Any]) -> BPNotificationInfo {
+    public func notification(fromDictionary dictionary: [AnyHashable : Any]) -> BPNotificationInfo {
         let notification: BPNotificationInfo = BPNotificationInfo()
-        notification.identifier = userInfo[BluepinNotification.identifierKey] as? String
-        notification.date = userInfo[BluepinNotification.dateKey] as? Date
-        notification.repeatMethod = userInfo[BluepinNotification.repeatMethodKey] as? RepeatMethod
-        notification.repeatInterval = userInfo[BluepinNotification.repeatIntervalKey] as? Int
-        notification.repeatWeekdayInterval = userInfo[BluepinNotification.repeatWeekdayKey] as? IndexSet
+        notification.identifier = dictionary[IdentifierKey] as? String
+        notification.date = dictionary[DateKey] as? Date
+        notification.repeatMethod = dictionary[RepeatMethodKey] as? RepeatMethod
+        notification.repeatInterval = dictionary[RepeatIntervalKey] as? Int
+        notification.repeatWeekdayInterval = dictionary[RepeatWeekdayKey] as? IndexSet
         return notification
     }
-    
-//    public func setUserInfo(value: Any, forKey key: AnyHashable) {
-//        if let keyString = key as? String {
-//            if (keyString == BluepinNotification.identifierKey || keyString == BluepinNotification.dateKey) {
-//                return
-//            }
-//        }
-//        self.userInfo[key] = value;
-//    }
-//
-//    public func removeUserInfoValue(forKey key: AnyHashable) {
-//        if let keyString = key as? String {
-//            if (keyString == BluepinNotification.identifierKey || keyString == BluepinNotification.dateKey) {
-//                return
-//            }
-//        }
-//        self.userInfo.removeValue(forKey: key)
-//    }
     
 }
 
@@ -201,24 +173,6 @@ public func ==(lhs: BluepinNotification, rhs: BluepinNotification) -> Bool {
 
 public func <(lhs: BluepinNotification, rhs: BluepinNotification) -> Bool {
     return lhs.date.compare(rhs.date) == ComparisonResult.orderedAscending
-}
-
-extension BluepinNotification{
-    public func encode(to encoder: Encoder) throws {
-        var container = encoder.container(keyedBy: CodingKeys.self)
-        try container.encode(identifier, forKey: .identifier)
-        try container.encode(body, forKey: .body)
-        try container.encode(date, forKey: .date)
-        try container.encode(notificationInfo, forKey: .notificationInfo)
-        try container.encode(title, forKey: .title)
-        try container.encode(badge?.intValue, forKey: .badge)
-        try container.encode(sound, forKey: .sound)
-        try container.encode(repeats, forKey: .repeats)
-        try container.encode(scheduled, forKey: .scheduled)
-        try container.encode(repeatMethod, forKey: .repeatMethod)
-        try container.encode(repeatInterval, forKey: .repeatInterval)
-        try container.encode(repeatTrigger?.nextTriggerDate(), forKey: .repeatTrigger)
-    }
 }
 
 
