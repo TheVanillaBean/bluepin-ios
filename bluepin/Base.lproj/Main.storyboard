@@ -73,7 +73,7 @@
                                 <rect key="frame" x="0.0" y="75" width="375" height="592"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="85" id="7T8-kW-jFL">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="85" id="7T8-kW-jFL" customClass="MyRemindersCell" customModule="bluepin" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="375" height="85"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="7T8-kW-jFL" id="pmt-bj-XNG">
@@ -163,6 +163,15 @@
                                                 <constraint firstItem="mxc-Yf-R6C" firstAttribute="leading" secondItem="pmt-bj-XNG" secondAttribute="leading" id="ylX-57-yHR"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="clockImageView" destination="3Ep-FL-6FF" id="8XJ-zj-2OQ"/>
+                                            <outlet property="dayLbl" destination="t5b-dO-IXz" id="6zo-2o-fKf"/>
+                                            <outlet property="monthYearLbl" destination="mxc-Yf-R6C" id="U7k-4V-nTf"/>
+                                            <outlet property="reminderDescLbl" destination="RW7-RB-AQP" id="NnY-2J-syK"/>
+                                            <outlet property="reminderNameLbl" destination="nRl-TS-qdM" id="a1v-8u-jcn"/>
+                                            <outlet property="reminderTimeLbl" destination="xOh-Vf-DT1" id="73w-5w-PCF"/>
+                                            <outlet property="weekdayLbl" destination="kfV-Ky-LJ9" id="KdU-R1-JQK"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
@@ -179,15 +188,18 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
+                    <connections>
+                        <segue destination="T8G-Qp-GXs" kind="show" identifier="goToReminderCategoriesVC" id="Bsa-8m-Hgv"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="136.80000000000001" y="133.5832083958021"/>
         </scene>
-        <!--View Controller-->
+        <!--Reminder CategoriesVC-->
         <scene sceneID="ovO-he-rzu">
             <objects>
-                <viewController id="T8G-Qp-GXs" sceneMemberID="viewController">
+                <viewController id="T8G-Qp-GXs" customClass="ReminderCategoriesVC" customModule="bluepin" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="rBF-iO-pN9">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -235,6 +247,9 @@
                                                             <constraint firstAttribute="width" constant="75" id="xum-fR-Wp9"/>
                                                         </constraints>
                                                         <state key="normal" image="home"/>
+                                                        <connections>
+                                                            <action selector="categoryBtnPressed:" destination="T8G-Qp-GXs" eventType="touchUpInside" id="DnM-kg-XcW"/>
+                                                        </connections>
                                                     </button>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Home" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XgN-mO-iFv">
                                                         <rect key="frame" x="0.0" y="80" width="75" height="17"/>
@@ -247,13 +262,16 @@
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="mDy-7V-y7h">
                                                 <rect key="frame" x="175" y="0.0" width="75" height="97"/>
                                                 <subviews>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Xj6-n3-yre" customClass="CategoryBtnShadow" customModule="bluepin" customModuleProvider="target">
+                                                    <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Xj6-n3-yre" customClass="CategoryBtnShadow" customModule="bluepin" customModuleProvider="target">
                                                         <rect key="frame" x="0.0" y="0.0" width="75" height="75"/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" constant="75" id="6Iw-D9-be9"/>
                                                             <constraint firstAttribute="height" constant="75" id="9f8-zA-OGd"/>
                                                         </constraints>
                                                         <state key="normal" image="personal"/>
+                                                        <connections>
+                                                            <action selector="categoryBtnPressed:" destination="T8G-Qp-GXs" eventType="touchUpInside" id="fJe-es-5oe"/>
+                                                        </connections>
                                                     </button>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Personal" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="T4G-ex-qLL">
                                                         <rect key="frame" x="0.0" y="80" width="75" height="17"/>
@@ -271,13 +289,16 @@
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="Bv7-6y-1Nm">
                                                 <rect key="frame" x="0.0" y="0.0" width="75" height="97"/>
                                                 <subviews>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="azg-oS-t2O" customClass="CategoryBtnShadow" customModule="bluepin" customModuleProvider="target">
+                                                    <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="azg-oS-t2O" customClass="CategoryBtnShadow" customModule="bluepin" customModuleProvider="target">
                                                         <rect key="frame" x="0.0" y="0.0" width="75" height="75"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="75" id="4ab-OX-eat"/>
                                                             <constraint firstAttribute="width" constant="75" id="FVa-EN-OY0"/>
                                                         </constraints>
                                                         <state key="normal" image="family"/>
+                                                        <connections>
+                                                            <action selector="categoryBtnPressed:" destination="T8G-Qp-GXs" eventType="touchUpInside" id="BI4-sM-77Q"/>
+                                                        </connections>
                                                     </button>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Family" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="d0t-xj-ufz">
                                                         <rect key="frame" x="0.0" y="80" width="75" height="17"/>
@@ -290,13 +311,16 @@
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="xYR-VW-Gds">
                                                 <rect key="frame" x="175" y="0.0" width="75" height="97"/>
                                                 <subviews>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qgk-nf-Xxc" customClass="CategoryBtnShadow" customModule="bluepin" customModuleProvider="target">
+                                                    <button opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qgk-nf-Xxc" customClass="CategoryBtnShadow" customModule="bluepin" customModuleProvider="target">
                                                         <rect key="frame" x="0.0" y="0.0" width="75" height="75"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="75" id="9nd-jr-STq"/>
                                                             <constraint firstAttribute="width" constant="75" id="Wci-Vq-Djs"/>
                                                         </constraints>
                                                         <state key="normal" image="doctor"/>
+                                                        <connections>
+                                                            <action selector="categoryBtnPressed:" destination="T8G-Qp-GXs" eventType="touchUpInside" id="frd-ID-DO5"/>
+                                                        </connections>
                                                     </button>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Medical" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jvU-PA-y3y">
                                                         <rect key="frame" x="0.0" y="80" width="75" height="17"/>
@@ -314,13 +338,16 @@
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="7VX-dc-zzW">
                                                 <rect key="frame" x="0.0" y="0.0" width="75" height="97"/>
                                                 <subviews>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="imO-ct-jmG" customClass="CategoryBtnShadow" customModule="bluepin" customModuleProvider="target">
+                                                    <button opaque="NO" tag="4" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="imO-ct-jmG" customClass="CategoryBtnShadow" customModule="bluepin" customModuleProvider="target">
                                                         <rect key="frame" x="0.0" y="0.0" width="75" height="75"/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" constant="75" id="7tj-sb-bgB"/>
                                                             <constraint firstAttribute="height" constant="75" id="9GG-9l-jsj"/>
                                                         </constraints>
                                                         <state key="normal" image="finance"/>
+                                                        <connections>
+                                                            <action selector="categoryBtnPressed:" destination="T8G-Qp-GXs" eventType="touchUpInside" id="DNl-PL-enx"/>
+                                                        </connections>
                                                     </button>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Finance" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="B0r-Kq-c9i">
                                                         <rect key="frame" x="0.0" y="80" width="75" height="17"/>
@@ -333,13 +360,16 @@
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="pGi-wA-yfE">
                                                 <rect key="frame" x="175" y="0.0" width="75" height="97"/>
                                                 <subviews>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kcv-62-YjG" customClass="CategoryBtnShadow" customModule="bluepin" customModuleProvider="target">
+                                                    <button opaque="NO" tag="5" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kcv-62-YjG" customClass="CategoryBtnShadow" customModule="bluepin" customModuleProvider="target">
                                                         <rect key="frame" x="0.0" y="0.0" width="75" height="75"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="75" id="2S2-4a-diU"/>
                                                             <constraint firstAttribute="width" constant="75" id="O22-TB-2qs"/>
                                                         </constraints>
                                                         <state key="normal" image="auto"/>
+                                                        <connections>
+                                                            <action selector="categoryBtnPressed:" destination="T8G-Qp-GXs" eventType="touchUpInside" id="TzW-YQ-WnC"/>
+                                                        </connections>
                                                     </button>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Automotive" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YlD-xT-sg4">
                                                         <rect key="frame" x="0.0" y="80" width="75" height="17"/>
@@ -357,13 +387,16 @@
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="urt-bv-Lgh">
                                                 <rect key="frame" x="0.0" y="0.0" width="75" height="97"/>
                                                 <subviews>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gwf-og-GI5" customClass="CategoryBtnShadow" customModule="bluepin" customModuleProvider="target">
+                                                    <button opaque="NO" tag="6" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gwf-og-GI5" customClass="CategoryBtnShadow" customModule="bluepin" customModuleProvider="target">
                                                         <rect key="frame" x="0.0" y="0.0" width="75" height="75"/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" constant="75" id="dff-vm-Wp0"/>
                                                             <constraint firstAttribute="height" constant="75" id="qPe-Xr-KYY"/>
                                                         </constraints>
                                                         <state key="normal" image="fitness"/>
+                                                        <connections>
+                                                            <action selector="categoryBtnPressed:" destination="T8G-Qp-GXs" eventType="touchUpInside" id="bzb-jc-RES"/>
+                                                        </connections>
                                                     </button>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Fitness" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rjq-BP-g4b">
                                                         <rect key="frame" x="0.0" y="80" width="75" height="17"/>
@@ -376,13 +409,16 @@
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="GKy-l1-MOr">
                                                 <rect key="frame" x="175" y="0.0" width="75" height="97"/>
                                                 <subviews>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VFB-HL-Kiq" customClass="CategoryBtnShadow" customModule="bluepin" customModuleProvider="target">
+                                                    <button opaque="NO" tag="7" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VFB-HL-Kiq" customClass="CategoryBtnShadow" customModule="bluepin" customModuleProvider="target">
                                                         <rect key="frame" x="0.0" y="0.0" width="75" height="75"/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" constant="75" id="1dv-xi-wzZ"/>
                                                             <constraint firstAttribute="height" constant="75" id="Cgl-da-TSP"/>
                                                         </constraints>
                                                         <state key="normal" image="pets"/>
+                                                        <connections>
+                                                            <action selector="categoryBtnPressed:" destination="T8G-Qp-GXs" eventType="touchUpInside" id="1Dg-3O-48P"/>
+                                                        </connections>
                                                     </button>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Pets" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3eY-j0-QKx">
                                                         <rect key="frame" x="0.0" y="80" width="75" height="17"/>
@@ -412,10 +448,10 @@
             </objects>
             <point key="canvasLocation" x="924" y="133.5832083958021"/>
         </scene>
-        <!--View Controller-->
+        <!--Category RemindersVC-->
         <scene sceneID="8Ji-wy-qEU">
             <objects>
-                <viewController id="b8l-cE-zqQ" sceneMemberID="viewController">
+                <viewController id="b8l-cE-zqQ" customClass="CategoryRemindersVC" customModule="bluepin" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="074-w2-61g">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -452,7 +488,7 @@
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <color key="separatorColor" red="0.2901960784" green="0.2901960784" blue="0.2901960784" alpha="1" colorSpace="calibratedRGB"/>
                                 <prototypes>
-                                    <tableViewCell contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="44" id="1S1-tN-hwt">
+                                    <tableViewCell contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="44" id="1S1-tN-hwt" customClass="CategoryRemindersCell" customModule="bluepin" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="1S1-tN-hwt" id="dGy-Id-NSQ">
@@ -473,6 +509,9 @@
                                             </subviews>
                                             <color key="backgroundColor" red="0.98030978441238403" green="0.98044675588607788" blue="0.9802665114402771" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="categoryName" destination="g4E-Yc-DTA" id="doV-Jc-ucm"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
@@ -489,15 +528,19 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="juE-lr-NHB"/>
                     </view>
+                    <connections>
+                        <outlet property="tableView" destination="9hy-Gp-sPs" id="09k-1g-ojo"/>
+                        <segue destination="hYR-6Z-Mj3" kind="show" identifier="goToReminderDetailVC" id="8YQ-uh-wQZ"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Tg9-iy-SD2" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1661.5999999999999" y="133.5832083958021"/>
         </scene>
-        <!--View Controller-->
+        <!--Reminder DetailVC-->
         <scene sceneID="U1V-s0-SHV">
             <objects>
-                <viewController id="hYR-6Z-Mj3" sceneMemberID="viewController">
+                <viewController id="hYR-6Z-Mj3" customClass="ReminderDetailVC" customModule="bluepin" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="kox-lO-G0B">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
