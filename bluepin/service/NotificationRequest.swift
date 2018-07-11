@@ -18,7 +18,7 @@ extension UNNotificationRequest: SystemNotification {
     public func notification() -> BluepinNotification? {
         let content = self.content
         
-        let notification           = BluepinNotification(identifier: self.identifier, body: content.body, date: Date())
+        let notification           = BluepinNotification(identifier: self.identifier, title: content.title, body: content.body, date: Date())
         
         let userInfo = content.userInfo
 
@@ -32,7 +32,7 @@ extension UNNotificationRequest: SystemNotification {
             
             notification.repeatTrigger = trigger
             
-            notification.date      = notification.notificationInfo?.date
+            notification.date      = notification.notificationInfo.date
         }
         
         notification.badge         = content.badge
@@ -42,7 +42,7 @@ extension UNNotificationRequest: SystemNotification {
                 notification.sound = NotificationSound(sound: sound)
             }
         }
-        
+                
         notification.scheduled     = true
         
         return notification

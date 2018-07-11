@@ -34,19 +34,26 @@ class MyRemindersVC: UIViewController {
 //        print("\(retrievedNotification?.title)")
 //
         
-        let date = Calendar.current.date(bySettingHour: 5, minute: 0, second: 0, of: Date())
-        let reminders = UNService.shared.reminder(withBody: "body", startingDate: date!, repeatMethod: .weekly, repeatInterval: 1, weekdaySet: IndexSet([3, 5]))
-//        if let reminderNotifs = reminders {
-//            NotificationPersistedQueue.shared.insert(reminderNotifs)
-//            let _ = NotificationPersistedQueue.shared.save()
+//        let date = Calendar.current.date(bySettingHour: 5, minute: 0, second: 0, of: Date())
+////        let reminders = UNService.shared.reminder(withBody: "body", startingDate: date!, repeatMethod: .weekly, repeatInterval: 1, weekdaySet: IndexSet([3, 5]))
+////        if let reminderNotifs = reminders {
+////            NotificationPersistedQueue.shared.insert(reminderNotifs)
+////            let _ = NotificationPersistedQueue.shared.save()
+////        }
+//
+//        let _  = NotificationPersistedQueue.init()
+//        for notification in NotificationPersistedQueue.shared.notificationsQueue() {
+//            print("Reminder FireDate: \(notification)")
+////            print("FireDate: Weekday: \(notification.date.inDefaultRegion().weekdayName)")
 //        }
+//
+//
         
-        let _  = NotificationPersistedQueue.init()
-        for notification in NotificationPersistedQueue.shared.notificationsQueue() {
-            print("Reminder FireDate: \(notification)")
-//            print("FireDate: Weekday: \(notification.date.inDefaultRegion().weekdayName)")
-        } 
-        
+        let date = Calendar.current.date(bySettingHour: 5, minute: 0, second: 0, of: Date())
+        let reminders = UNService.shared.reminder(withTitle: "Title: ", body: "Body: ", startingDate: date!, repeatMethod: .weekly, repeatInterval: 1, weekdaySet: IndexSet([3, 5, 6]))
+        if let reminderNotifs = reminders {
+           let _ = UNService.shared.schedule(notification: reminderNotifs.first!)
+        }
         
     }
     

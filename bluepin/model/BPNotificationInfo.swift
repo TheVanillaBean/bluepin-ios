@@ -10,11 +10,11 @@ import Foundation
 
 public class BPNotificationInfo: Codable {
     
-    public var identifier: String?
-    public var date: Date?
-    public var repeatMethod: RepeatMethod?
-    public var repeatInterval: Int?
-    public var repeatWeekdayInterval: IndexSet? = [0, 2]
+    public var identifier: String = ""
+    public var date: Date = Date()
+    public var repeatMethod: RepeatMethod = .once
+    public var repeatInterval: Int = 0
+    public var repeatWeekdayInterval: IndexSet?
     
     private enum CodingKeys: String, CodingKey {
         case identifier
@@ -32,7 +32,7 @@ public class BPNotificationInfo: Codable {
         try container.encode(date, forKey: .date)
         try container.encode(repeatMethod, forKey: .repeatMethod)
         try container.encode(repeatInterval, forKey: .repeatInterval)
-        try container.encode(repeatWeekdayInterval, forKey: .repeatWeekdayInterval)
+        try container.encodeIfPresent(repeatWeekdayInterval, forKey: .repeatWeekdayInterval)
     }
     
     public required init(from decoder: Decoder) throws {
@@ -41,7 +41,7 @@ public class BPNotificationInfo: Codable {
         date = try values.decode(Date.self, forKey: .date)
         repeatMethod = try values.decode(RepeatMethod.self, forKey: .repeatMethod)
         repeatInterval = try values.decode(Int.self, forKey: .repeatInterval)
-        repeatWeekdayInterval = try values.decode(IndexSet.self, forKey: .repeatWeekdayInterval)
+        repeatWeekdayInterval = try values.decodeIfPresent(IndexSet.self, forKey: .repeatWeekdayInterval)
     }
     
 }

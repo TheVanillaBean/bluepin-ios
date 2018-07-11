@@ -25,11 +25,11 @@ public class BluepinNotification: NSObject, Codable {
     
     public var date: Date! {
         didSet {
-            self.notificationInfo?.date = self.date
+            self.notificationInfo.date = self.date
         }
     }
     
-    public var notificationInfo: BPNotificationInfo? = BPNotificationInfo()
+    public var notificationInfo: BPNotificationInfo = BPNotificationInfo()
     
     public var title: String?                  = nil
     
@@ -98,7 +98,7 @@ public class BluepinNotification: NSObject, Codable {
         }
         result += "\tBody: \(self.body!)\n"
         result += "\tFires at: \(self.date!)\n"
-        result += "\tUser info: \(self.notificationInfo!)\n"
+        result += "\tUser info: \(self.notificationInfo)\n"
         if let badge = self.badge {
             result += "\tBadge: \(badge)\n"
         }
@@ -108,26 +108,26 @@ public class BluepinNotification: NSObject, Codable {
         return result
     }
     
-    public init(identifier: String = UUID().uuidString, body: String, date: Date) {
+    public init(identifier: String = UUID().uuidString, title: String, body: String, date: Date) {
         super.init()
         self.identifier = identifier
         self.body = body
-        self.title = body
+        self.title = title
         self.date = date
-        self.notificationInfo?.identifier = identifier
-        self.notificationInfo?.date = self.date
+        self.notificationInfo.identifier = identifier
+        self.notificationInfo.date = self.date
         self.repeatTrigger = trigger(forTrigger: nil, date: date)
     }
     
-    public convenience init(identifier: String = UUID().uuidString, body: String, date: Date, repeatMethod: RepeatMethod, repeatInterval: Int, repeatTrigger: UNCalendarNotificationTrigger?, weekdaySet: IndexSet = IndexSet([1, 2])) {
-        self.init(identifier: identifier, body: body, date: date)
+    public convenience init(identifier: String = UUID().uuidString, title: String, body: String, date: Date, repeatMethod: RepeatMethod, repeatInterval: Int, repeatTrigger: UNCalendarNotificationTrigger?, weekdaySet: IndexSet = IndexSet([1, 2])) {
+        self.init(identifier: identifier, title: title, body: body, date: date)
         self.repeatMethod = repeatMethod
         self.repeatInterval = repeatInterval
         self.repeatTrigger = repeatTrigger != nil ? trigger(forTrigger: repeatTrigger, date: date) : self.repeatTrigger
-        self.notificationInfo?.repeatMethod = self.repeatMethod
-        self.notificationInfo?.repeatInterval = self.repeatInterval
+        self.notificationInfo.repeatMethod = self.repeatMethod
+        self.notificationInfo.repeatInterval = self.repeatInterval
         if self.repeatMethod == .weekly {
-            self.notificationInfo?.repeatWeekdayInterval = weekdaySet
+            self.notificationInfo.repeatWeekdayInterval = weekdaySet
         }
     }
     
@@ -146,22 +146,26 @@ public class BluepinNotification: NSObject, Codable {
     }
     
     public func notificationDictionary() -> [AnyHashable : Any]{
-        var userInfo: [AnyHashable : Any] = [AnyHashable : Any]()
-        userInfo[IdentifierKey] = self.notificationInfo?.identifier
-        userInfo[DateKey] = self.notificationInfo?.date
-        userInfo[RepeatMethodKey] = self.notificationInfo?.repeatMethod
-        userInfo[RepeatIntervalKey] = self.notificationInfo?.repeatInterval
-        userInfo[RepeatWeekdayKey] = self.notificationInfo?.repeatWeekdayInterval
+        
+        let weekday = self.notificationInfo.repeatWeekdayInterval != nil ? Array(self.notificationInfo.repeatWeekdayInterval!) : Array()
+        
+        let userInfo: [AnyHashable : Any] = [
+            IdentifierKey : self.notificationInfo.identifier,
+            DateKey : self.notificationInfo.date,
+            RepeatMethodKey : self.notificationInfo.repeatMethod.rawValue,
+            RepeatIntervalKey : self.notificationInfo.repeatInterval,
+            RepeatWeekdayKey : weekday
+        ]
         return userInfo
     }
     
     public func notification(fromDictionary dictionary: [AnyHashable : Any]) -> BPNotificationInfo {
         let notification: BPNotificationInfo = BPNotificationInfo()
-        notification.identifier = dictionary[IdentifierKey] as? String
-        notification.date = dictionary[DateKey] as? Date
-        notification.repeatMethod = dictionary[RepeatMethodKey] as? RepeatMethod
-        notification.repeatInterval = dictionary[RepeatIntervalKey] as? Int
-        notification.repeatWeekdayInterval = dictionary[RepeatWeekdayKey] as? IndexSet
+        notification.identifier = dictionary[IdentifierKey] as! String
+        notification.date = dictionary[DateKey] as! Date
+        notification.repeatMethod = RepeatMethod(rawValue: dictionary[RepeatMethodKey] as! String)!
+        notification.repeatInterval = dictionary[RepeatIntervalKey] as! Int
+        notification.repeatWeekdayInterval = IndexSet(dictionary[RepeatWeekdayKey] as! Array)
         return notification
     }
     
