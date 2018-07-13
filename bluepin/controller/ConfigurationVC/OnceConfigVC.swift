@@ -16,11 +16,8 @@ class OnceConfigVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-    
     }
     
-
     @IBAction func onceBtnPressed(_ sender: Any) {
         parentPageboy?.scrollToPage(.at(index: 0), animated: true)
     }
@@ -38,16 +35,18 @@ class OnceConfigVC: UIViewController {
     }
     
     @IBAction func setBtnPressed(_ sender: Any) {
-        let dateString = datePicker.date.inDefaultRegion().toFormat("EEEE, MMM d 'at' h:mm a", locale: Locales.english)
-        let reminder = UNService.shared.reminder(withTitle: "Reminder", body: "Rem", startingDate: datePicker.date)
-        
-        print("Date Trigger \(dateString)")
-        
+        if let reminder = UNService.shared.reminder(withTitle: "Reminder", body: "One Time Reminder", startingDate: datePicker.date){
+            UNService.shared.schedule(notifications: reminder)
+            self.dismiss(animated: true, completion: nil)
+        }
+    }
+    
+    @IBAction func datePickerValueChanged(_ sender: Any) {
+        dateLbl.text = datePicker.date.relativeFormat()
     }
     
     @IBAction func backBtnPressed(_ sender: Any) {
         self.dismiss(animated: true, completion: nil)
     }
-    
     
 }

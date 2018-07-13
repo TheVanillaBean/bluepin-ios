@@ -126,6 +126,12 @@ public class UNService: NSObject {
         
     }
     
+    func schedule(notifications: [BluepinNotification]){
+        for notification in notifications {
+            _ = self.schedule(notification: notification)
+        }
+    }
+    
     func schedule(notification: BluepinNotification) -> BluepinNotification? {
         if notification.scheduled == true {
             return nil

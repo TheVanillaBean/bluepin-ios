@@ -7,8 +7,21 @@
 //
 
 import Foundation
+import SwiftDate
 
 public extension Date {
+    
+    func relativeFormat() -> String {
+        
+        if self.compare(.isToday) {
+            return self.inDefaultRegion().toFormat("'Today,' EEEE MMMM d 'at' h:mm a", locale: Locales.english)
+        } else if self.compare(.isTomorrow){
+            return self.inDefaultRegion().toFormat("'Tomorrow,' EEEE MMMM d 'at' h:mm a", locale: Locales.english)
+        } else {
+            return self.inDefaultRegion().toFormat("EEEE, MMMM d 'at' h:mm a", locale: Locales.english)
+        }
+    
+    }
     
     static func today() -> Date {
         return Date()
