@@ -39,6 +39,8 @@ class OnceConfigVC: UIViewController {
     
     @IBAction func setBtnPressed(_ sender: Any) {
         let dateString = datePicker.date.inDefaultRegion().toFormat("EEEE, MMM d 'at' h:mm a", locale: Locales.english)
+        let reminder = UNService.shared.reminder(withTitle: "Reminder", body: "Rem", startingDate: datePicker.date)
+        
         print("Date Trigger \(dateString)")
         
     }

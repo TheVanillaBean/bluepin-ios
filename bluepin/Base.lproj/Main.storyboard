@@ -73,7 +73,7 @@
                                 <rect key="frame" x="0.0" y="75" width="375" height="592"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="85" id="7T8-kW-jFL" customClass="MyRemindersCell" customModule="bluepin" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="MyRemindersCell" rowHeight="85" id="7T8-kW-jFL" customClass="MyRemindersCell" customModule="bluepin" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="375" height="85"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="7T8-kW-jFL" id="pmt-bj-XNG">
@@ -220,6 +220,9 @@
                                             <constraint firstAttribute="width" constant="32" id="br4-bk-jAk"/>
                                         </constraints>
                                         <state key="normal" image="cancel-white"/>
+                                        <connections>
+                                            <action selector="backBtnPressed:" destination="T8G-Qp-GXs" eventType="touchUpInside" id="TCh-VS-Fpp"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" red="0.23921568630000001" green="0.73725490199999999" blue="0.61568627450000002" alpha="1" colorSpace="calibratedRGB"/>
@@ -443,6 +446,9 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="7RB-na-Noc"/>
                     </view>
+                    <connections>
+                        <segue destination="b8l-cE-zqQ" kind="show" identifier="goToCategoryRemindersVC" id="iKh-tR-5Nk"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kHu-o8-xPO" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -472,6 +478,9 @@
                                             <constraint firstAttribute="width" constant="32" id="pN9-M0-ikl"/>
                                         </constraints>
                                         <state key="normal" image="go-back"/>
+                                        <connections>
+                                            <action selector="backBtnPressed:" destination="b8l-cE-zqQ" eventType="touchUpInside" id="Cnb-rt-gQM"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" red="0.23921568630000001" green="0.73725490199999999" blue="0.61568627450000002" alpha="1" colorSpace="calibratedRGB"/>
@@ -488,7 +497,7 @@
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <color key="separatorColor" red="0.2901960784" green="0.2901960784" blue="0.2901960784" alpha="1" colorSpace="calibratedRGB"/>
                                 <prototypes>
-                                    <tableViewCell contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="44" id="1S1-tN-hwt" customClass="CategoryRemindersCell" customModule="bluepin" customModuleProvider="target">
+                                    <tableViewCell contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="CategoryRemindersCell" rowHeight="44" id="1S1-tN-hwt" customClass="CategoryRemindersCell" customModule="bluepin" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="1S1-tN-hwt" id="dGy-Id-NSQ">
@@ -510,7 +519,7 @@
                                             <color key="backgroundColor" red="0.98030978441238403" green="0.98044675588607788" blue="0.9802665114402771" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <outlet property="categoryName" destination="g4E-Yc-DTA" id="doV-Jc-ucm"/>
+                                            <outlet property="reminderName" destination="g4E-Yc-DTA" id="vKc-bA-R1g"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -561,6 +570,9 @@
                                             <constraint firstAttribute="height" constant="32" id="PDY-mQ-7hJ"/>
                                         </constraints>
                                         <state key="normal" image="go-back"/>
+                                        <connections>
+                                            <action selector="backBtnPressed:" destination="hYR-6Z-Mj3" eventType="touchUpInside" id="MJi-IB-yVR"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" red="0.23921568630000001" green="0.73725490199999999" blue="0.61568627450000002" alpha="1" colorSpace="calibratedRGB"/>
@@ -603,7 +615,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iSI-4S-4zs">
-                                <rect key="frame" x="309" y="593" width="50" height="50"/>
+                                <rect key="frame" x="311" y="593" width="50" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="3yd-b0-SHf"/>
                                     <constraint firstAttribute="width" constant="50" id="hoF-mC-2G7"/>
@@ -617,6 +629,9 @@
                                     <constraint firstAttribute="width" constant="20" id="uHL-hE-uEK"/>
                                 </constraints>
                                 <state key="normal" image="edit-settings"/>
+                                <connections>
+                                    <action selector="configureReminderBtnPressed:" destination="hYR-6Z-Mj3" eventType="touchUpInside" id="mlA-Hi-Hyh"/>
+                                </connections>
                             </button>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="wtX-ec-gtd">
                                 <rect key="frame" x="62" y="339" width="252" height="50"/>
@@ -658,6 +673,9 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="fIB-gO-LZ7"/>
                     </view>
+                    <connections>
+                        <segue destination="ghf-0y-9DW" kind="show" identifier="goToReminderConfigurationVC" id="ILZ-Os-jNR"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="h6E-sq-YzS" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

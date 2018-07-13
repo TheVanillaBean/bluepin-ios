@@ -21,6 +21,12 @@ class ReminderDetailVC: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    //Commit before contining
+    //Commit before contining
+    //Commit before contining
+    //Commit before contining
+    //Commit before contining
+
 
     /*
     // MARK: - Navigation
@@ -31,5 +37,13 @@ class ReminderDetailVC: UIViewController {
         // Pass the selected object to the new view controller.
     }
     */
-
+    
+    @IBAction func configureReminderBtnPressed(_ sender: Any) {
+        performSegue(withIdentifier: "goToReminderConfigurationVC", sender: nil)
+    }
+    
+    @IBAction func backBtnPressed(_ sender: Any) {
+        dismiss(animated: true, completion: nil)
+    }
+    
 }

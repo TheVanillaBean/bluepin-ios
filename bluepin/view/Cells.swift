@@ -10,14 +10,14 @@ import UIKit
 
 class CategoryRemindersCell: UITableViewCell {
     
-    @IBOutlet weak var categoryName: UILabel!
+    @IBOutlet weak var reminderName: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()
     }
     
-    func configureCell(category: Category){
-        self.categoryName.text = category.name
+    func configureCell(reminder: Reminder){
+        self.reminderName.text = reminder.name
     }
     
 }

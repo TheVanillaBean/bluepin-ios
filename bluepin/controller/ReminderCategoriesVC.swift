@@ -7,26 +7,35 @@
 //
 
 import UIKit
+import RealmSwift
 
 class ReminderCategoriesVC: UIViewController {
 
+    lazy var realm = try! Realm()
+    
+    var categories: Results<Category>?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        loadCategories()
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
+    
+    func loadCategories(){
+        categories = realm.objects(Category.self)
     }
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-       
+        let destinationVC = segue.destination as! CategoryRemindersVC
+        destinationVC.selectedCategory = sender as! Category
     }
  
     @IBAction func categoryBtnPressed(_ categoryBtn: UIButton) {
-        
-        performSegue(withIdentifier: <#T##String#>, sender: <#T##Any?#>)
-        
+        performSegue(withIdentifier: "goToCategoryRemindersVC", sender: categories?[categoryBtn.tag])
     }
+    
+    @IBAction func backBtnPressed(_ sender: Any) {
+        self.dismiss(animated: true, completion: nil)
+    }
+    
     
 }

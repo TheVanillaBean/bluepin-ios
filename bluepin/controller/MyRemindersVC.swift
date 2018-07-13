@@ -55,7 +55,7 @@ class MyRemindersVC: UIViewController {
     
     @IBAction func plusBtnPressed(_ sender: Any) {
         
-        
+        performSegue(withIdentifier: "goToReminderCategoriesVC", sender: nil)
         
     }
     
