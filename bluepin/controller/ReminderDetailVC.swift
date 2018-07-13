@@ -46,4 +46,6 @@ class ReminderDetailVC: UIViewController {
         dismiss(animated: true, completion: nil)
     }
     
+    @IBAction func addReminderBtnPressed(_ sender: Any) {
+    }
 }

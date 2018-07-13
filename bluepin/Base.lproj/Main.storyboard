@@ -208,13 +208,13 @@
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="75"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Reminder Categories" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cuw-2e-gGr">
-                                        <rect key="frame" x="87" y="32.5" width="201" height="26.5"/>
+                                        <rect key="frame" x="83.5" y="33" width="208" height="26"/>
                                         <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="22"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ygM-Gj-s9Q">
-                                        <rect key="frame" x="8" y="30.5" width="32" height="32"/>
+                                        <rect key="frame" x="8" y="31" width="32" height="32"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="32" id="E5Z-dF-qNu"/>
                                             <constraint firstAttribute="width" constant="32" id="br4-bk-jAk"/>
@@ -235,13 +235,13 @@
                                 </constraints>
                             </view>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="25" translatesAutoresizingMaskIntoConstraints="NO" id="kUx-xV-AFT">
-                                <rect key="frame" x="62.5" y="127" width="250" height="463"/>
+                                <rect key="frame" x="62.5" y="128" width="250" height="461"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="100" translatesAutoresizingMaskIntoConstraints="NO" id="jgx-Rr-bfL">
-                                        <rect key="frame" x="0.0" y="0.0" width="250" height="97"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="250" height="96.5"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="dQp-yg-PaR">
-                                                <rect key="frame" x="0.0" y="0.0" width="75" height="97"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="75" height="96.5"/>
                                                 <subviews>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="32d-8e-F3H" customClass="CategoryBtnShadow" customModule="bluepin" customModuleProvider="target">
                                                         <rect key="frame" x="0.0" y="0.0" width="75" height="75"/>
@@ -255,7 +255,7 @@
                                                         </connections>
                                                     </button>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Home" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XgN-mO-iFv">
-                                                        <rect key="frame" x="0.0" y="80" width="75" height="17"/>
+                                                        <rect key="frame" x="0.0" y="80" width="75" height="16.5"/>
                                                         <fontDescription key="fontDescription" name="Lato-Medium" family="Lato" pointSize="14"/>
                                                         <color key="textColor" red="0.29019607843137252" green="0.29019607843137252" blue="0.29019607843137252" alpha="1" colorSpace="calibratedRGB"/>
                                                         <nil key="highlightedColor"/>
@@ -263,7 +263,7 @@
                                                 </subviews>
                                             </stackView>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="mDy-7V-y7h">
-                                                <rect key="frame" x="175" y="0.0" width="75" height="97"/>
+                                                <rect key="frame" x="175" y="0.0" width="75" height="96.5"/>
                                                 <subviews>
                                                     <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Xj6-n3-yre" customClass="CategoryBtnShadow" customModule="bluepin" customModuleProvider="target">
                                                         <rect key="frame" x="0.0" y="0.0" width="75" height="75"/>
@@ -277,7 +277,7 @@
                                                         </connections>
                                                     </button>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Personal" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="T4G-ex-qLL">
-                                                        <rect key="frame" x="0.0" y="80" width="75" height="17"/>
+                                                        <rect key="frame" x="0.0" y="80" width="75" height="16.5"/>
                                                         <fontDescription key="fontDescription" name="Lato-Medium" family="Lato" pointSize="14"/>
                                                         <color key="textColor" red="0.2901960784" green="0.2901960784" blue="0.2901960784" alpha="1" colorSpace="calibratedRGB"/>
                                                         <nil key="highlightedColor"/>
@@ -287,10 +287,10 @@
                                         </subviews>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="100" translatesAutoresizingMaskIntoConstraints="NO" id="1us-hZ-Fmd">
-                                        <rect key="frame" x="0.0" y="122" width="250" height="97"/>
+                                        <rect key="frame" x="0.0" y="121.5" width="250" height="96.5"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="Bv7-6y-1Nm">
-                                                <rect key="frame" x="0.0" y="0.0" width="75" height="97"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="75" height="96.5"/>
                                                 <subviews>
                                                     <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="azg-oS-t2O" customClass="CategoryBtnShadow" customModule="bluepin" customModuleProvider="target">
                                                         <rect key="frame" x="0.0" y="0.0" width="75" height="75"/>
@@ -304,7 +304,7 @@
                                                         </connections>
                                                     </button>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Family" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="d0t-xj-ufz">
-                                                        <rect key="frame" x="0.0" y="80" width="75" height="17"/>
+                                                        <rect key="frame" x="0.0" y="80" width="75" height="16.5"/>
                                                         <fontDescription key="fontDescription" name="Lato-Medium" family="Lato" pointSize="14"/>
                                                         <color key="textColor" red="0.2901960784" green="0.2901960784" blue="0.2901960784" alpha="1" colorSpace="calibratedRGB"/>
                                                         <nil key="highlightedColor"/>
@@ -312,7 +312,7 @@
                                                 </subviews>
                                             </stackView>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="xYR-VW-Gds">
-                                                <rect key="frame" x="175" y="0.0" width="75" height="97"/>
+                                                <rect key="frame" x="175" y="0.0" width="75" height="96.5"/>
                                                 <subviews>
                                                     <button opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qgk-nf-Xxc" customClass="CategoryBtnShadow" customModule="bluepin" customModuleProvider="target">
                                                         <rect key="frame" x="0.0" y="0.0" width="75" height="75"/>
@@ -326,7 +326,7 @@
                                                         </connections>
                                                     </button>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Medical" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jvU-PA-y3y">
-                                                        <rect key="frame" x="0.0" y="80" width="75" height="17"/>
+                                                        <rect key="frame" x="0.0" y="80" width="75" height="16.5"/>
                                                         <fontDescription key="fontDescription" name="Lato-Medium" family="Lato" pointSize="14"/>
                                                         <color key="textColor" red="0.2901960784" green="0.2901960784" blue="0.2901960784" alpha="1" colorSpace="calibratedRGB"/>
                                                         <nil key="highlightedColor"/>
@@ -336,10 +336,10 @@
                                         </subviews>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="100" translatesAutoresizingMaskIntoConstraints="NO" id="mAt-NF-lrg">
-                                        <rect key="frame" x="0.0" y="244" width="250" height="97"/>
+                                        <rect key="frame" x="0.0" y="243" width="250" height="96.5"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="7VX-dc-zzW">
-                                                <rect key="frame" x="0.0" y="0.0" width="75" height="97"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="75" height="96.5"/>
                                                 <subviews>
                                                     <button opaque="NO" tag="4" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="imO-ct-jmG" customClass="CategoryBtnShadow" customModule="bluepin" customModuleProvider="target">
                                                         <rect key="frame" x="0.0" y="0.0" width="75" height="75"/>
@@ -353,7 +353,7 @@
                                                         </connections>
                                                     </button>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Finance" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="B0r-Kq-c9i">
-                                                        <rect key="frame" x="0.0" y="80" width="75" height="17"/>
+                                                        <rect key="frame" x="0.0" y="80" width="75" height="16.5"/>
                                                         <fontDescription key="fontDescription" name="Lato-Medium" family="Lato" pointSize="14"/>
                                                         <color key="textColor" red="0.2901960784" green="0.2901960784" blue="0.2901960784" alpha="1" colorSpace="calibratedRGB"/>
                                                         <nil key="highlightedColor"/>
@@ -361,7 +361,7 @@
                                                 </subviews>
                                             </stackView>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="pGi-wA-yfE">
-                                                <rect key="frame" x="175" y="0.0" width="75" height="97"/>
+                                                <rect key="frame" x="175" y="0.0" width="75" height="96.5"/>
                                                 <subviews>
                                                     <button opaque="NO" tag="5" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kcv-62-YjG" customClass="CategoryBtnShadow" customModule="bluepin" customModuleProvider="target">
                                                         <rect key="frame" x="0.0" y="0.0" width="75" height="75"/>
@@ -375,7 +375,7 @@
                                                         </connections>
                                                     </button>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Automotive" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YlD-xT-sg4">
-                                                        <rect key="frame" x="0.0" y="80" width="75" height="17"/>
+                                                        <rect key="frame" x="0.0" y="80" width="75" height="16.5"/>
                                                         <fontDescription key="fontDescription" name="Lato-Medium" family="Lato" pointSize="14"/>
                                                         <color key="textColor" red="0.2901960784" green="0.2901960784" blue="0.2901960784" alpha="1" colorSpace="calibratedRGB"/>
                                                         <nil key="highlightedColor"/>
@@ -385,10 +385,10 @@
                                         </subviews>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="100" translatesAutoresizingMaskIntoConstraints="NO" id="EMG-th-cnm">
-                                        <rect key="frame" x="0.0" y="366" width="250" height="97"/>
+                                        <rect key="frame" x="0.0" y="364.5" width="250" height="96.5"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="urt-bv-Lgh">
-                                                <rect key="frame" x="0.0" y="0.0" width="75" height="97"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="75" height="96.5"/>
                                                 <subviews>
                                                     <button opaque="NO" tag="6" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gwf-og-GI5" customClass="CategoryBtnShadow" customModule="bluepin" customModuleProvider="target">
                                                         <rect key="frame" x="0.0" y="0.0" width="75" height="75"/>
@@ -402,7 +402,7 @@
                                                         </connections>
                                                     </button>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Fitness" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rjq-BP-g4b">
-                                                        <rect key="frame" x="0.0" y="80" width="75" height="17"/>
+                                                        <rect key="frame" x="0.0" y="80" width="75" height="16.5"/>
                                                         <fontDescription key="fontDescription" name="Lato-Medium" family="Lato" pointSize="14"/>
                                                         <color key="textColor" red="0.2901960784" green="0.2901960784" blue="0.2901960784" alpha="1" colorSpace="calibratedRGB"/>
                                                         <nil key="highlightedColor"/>
@@ -410,7 +410,7 @@
                                                 </subviews>
                                             </stackView>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="GKy-l1-MOr">
-                                                <rect key="frame" x="175" y="0.0" width="75" height="97"/>
+                                                <rect key="frame" x="175" y="0.0" width="75" height="96.5"/>
                                                 <subviews>
                                                     <button opaque="NO" tag="7" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VFB-HL-Kiq" customClass="CategoryBtnShadow" customModule="bluepin" customModuleProvider="target">
                                                         <rect key="frame" x="0.0" y="0.0" width="75" height="75"/>
@@ -424,7 +424,7 @@
                                                         </connections>
                                                     </button>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Pets" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3eY-j0-QKx">
-                                                        <rect key="frame" x="0.0" y="80" width="75" height="17"/>
+                                                        <rect key="frame" x="0.0" y="80" width="75" height="16.5"/>
                                                         <fontDescription key="fontDescription" name="Lato-Medium" family="Lato" pointSize="14"/>
                                                         <color key="textColor" red="0.2901960784" green="0.2901960784" blue="0.2901960784" alpha="1" colorSpace="calibratedRGB"/>
                                                         <nil key="highlightedColor"/>
@@ -558,13 +558,13 @@
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="75"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Change Engine Oil" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gFV-q6-TTM">
-                                        <rect key="frame" x="99" y="33" width="177.5" height="26.5"/>
+                                        <rect key="frame" x="96.5" y="33.5" width="183" height="26"/>
                                         <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="22"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="imr-nf-3ZI">
-                                        <rect key="frame" x="8" y="30.5" width="32" height="32"/>
+                                        <rect key="frame" x="8" y="31" width="32" height="32"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="32" id="1B9-Nj-grY"/>
                                             <constraint firstAttribute="height" constant="32" id="PDY-mQ-7hJ"/>
@@ -606,7 +606,7 @@
                                 </constraints>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Schedule Reminder:" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="o22-H3-zkv">
-                                <rect key="frame" x="118" y="274" width="139" height="35"/>
+                                <rect key="frame" x="115" y="274" width="145" height="35"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="35" id="tMg-C7-Aje"/>
                                 </constraints>
@@ -615,12 +615,15 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iSI-4S-4zs">
-                                <rect key="frame" x="311" y="593" width="50" height="50"/>
+                                <rect key="frame" x="309" y="593" width="50" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="3yd-b0-SHf"/>
                                     <constraint firstAttribute="width" constant="50" id="hoF-mC-2G7"/>
                                 </constraints>
                                 <state key="normal" image="checkmark"/>
+                                <connections>
+                                    <action selector="addReminderBtnPressed:" destination="hYR-6Z-Mj3" eventType="touchUpInside" id="S1M-RO-KFS"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0UM-Ud-sot">
                                 <rect key="frame" x="339" y="354" width="20" height="20"/>
@@ -634,16 +637,16 @@
                                 </connections>
                             </button>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="wtX-ec-gtd">
-                                <rect key="frame" x="62" y="339" width="252" height="50"/>
+                                <rect key="frame" x="59.5" y="339" width="257.5" height="50"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Thursday, September 17, 2018 at 6pm" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="USB-hP-R4b">
-                                        <rect key="frame" x="0.0" y="0.0" width="252" height="27.5"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="257.5" height="28"/>
                                         <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="15"/>
                                         <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="This reminder repeats every 3 months" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="34s-7i-iyT">
-                                        <rect key="frame" x="27" y="27.5" width="198.5" height="22.5"/>
+                                        <rect key="frame" x="27.5" y="28" width="202.5" height="22"/>
                                         <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="12"/>
                                         <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
@@ -720,6 +723,9 @@
                                             <constraint firstAttribute="width" constant="32" id="iA1-1g-URV"/>
                                         </constraints>
                                         <state key="normal" image="go-back"/>
+                                        <connections>
+                                            <action selector="backBtnPressed:" destination="qku-oW-jBf" eventType="touchUpInside" id="jOh-dJ-USQ"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" red="0.23921568630000001" green="0.73725490199999999" blue="0.61568627450000002" alpha="1" colorSpace="calibratedRGB"/>
@@ -862,18 +868,21 @@
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="75"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Schedule Reminder" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rms-Cj-Op3">
-                                        <rect key="frame" x="94.5" y="33" width="186" height="26.5"/>
+                                        <rect key="frame" x="91" y="33.5" width="193.5" height="26"/>
                                         <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="22"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hbR-4Z-xpP">
-                                        <rect key="frame" x="8" y="30.5" width="32" height="32"/>
+                                        <rect key="frame" x="8" y="31" width="32" height="32"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="32" id="KKt-C6-yeX"/>
                                             <constraint firstAttribute="width" constant="32" id="MhJ-4d-epq"/>
                                         </constraints>
                                         <state key="normal" image="go-back"/>
+                                        <connections>
+                                            <action selector="backBtnPressed:" destination="6WV-jR-OaY" eventType="touchUpInside" id="BO5-5G-3TC"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" red="0.23921568630000001" green="0.73725490199999999" blue="0.61568627450000002" alpha="1" colorSpace="calibratedRGB"/>
@@ -893,16 +902,16 @@
                                 </constraints>
                             </view>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="3wz-hB-eTT">
-                                <rect key="frame" x="91" y="183" width="193" height="75"/>
+                                <rect key="frame" x="89.5" y="183" width="196" height="75"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Repeat every:" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nV2-Yc-D6n">
-                                        <rect key="frame" x="42.5" y="0.0" width="108" height="20"/>
+                                        <rect key="frame" x="42.5" y="0.0" width="111.5" height="20"/>
                                         <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="18"/>
                                         <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="rAu-3F-slI">
-                                        <rect key="frame" x="0.0" y="30" width="193" height="45"/>
+                                        <rect key="frame" x="0.0" y="30" width="196" height="45"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VN1-nG-urQ" customClass="GMStepper" customModule="bluepin">
                                                 <rect key="frame" x="0.0" y="0.0" width="128" height="45"/>
@@ -943,7 +952,7 @@
                                                 </userDefinedRuntimeAttributes>
                                             </view>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="day(s)" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xpT-GD-8Za">
-                                                <rect key="frame" x="143" y="10.5" width="50" height="24"/>
+                                                <rect key="frame" x="143" y="11" width="53" height="23.5"/>
                                                 <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="20"/>
                                                 <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <nil key="highlightedColor"/>
@@ -956,10 +965,10 @@
                                 </constraints>
                             </stackView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="hTU-9d-eWK">
-                                <rect key="frame" x="62" y="308" width="252" height="70"/>
+                                <rect key="frame" x="60" y="308" width="256" height="70"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="This reminder starts:" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RQQ-Tn-CY1">
-                                        <rect key="frame" x="59" y="0.0" width="134.5" height="35"/>
+                                        <rect key="frame" x="59.5" y="0.0" width="137" height="35"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="35" id="CTQ-uS-ZCU"/>
                                         </constraints>
@@ -968,7 +977,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bpR-JD-MTj">
-                                        <rect key="frame" x="0.0" y="35" width="252" height="35"/>
+                                        <rect key="frame" x="0.0" y="35" width="256" height="35"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="35" id="ZW3-lU-o2J"/>
                                         </constraints>
@@ -1098,6 +1107,9 @@
                                             <constraint firstAttribute="width" constant="32" id="jeR-Od-Imn"/>
                                         </constraints>
                                         <state key="normal" image="go-back"/>
+                                        <connections>
+                                            <action selector="backBtnPressed:" destination="lgm-Se-ZX5" eventType="touchUpInside" id="MX9-0k-6B1"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" red="0.23921568630000001" green="0.73725490199999999" blue="0.61568627450000002" alpha="1" colorSpace="calibratedRGB"/>
@@ -1346,18 +1358,21 @@
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="75"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Schedule Reminder" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nOH-1T-q3b">
-                                        <rect key="frame" x="95" y="33" width="186" height="26.5"/>
+                                        <rect key="frame" x="91.5" y="33.5" width="193.5" height="26"/>
                                         <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="22"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uDl-Cv-3NH">
-                                        <rect key="frame" x="8" y="31" width="32" height="32"/>
+                                        <rect key="frame" x="8" y="31.5" width="32" height="32"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="32" id="Ycb-of-8pd"/>
                                             <constraint firstAttribute="width" constant="32" id="gBq-WZ-oBx"/>
                                         </constraints>
                                         <state key="normal" image="go-back"/>
+                                        <connections>
+                                            <action selector="backBtnPressed:" destination="BJY-GT-aPH" eventType="touchUpInside" id="r22-Fg-Wjs"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" red="0.23921568630000001" green="0.73725490199999999" blue="0.61568627450000002" alpha="1" colorSpace="calibratedRGB"/>
@@ -1430,16 +1445,16 @@
                                 </constraints>
                             </stackView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="Bch-cD-B4L">
-                                <rect key="frame" x="78.5" y="183" width="219" height="75"/>
+                                <rect key="frame" x="78" y="183" width="220.5" height="75"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Repeat every:" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3vZ-dS-AC6">
-                                        <rect key="frame" x="0.0" y="0.0" width="219" height="20"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="220.5" height="20"/>
                                         <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="18"/>
                                         <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="wK8-0u-z22">
-                                        <rect key="frame" x="0.0" y="30" width="219" height="45"/>
+                                        <rect key="frame" x="0.0" y="30" width="220.5" height="45"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Roo-8h-lie" customClass="GMStepper" customModule="bluepin" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="0.0" width="128" height="45"/>
@@ -1480,7 +1495,7 @@
                                                 </userDefinedRuntimeAttributes>
                                             </view>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="month(s)" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RAf-ds-2nc">
-                                                <rect key="frame" x="143" y="10.5" width="76" height="24"/>
+                                                <rect key="frame" x="143" y="11" width="77.5" height="23.5"/>
                                                 <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="20"/>
                                                 <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <nil key="highlightedColor"/>
@@ -1493,10 +1508,10 @@
                                 </constraints>
                             </stackView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="sKa-Qg-AiD">
-                                <rect key="frame" x="61.5" y="308" width="252" height="70"/>
+                                <rect key="frame" x="59.5" y="308" width="256" height="70"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="This reminder starts:" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Smx-a8-VuT">
-                                        <rect key="frame" x="59" y="0.0" width="134.5" height="35"/>
+                                        <rect key="frame" x="59.5" y="0.0" width="137" height="35"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="35" id="hWW-HA-Jp0"/>
                                         </constraints>
@@ -1505,7 +1520,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Q9R-E1-jZc">
-                                        <rect key="frame" x="0.0" y="35" width="252" height="35"/>
+                                        <rect key="frame" x="0.0" y="35" width="256" height="35"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="35" id="jAi-T1-K0h"/>
                                         </constraints>

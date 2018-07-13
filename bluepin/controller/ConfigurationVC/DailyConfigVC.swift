@@ -61,4 +61,9 @@ class DailyConfigVC: UIViewController {
     @IBAction func setBtnPressed(_ sender: Any) {
         print("Stepper \(dayIntervalStepper.value)")
     }
+    
+    @IBAction func backBtnPressed(_ sender: Any) {
+        self.dismiss(animated: true, completion: nil)
+    }
+    
 }

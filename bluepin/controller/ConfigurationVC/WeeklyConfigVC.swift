@@ -77,4 +77,9 @@ class WeeklyConfigVC: UIViewController {
     @IBAction func setBtnPressed(_ sender: Any) {
     }
     
+    
+    @IBAction func backBtnPressed(_ sender: Any) {
+        self.dismiss(animated: true, completion: nil)
+    }
+    
 }
