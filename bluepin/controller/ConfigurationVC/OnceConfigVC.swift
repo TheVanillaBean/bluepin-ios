@@ -37,6 +37,9 @@ class OnceConfigVC: UIViewController {
     @IBAction func setBtnPressed(_ sender: Any) {
         if let reminder = UNService.shared.reminder(withTitle: "Reminder", body: "One Time Reminder", startingDate: datePicker.date){
             UNService.shared.schedule(notifications: reminder)
+            
+
+            
             self.dismiss(animated: true, completion: nil)
         }
     }

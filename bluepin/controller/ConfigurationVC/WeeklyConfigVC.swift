@@ -13,9 +13,11 @@ import SwiftDate
 class WeeklyConfigVC: UIViewController {
 
     @IBOutlet weak var setBtn: UIButton!
+    @IBOutlet weak var dateLblBtn: UIButton!
     
     var weekBtnImageNames = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"]
     var weeklyIndexSet = IndexSet()
+    var selectedDate: Date!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -40,18 +42,14 @@ class WeeklyConfigVC: UIViewController {
     @IBAction func startDateBtn(_ sender: Any) {
         let datePickerVC = DatePickerPopupVC(nibName: nil, bundle: nil)
         
-        let popup = PopupDialog(viewController: datePickerVC, gestureDismissal: false) {
-            print("Date Trigger canceled")
-        }
+        let popup = PopupDialog(viewController: datePickerVC, gestureDismissal: true) {}
         
         let buttonOne = DefaultButton(title: "Set Time", height: 60) {
-            let dateString = datePickerVC.datePicker.date.inDefaultRegion().toFormat("EEEE, MMM d 'at' h:mm a", locale: Locales.english)
-            print("Date Trigger \(dateString)")
+            self.selectedDate = datePickerVC.datePicker.date
+            self.dateLblBtn.titleLabel?.text = datePickerVC.datePicker.date.relativeFormat()
         }
         
-        let buttonTwo = CancelButton(title: "Cancel", height: 60) {
-            print("Date Trigger canceled")
-        }
+        let buttonTwo = CancelButton(title: "Cancel", height: 60) {}
         
         popup.addButtons([buttonOne, buttonTwo])
         
@@ -75,6 +73,10 @@ class WeeklyConfigVC: UIViewController {
     }
     
     @IBAction func setBtnPressed(_ sender: Any) {
+        if let reminder = UNService.shared.reminder(withTitle: "Reminder", body: "Body", startingDate: selectedDate, repeatMethod: .weekly, repeatInterval: 1, weekdaySet: weeklyIndexSet){
+            UNService.shared.schedule(notifications: reminder)
+            self.dismiss(animated: true, completion: nil)
+        }
     }
     
     

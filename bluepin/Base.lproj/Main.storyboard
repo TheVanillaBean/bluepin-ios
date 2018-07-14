@@ -214,7 +214,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ygM-Gj-s9Q">
-                                        <rect key="frame" x="8" y="30.5" width="32" height="32"/>
+                                        <rect key="frame" x="8" y="30" width="32" height="32"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="32" id="E5Z-dF-qNu"/>
                                             <constraint firstAttribute="width" constant="32" id="br4-bk-jAk"/>
@@ -558,13 +558,13 @@
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="75"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Change Engine Oil" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gFV-q6-TTM">
-                                        <rect key="frame" x="99" y="33" width="177.5" height="26.5"/>
+                                        <rect key="frame" x="99.5" y="33" width="177.5" height="26.5"/>
                                         <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="22"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="imr-nf-3ZI">
-                                        <rect key="frame" x="8" y="30.5" width="32" height="32"/>
+                                        <rect key="frame" x="8" y="31" width="32" height="32"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="32" id="1B9-Nj-grY"/>
                                             <constraint firstAttribute="height" constant="32" id="PDY-mQ-7hJ"/>
@@ -637,7 +637,7 @@
                                 </connections>
                             </button>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="wtX-ec-gtd">
-                                <rect key="frame" x="62" y="339" width="252" height="50"/>
+                                <rect key="frame" x="61.5" y="339" width="252" height="50"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Thursday, September 17, 2018 at 6pm" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="USB-hP-R4b">
                                         <rect key="frame" x="0.0" y="0.0" width="252" height="27.5"/>
@@ -646,7 +646,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="This reminder repeats every 3 months" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="34s-7i-iyT">
-                                        <rect key="frame" x="26.5" y="27.5" width="198.5" height="22.5"/>
+                                        <rect key="frame" x="27" y="27.5" width="198.5" height="22.5"/>
                                         <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="12"/>
                                         <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
@@ -871,13 +871,13 @@
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="75"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Schedule Reminder" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rms-Cj-Op3">
-                                        <rect key="frame" x="94.5" y="33" width="186" height="26.5"/>
+                                        <rect key="frame" x="95" y="33" width="186" height="26.5"/>
                                         <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="22"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hbR-4Z-xpP">
-                                        <rect key="frame" x="8" y="30.5" width="32" height="32"/>
+                                        <rect key="frame" x="8" y="31" width="32" height="32"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="32" id="KKt-C6-yeX"/>
                                             <constraint firstAttribute="width" constant="32" id="MhJ-4d-epq"/>
@@ -1342,6 +1342,7 @@
                         <viewLayoutGuide key="safeArea" id="ab6-mP-n3P"/>
                     </view>
                     <connections>
+                        <outlet property="dateLblBtn" destination="shv-SB-t11" id="XYD-A6-UJ7"/>
                         <outlet property="setBtn" destination="GKI-W9-hOg" id="d0G-T9-J5t"/>
                     </connections>
                 </viewController>
@@ -1361,13 +1362,13 @@
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="75"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Schedule Reminder" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nOH-1T-q3b">
-                                        <rect key="frame" x="95" y="33" width="186" height="26.5"/>
+                                        <rect key="frame" x="94.5" y="33" width="186" height="26.5"/>
                                         <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="22"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uDl-Cv-3NH">
-                                        <rect key="frame" x="8" y="31" width="32" height="32"/>
+                                        <rect key="frame" x="8" y="30.5" width="32" height="32"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="32" id="Ycb-of-8pd"/>
                                             <constraint firstAttribute="width" constant="32" id="gBq-WZ-oBx"/>
@@ -1448,7 +1449,7 @@
                                 </constraints>
                             </stackView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="Bch-cD-B4L">
-                                <rect key="frame" x="78.5" y="183" width="219" height="75"/>
+                                <rect key="frame" x="78" y="183" width="219" height="75"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Repeat every:" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3vZ-dS-AC6">
                                         <rect key="frame" x="0.0" y="0.0" width="219" height="20"/>
@@ -1570,7 +1571,8 @@
                         <viewLayoutGuide key="safeArea" id="RhU-iC-quw"/>
                     </view>
                     <connections>
-                        <outlet property="dayIntervalStepper" destination="Roo-8h-lie" id="ugL-dF-VHg"/>
+                        <outlet property="dateLblBtn" destination="Q9R-E1-jZc" id="rT7-ZF-V6S"/>
+                        <outlet property="monthIntervalStepper" destination="Roo-8h-lie" id="rkf-G8-eM9"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="CaN-wp-qsp" userLabel="First Responder" sceneMemberID="firstResponder"/>

@@ -12,8 +12,11 @@ import SwiftDate
 
 class MonthlyConfigVC: UIViewController {
 
-    @IBOutlet weak var dayIntervalStepper: GMStepper!
+    @IBOutlet weak var dateLblBtn: UIButton!
+    @IBOutlet weak var monthIntervalStepper: GMStepper!
     
+    var selectedDate: Date!
+
     override func viewDidLoad() {
         super.viewDidLoad()
     }
@@ -37,18 +40,14 @@ class MonthlyConfigVC: UIViewController {
     @IBAction func startDateBtnPressed(_ sender: Any) {
         let datePickerVC = DatePickerPopupVC(nibName: nil, bundle: nil)
         
-        let popup = PopupDialog(viewController: datePickerVC, gestureDismissal: false) {
-            print("Date Trigger canceled")
-        }
+        let popup = PopupDialog(viewController: datePickerVC, gestureDismissal: true) {}
         
         let buttonOne = DefaultButton(title: "Set Time", height: 60) {
-            let dateString = datePickerVC.datePicker.date.inDefaultRegion().toFormat("EEEE, MMM d 'at' h:mm a", locale: Locales.english)
-            print("Date Trigger \(dateString)")
+            self.selectedDate = datePickerVC.datePicker.date
+            self.dateLblBtn.titleLabel?.text = datePickerVC.datePicker.date.relativeFormat()
         }
         
-        let buttonTwo = CancelButton(title: "Cancel", height: 60) {
-            print("Date Trigger canceled")
-        }
+        let buttonTwo = CancelButton(title: "Cancel", height: 60) {}
         
         popup.addButtons([buttonOne, buttonTwo])
         
@@ -56,7 +55,12 @@ class MonthlyConfigVC: UIViewController {
     }
     
     @IBAction func setBtn(_ sender: Any) {
-        print("Stepper \(dayIntervalStepper.value)")
+        let interval = Int(monthIntervalStepper.value)
+        
+        if let reminder = UNService.shared.reminder(withTitle: "Reminder", body: "Body", startingDate: selectedDate, repeatMethod: .monthly, repeatInterval: interval){
+            UNService.shared.schedule(notifications: reminder)
+            self.dismiss(animated: true, completion: nil)
+        }
     }
     
     @IBAction func backBtnPressed(_ sender: Any) {
