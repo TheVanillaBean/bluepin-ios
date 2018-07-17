@@ -10,7 +10,7 @@ import UIKit
 import Pageboy
 
 class ReminderConfigurationVC: PageboyViewController {
-
+    
     let pageControllers: [UIViewController] = {
         var viewControllers = [UIViewController]()
         let storyboard = UIStoryboard(name: "Main", bundle: Bundle.main)
@@ -24,7 +24,7 @@ class ReminderConfigurationVC: PageboyViewController {
         viewControllers.append(dailyVC)
         viewControllers.append(weeklyVC)
         viewControllers.append(monthlyVC)
-
+        
         return viewControllers
     }()
     
@@ -34,6 +34,24 @@ class ReminderConfigurationVC: PageboyViewController {
         self.dataSource = self
         self.delegate = self
         
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+        if let selectedReminder = UNService.shared.selectedReminder {
+            switch selectedReminder.repeatMethod {
+            case RepeatMethod.once.rawValue:
+                scrollToPage(.at(index: 0), animated: true)
+            case RepeatMethod.daily.rawValue:
+                scrollToPage(.at(index: 1), animated: true)
+            case RepeatMethod.weekly.rawValue:
+                scrollToPage(.at(index: 2), animated: true)
+            case RepeatMethod.monthly.rawValue:
+                scrollToPage(.at(index: 3), animated: true)
+            default:
+                scrollToPage(.at(index: 0), animated: true)
+            }
+        }
     }
 
     @objc func nextPage(_ sender: UIBarButtonItem) {
@@ -68,14 +86,12 @@ extension ReminderConfigurationVC: PageboyViewControllerDelegate {
                                willScrollToPageAt index: Int,
                                direction: PageboyViewController.NavigationDirection,
                                animated: Bool) {
-        //        print("willScrollToPageAtIndex: \(index)")
     }
     
     func pageboyViewController(_ pageboyViewController: PageboyViewController,
                                didScrollTo position: CGPoint,
                                direction: PageboyViewController.NavigationDirection,
                                animated: Bool) {
-        //        print("didScrollToPosition: \(position)")
         
 
     }
@@ -84,7 +100,7 @@ extension ReminderConfigurationVC: PageboyViewControllerDelegate {
                                didScrollToPageAt index: Int,
                                direction: PageboyViewController.NavigationDirection,
                                animated: Bool) {
- 
+       
     }
     
     func pageboyViewController(_ pageboyViewController: PageboyViewController,

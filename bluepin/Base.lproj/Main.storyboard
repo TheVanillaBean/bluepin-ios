@@ -112,7 +112,7 @@
                                                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" alignment="top" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="mlg-Sv-f7X">
                                                             <rect key="frame" x="95" y="17.5" width="161" height="49.5"/>
                                                             <subviews>
-                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Oil Change" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nRl-TS-qdM">
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Oil Change" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="15" translatesAutoresizingMaskIntoConstraints="NO" id="nRl-TS-qdM">
                                                                     <rect key="frame" x="0.0" y="0.0" width="107.5" height="26.5"/>
                                                                     <fontDescription key="fontDescription" name="Lato-Semibold" family="Lato" pointSize="22"/>
                                                                     <color key="textColor" red="0.2901960784" green="0.2901960784" blue="0.2901960784" alpha="1" colorSpace="calibratedRGB"/>
@@ -127,17 +127,20 @@
                                                             </subviews>
                                                         </stackView>
                                                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="6" translatesAutoresizingMaskIntoConstraints="NO" id="FPa-aU-V8E">
-                                                            <rect key="frame" x="320" y="10" width="47" height="65"/>
+                                                            <rect key="frame" x="307" y="10.5" width="60" height="65"/>
                                                             <subviews>
                                                                 <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="clock-red" translatesAutoresizingMaskIntoConstraints="NO" id="3Ep-FL-6FF">
-                                                                    <rect key="frame" x="1.5" y="0.0" width="44" height="44.5"/>
+                                                                    <rect key="frame" x="8" y="0.0" width="44" height="44.5"/>
                                                                     <constraints>
                                                                         <constraint firstAttribute="height" constant="44" id="pUP-lg-OXp"/>
                                                                         <constraint firstAttribute="width" constant="44" id="wnh-eO-fUe"/>
                                                                     </constraints>
                                                                 </imageView>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="10:30am" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xOh-Vf-DT1">
-                                                                    <rect key="frame" x="0.0" y="50.5" width="47" height="14.5"/>
+                                                                    <rect key="frame" x="0.0" y="50.5" width="60" height="14.5"/>
+                                                                    <constraints>
+                                                                        <constraint firstAttribute="width" constant="60" id="3qV-Cz-qDh"/>
+                                                                    </constraints>
                                                                     <fontDescription key="fontDescription" name="Lato-Medium" family="Lato" pointSize="12"/>
                                                                     <color key="textColor" red="1" green="0.0" blue="0.14509803921568626" alpha="1" colorSpace="calibratedRGB"/>
                                                                     <nil key="highlightedColor"/>
@@ -152,6 +155,7 @@
                                                         <constraint firstItem="mlg-Sv-f7X" firstAttribute="centerY" secondItem="1fH-La-qWH" secondAttribute="centerY" id="9zQ-SP-hk8"/>
                                                         <constraint firstItem="1fH-La-qWH" firstAttribute="leading" secondItem="mxc-Yf-R6C" secondAttribute="leading" constant="8" id="Tqb-UW-sCU"/>
                                                         <constraint firstItem="FPa-aU-V8E" firstAttribute="centerY" secondItem="mlg-Sv-f7X" secondAttribute="centerY" id="i4f-LD-ueI"/>
+                                                        <constraint firstItem="FPa-aU-V8E" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="mlg-Sv-f7X" secondAttribute="trailing" constant="8" id="kB7-6i-TBM"/>
                                                         <constraint firstItem="mlg-Sv-f7X" firstAttribute="leading" secondItem="1fH-La-qWH" secondAttribute="trailing" constant="12" id="yQh-yE-0Sr"/>
                                                     </constraints>
                                                 </view>
@@ -189,6 +193,7 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <connections>
+                        <outlet property="tableView" destination="sTC-v1-fBM" id="1De-tF-P2z"/>
                         <segue destination="T8G-Qp-GXs" kind="show" identifier="goToReminderCategoriesVC" id="Bsa-8m-Hgv"/>
                     </connections>
                 </viewController>
@@ -494,7 +499,7 @@
                             </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="9hy-Gp-sPs">
                                 <rect key="frame" x="0.0" y="75" width="375" height="592"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="backgroundColor" red="0.97647058823529409" green="0.97647058823529409" blue="0.97647058823529409" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <color key="separatorColor" red="0.2901960784" green="0.2901960784" blue="0.2901960784" alpha="1" colorSpace="calibratedRGB"/>
                                 <prototypes>
                                     <tableViewCell contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="CategoryRemindersCell" rowHeight="44" id="1S1-tN-hwt" customClass="CategoryRemindersCell" customModule="bluepin" customModuleProvider="target">
@@ -504,19 +509,28 @@
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="right-arrow" translatesAutoresizingMaskIntoConstraints="NO" id="adf-0Y-soM">
-                                                    <rect key="frame" x="335" y="9" width="25" height="25"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="right-arrow" translatesAutoresizingMaskIntoConstraints="NO" id="adf-0Y-soM">
+                                                    <rect key="frame" x="334" y="9" width="25" height="25"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="25" id="3rY-vI-qFa"/>
+                                                        <constraint firstAttribute="width" constant="25" id="r0b-ke-C1x"/>
+                                                    </constraints>
                                                 </imageView>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Appt w/ mechanic" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="g4E-Yc-DTA">
-                                                    <rect key="frame" x="19" y="11" width="211" height="21"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Appt w/ mechanic" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="12" translatesAutoresizingMaskIntoConstraints="NO" id="g4E-Yc-DTA">
+                                                    <rect key="frame" x="16" y="10.5" width="144.5" height="22"/>
                                                     <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="18"/>
                                                     <color key="textColor" red="0.29019607843137252" green="0.29019607843137252" blue="0.29019607843137252" alpha="0.80000000000000004" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
                                             <color key="backgroundColor" red="0.98030978441238403" green="0.98044675588607788" blue="0.9802665114402771" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <constraints>
+                                                <constraint firstItem="adf-0Y-soM" firstAttribute="centerY" secondItem="dGy-Id-NSQ" secondAttribute="centerY" id="0gD-3O-CHj"/>
+                                                <constraint firstAttribute="trailing" secondItem="adf-0Y-soM" secondAttribute="trailing" constant="16" id="5xe-Qf-Hjm"/>
+                                                <constraint firstItem="g4E-Yc-DTA" firstAttribute="leading" secondItem="dGy-Id-NSQ" secondAttribute="leading" constant="16" id="bRj-aj-rzy"/>
+                                                <constraint firstItem="adf-0Y-soM" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="g4E-Yc-DTA" secondAttribute="trailing" constant="8" id="h1k-jy-fNK"/>
+                                                <constraint firstItem="g4E-Yc-DTA" firstAttribute="centerY" secondItem="dGy-Id-NSQ" secondAttribute="centerY" id="qO1-GX-w9J"/>
+                                            </constraints>
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="reminderName" destination="g4E-Yc-DTA" id="vKc-bA-R1g"/>
@@ -525,7 +539,7 @@
                                 </prototypes>
                             </tableView>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" red="0.97254901960784312" green="0.97254901960784312" blue="0.97254901960784312" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="9hy-Gp-sPs" firstAttribute="trailing" secondItem="juE-lr-NHB" secondAttribute="trailing" id="2Gu-4N-Z32"/>
                             <constraint firstItem="VNS-g1-o4A" firstAttribute="leading" secondItem="juE-lr-NHB" secondAttribute="leading" id="8lE-gF-98l"/>
@@ -557,14 +571,14 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="AFj-Ax-OVZ">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="75"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Change Engine Oil" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gFV-q6-TTM">
-                                        <rect key="frame" x="99.5" y="33" width="177.5" height="26.5"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Change Engine Oil" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="14" translatesAutoresizingMaskIntoConstraints="NO" id="gFV-q6-TTM">
+                                        <rect key="frame" x="99" y="33" width="177.5" height="26.5"/>
                                         <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="22"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="imr-nf-3ZI">
-                                        <rect key="frame" x="8" y="31" width="32" height="32"/>
+                                        <rect key="frame" x="8" y="30.5" width="32" height="32"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="32" id="1B9-Nj-grY"/>
                                             <constraint firstAttribute="height" constant="32" id="PDY-mQ-7hJ"/>
@@ -580,6 +594,7 @@
                                     <constraint firstItem="imr-nf-3ZI" firstAttribute="leading" secondItem="AFj-Ax-OVZ" secondAttribute="leading" constant="8" id="Jgu-0t-F9X"/>
                                     <constraint firstItem="gFV-q6-TTM" firstAttribute="centerY" secondItem="imr-nf-3ZI" secondAttribute="centerY" id="NgT-B4-bF7"/>
                                     <constraint firstAttribute="bottom" secondItem="gFV-q6-TTM" secondAttribute="bottom" constant="16" id="U5z-lE-Ujq"/>
+                                    <constraint firstItem="gFV-q6-TTM" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="imr-nf-3ZI" secondAttribute="trailing" constant="8" id="b3Z-Xb-Jvn"/>
                                     <constraint firstAttribute="height" constant="75" id="cly-ll-p0g"/>
                                     <constraint firstItem="gFV-q6-TTM" firstAttribute="centerX" secondItem="AFj-Ax-OVZ" secondAttribute="centerX" id="fBz-Gr-TiU"/>
                                 </constraints>
@@ -588,9 +603,9 @@
                                 <rect key="frame" x="16" y="83" width="343" height="175"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Check the owner's manual first. The oil change interval for most modern cars is: conventional oil - 3,000 to 5,000 miles" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VJd-NF-3SB">
-                                        <rect key="frame" x="16" y="16" width="295" height="80"/>
+                                        <rect key="frame" x="16" y="16" width="295" height="79"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="80" id="hdq-I8-dfT"/>
+                                            <constraint firstAttribute="height" relation="lessThanOrEqual" constant="150" id="6h0-v7-asx"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="15"/>
                                         <color key="textColor" red="0.23341025388920245" green="0.23341025388920245" blue="0.23341025388920245" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -600,6 +615,7 @@
                                 <color key="backgroundColor" red="0.96470588235294119" green="0.96078431372549022" blue="0.95294117647058818" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstItem="VJd-NF-3SB" firstAttribute="top" secondItem="dqu-c6-BD9" secondAttribute="top" constant="16" id="Gce-Cr-3th"/>
+                                    <constraint firstAttribute="bottom" relation="lessThanOrEqual" secondItem="VJd-NF-3SB" secondAttribute="bottom" constant="80" id="NeH-IT-gvl"/>
                                     <constraint firstItem="VJd-NF-3SB" firstAttribute="leading" secondItem="dqu-c6-BD9" secondAttribute="leading" constant="16" id="faq-ZB-Q8G"/>
                                     <constraint firstAttribute="height" constant="175" id="l1H-we-Xok"/>
                                     <constraint firstAttribute="trailing" secondItem="VJd-NF-3SB" secondAttribute="trailing" constant="32" id="rFP-KH-O9X"/>
@@ -622,7 +638,7 @@
                                 </constraints>
                                 <state key="normal" image="checkmark"/>
                                 <connections>
-                                    <action selector="addReminderBtnPressed:" destination="hYR-6Z-Mj3" eventType="touchUpInside" id="S1M-RO-KFS"/>
+                                    <action selector="checkmarkBtnPresed:" destination="hYR-6Z-Mj3" eventType="touchUpInside" id="WYp-3M-2o8"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0UM-Ud-sot">
@@ -637,7 +653,7 @@
                                 </connections>
                             </button>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="wtX-ec-gtd">
-                                <rect key="frame" x="61.5" y="339" width="252" height="50"/>
+                                <rect key="frame" x="62" y="339" width="252" height="50"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Thursday, September 17, 2018 at 6pm" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="USB-hP-R4b">
                                         <rect key="frame" x="0.0" y="0.0" width="252" height="27.5"/>
@@ -677,6 +693,11 @@
                         <viewLayoutGuide key="safeArea" id="fIB-gO-LZ7"/>
                     </view>
                     <connections>
+                        <outlet property="checkmarkBtn" destination="iSI-4S-4zs" id="Flr-U7-rNe"/>
+                        <outlet property="reminderDateLbl" destination="USB-hP-R4b" id="d1p-nD-5hj"/>
+                        <outlet property="reminderDescLbl" destination="VJd-NF-3SB" id="Wzg-bC-J3v"/>
+                        <outlet property="reminderNameLbl" destination="gFV-q6-TTM" id="Kav-4f-Y0v"/>
+                        <outlet property="reminderRepeatDescLbl" destination="34s-7i-iyT" id="aeb-H6-Qzw"/>
                         <segue destination="ghf-0y-9DW" kind="show" identifier="goToReminderConfigurationVC" id="ILZ-Os-jNR"/>
                     </connections>
                 </viewController>
@@ -1154,7 +1175,6 @@
                                         <state key="normal" image="Sun"/>
                                         <connections>
                                             <action selector="dayOfWeekBtnPressed:" destination="lgm-Se-ZX5" eventType="touchUpInside" id="lgy-2V-ZYX"/>
-                                            <action selector="weeklyBtnPressed:" destination="lgm-Se-ZX5" eventType="touchUpInside" id="P32-rz-3Le"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uUS-Nc-ETA">
@@ -1344,6 +1364,13 @@
                     <connections>
                         <outlet property="dateLblBtn" destination="shv-SB-t11" id="XYD-A6-UJ7"/>
                         <outlet property="setBtn" destination="GKI-W9-hOg" id="d0G-T9-J5t"/>
+                        <outletCollection property="weekdayBtns" destination="PgO-xu-Uuk" collectionClass="NSMutableArray" id="z4c-C9-pmN"/>
+                        <outletCollection property="weekdayBtns" destination="uUS-Nc-ETA" collectionClass="NSMutableArray" id="P3Q-i0-p6g"/>
+                        <outletCollection property="weekdayBtns" destination="QpU-cf-NWC" collectionClass="NSMutableArray" id="Dj7-pi-9Gu"/>
+                        <outletCollection property="weekdayBtns" destination="eOK-DO-yzg" collectionClass="NSMutableArray" id="k8B-Ik-tsC"/>
+                        <outletCollection property="weekdayBtns" destination="E9S-7Z-d8d" collectionClass="NSMutableArray" id="xnv-Gy-e63"/>
+                        <outletCollection property="weekdayBtns" destination="wy3-qb-kF7" collectionClass="NSMutableArray" id="bfQ-48-lMV"/>
+                        <outletCollection property="weekdayBtns" destination="pT4-dw-kTe" collectionClass="NSMutableArray" id="DgS-L1-1To"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="syX-iy-TX4" userLabel="First Responder" sceneMemberID="firstResponder"/>

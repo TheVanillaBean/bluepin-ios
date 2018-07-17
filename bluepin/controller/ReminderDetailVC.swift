@@ -10,35 +10,29 @@ import UIKit
 
 class ReminderDetailVC: UIViewController {
 
+    var selectedReminder: Reminder!
+
+    @IBOutlet weak var reminderDescLbl: UILabel!
+    @IBOutlet weak var reminderDateLbl: UILabel!
+    @IBOutlet weak var reminderRepeatDescLbl: UILabel!
+    @IBOutlet weak var checkmarkBtn: UIButton!
+    @IBOutlet weak var reminderNameLbl: UILabel!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+        UNService.shared.requestAuthorization(forOptions: [.badge, .sound, .alert])
+        configureViews()
     }
     
-    //Commit before contining
-    //Commit before contining
-    //Commit before contining
-    //Commit before contining
-    //Commit before contining
-
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    func configureViews(){
+        self.reminderDescLbl.text = selectedReminder.reminderDescription
+        self.reminderDateLbl.text = selectedReminder.nextReminder?.relativeFormat() ?? Date().relativeFormat()
+        self.reminderRepeatDescLbl.text = selectedReminder.repeatFormat()
+        self.reminderNameLbl.text = selectedReminder.name
     }
-    */
     
     @IBAction func configureReminderBtnPressed(_ sender: Any) {
+        UNService.shared.selectedReminder = selectedReminder
         performSegue(withIdentifier: "goToReminderConfigurationVC", sender: nil)
     }
     
@@ -46,6 +40,8 @@ class ReminderDetailVC: UIViewController {
         dismiss(animated: true, completion: nil)
     }
     
-    @IBAction func addReminderBtnPressed(_ sender: Any) {
+    @IBAction func checkmarkBtnPresed(_ sender: Any) {
     }
+    
+    
 }

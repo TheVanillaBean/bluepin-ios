@@ -36,6 +36,7 @@
 		5A8B044720E9E94B0073387C /* WeeklyConfigVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A8B044620E9E94B0073387C /* WeeklyConfigVC.swift */; };
 		5A8B044920E9E95B0073387C /* MonthlyConfigVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A8B044820E9E95B0073387C /* MonthlyConfigVC.swift */; };
 		5A8B044B20E9E9720073387C /* OnceConfigVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A8B044A20E9E9720073387C /* OnceConfigVC.swift */; };
+		5A943E0720FC8D590099FD66 /* RealmConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A943E0620FC8D590099FD66 /* RealmConfig.swift */; };
 		5A9BABB720A5827A000F3976 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A9BABB620A5827A000F3976 /* AppDelegate.swift */; };
 		5A9BABB920A5827A000F3976 /* MyRemindersVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A9BABB820A5827A000F3976 /* MyRemindersVC.swift */; };
 		5A9BABBC20A5827A000F3976 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5A9BABBA20A5827A000F3976 /* Main.storyboard */; };
@@ -96,6 +97,7 @@
 		5A8B044620E9E94B0073387C /* WeeklyConfigVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeeklyConfigVC.swift; sourceTree = "<group>"; };
 		5A8B044820E9E95B0073387C /* MonthlyConfigVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonthlyConfigVC.swift; sourceTree = "<group>"; };
 		5A8B044A20E9E9720073387C /* OnceConfigVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnceConfigVC.swift; sourceTree = "<group>"; };
+		5A943E0620FC8D590099FD66 /* RealmConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmConfig.swift; sourceTree = "<group>"; };
 		5A9BABB320A5827A000F3976 /* bluepin.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = bluepin.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5A9BABB620A5827A000F3976 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5A9BABB820A5827A000F3976 /* MyRemindersVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyRemindersVC.swift; sourceTree = "<group>"; };
@@ -199,6 +201,7 @@
 				5A68BB5620B3606C00BC0509 /* NotificationAuthorizationOptions.swift */,
 				5AAD5C8720BFD99500E86806 /* SortedArray.swift */,
 				5AB1EC5D20EF7630003F64C3 /* Constants.swift */,
+				5A943E0620FC8D590099FD66 /* RealmConfig.swift */,
 			);
 			path = util;
 			sourceTree = "<group>";
@@ -492,6 +495,7 @@
 				5AEBA5C920F5A5EB00DB3A35 /* Reminder.swift in Sources */,
 				5A68BB4F20ACD7A000BC0509 /* CategoryBtnShadow.swift in Sources */,
 				5A68BB5F20B364A900BC0509 /* NotificationSound.swift in Sources */,
+				5A943E0720FC8D590099FD66 /* RealmConfig.swift in Sources */,
 				5A3F09CA20EC20FD0041AA49 /* ReminderDescBorder.swift in Sources */,
 				5A68BB5920B362F100BC0509 /* BluepinNotification.swift in Sources */,
 				5AEBA5CB20F5A93300DB3A35 /* Category.swift in Sources */,

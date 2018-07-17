@@ -43,6 +43,8 @@ class MyRemindersCell: UITableViewCell {
     }
     
     func configureCell(reminder: Reminder){
+        self.reminderNameLbl.text = reminder.name
+        self.reminderDescLbl.text = reminder.parentCategory.first?.name
     }
     
 }

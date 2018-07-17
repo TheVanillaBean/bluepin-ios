@@ -13,9 +13,7 @@ class CategoryRemindersVC: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
     
-    lazy var realm = try! Realm()
-    
-    var reminders: Results<Reminder>?
+    var presetReminders: Results<Reminder>?
     
     var selectedCategory: Category!
     
@@ -30,35 +28,44 @@ class CategoryRemindersVC: UIViewController {
     
     }
     
-    func loadReminders(){
-        reminders = selectedCategory.reminders.sorted(byKeyPath: "name")
+    func loadReminders() {
+        UNService.shared.userReminders = UNService.shared.selectedCategory?.reminders.sorted(byKeyPath: "name")  //User Reminders
+        presetReminders = selectedCategory.reminders.sorted(byKeyPath: "name") //Preset Reminders
         tableView.reloadData()
     }
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
-//        let destinationVC = segue.destination as! ReminderDetailVC
-//
-//        if let indexPath = tableView.indexPathForSelectedRow {
-//        }
-//
+        let destinationVC = segue.destination as! ReminderDetailVC
+
+        if let indexPath = tableView.indexPathForSelectedRow {
+            
+            if (UNService.shared.userReminders?.contains(where: { $0.name == presetReminders![indexPath.row].name }))! {
+                UNService.shared.alreadySetReminder = true
+                destinationVC.selectedReminder = UNService.shared.userReminders?[indexPath.row] //user reminder
+            } else {
+                UNService.shared.alreadySetReminder = false
+                destinationVC.selectedReminder = presetReminders![indexPath.row] //preset reminder
+            }
+            
+        }
+
     }
     
     @IBAction func backBtnPressed(_ sender: Any) {
         self.dismiss(animated: true, completion: nil)
     }
     
-
 }
 
 extension CategoryRemindersVC: UITableViewDelegate, UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return reminders?.count ?? 1
+        return presetReminders?.count ?? 1
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let reminder = reminders?[indexPath.row]
+        let reminder = presetReminders?[indexPath.row]
         let cell = tableView.dequeueReusableCell(withIdentifier: "CategoryRemindersCell", for: indexPath) as! CategoryRemindersCell
         cell.configureCell(reminder: reminder!)
         return cell

@@ -11,7 +11,7 @@ import RealmSwift
 
 class ReminderCategoriesVC: UIViewController {
 
-    lazy var realm = try! Realm()
+    lazy var presetRealm = try! Realm(configuration: RealmConfig.preset.configuration)
     
     var categories: Results<Category>?
     
@@ -21,16 +21,17 @@ class ReminderCategoriesVC: UIViewController {
     }
     
     func loadCategories(){
-        categories = realm.objects(Category.self)
+        categories = presetRealm.objects(Category.self)
     }
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let destinationVC = segue.destination as! CategoryRemindersVC
-        destinationVC.selectedCategory = sender as! Category
+        UNService.shared.selectedCategory  = UNService.shared.userCategories?[sender as! Int] //user
+        destinationVC.selectedCategory = categories![sender as! Int] //preset
     }
  
     @IBAction func categoryBtnPressed(_ categoryBtn: UIButton) {
-        performSegue(withIdentifier: "goToCategoryRemindersVC", sender: categories?[categoryBtn.tag])
+        performSegue(withIdentifier: "goToCategoryRemindersVC", sender: categoryBtn.tag)
     }
     
     @IBAction func backBtnPressed(_ sender: Any) {

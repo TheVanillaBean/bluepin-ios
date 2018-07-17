@@ -9,6 +9,7 @@
 import Foundation
 import UserNotifications
 import SwiftDate
+import RealmSwift
 
 internal let MAX_ALLOWED_NOTIFICATIONS = 60
 
@@ -23,7 +24,71 @@ public class UNService: NSObject {
     }
 
     let unCenter = UNUserNotificationCenter.current()
+    
+    //------------------------------------
+    
+    var _selectedReminder: Reminder?
+    
+    var selectedReminder: Reminder? {
+        get {
+            return _selectedReminder
+        }
+        
+        set(reminder) {
+            _selectedReminder = reminder
+        }
+    }
+    
+    var _selectedCategory: Category?
+    
+    var selectedCategory: Category? {
+        get {
+            return _selectedCategory
+        }
+        
+        set(category) {
+            _selectedCategory = category
+        }
+    }
+    
+    var _alreadySetReminder: Bool?
+    
+    var alreadySetReminder: Bool? {
+        get {
+            return _alreadySetReminder
+        }
+        
+        set(isSet) {
+            _alreadySetReminder = isSet
+        }
+    }
+    
+    var _userCategories: Results<Category>?
+    
+    var userCategories: Results<Category>? {
+        get {
+            return _userCategories
+        }
+        
+        set(categories) {
+            _userCategories = categories
+        }
+    }
+    
+    var _userReminders: Results<Reminder>?
+    
+    var userReminders: Results<Reminder>? {
+        get {
+            return _userReminders
+        }
+        
+        set(reminders) {
+            _userReminders = reminders
+        }
+    }
 
+    //-----------------------------------
+    
     func requestAuthorization(forOptions options: NotificationAuthorizationOptions) {
         let authorizationOptions: UNAuthorizationOptions = UNAuthorizationOptions(rawValue: options.rawValue)
         
