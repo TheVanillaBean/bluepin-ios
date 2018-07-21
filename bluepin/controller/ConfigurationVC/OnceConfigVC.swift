@@ -60,12 +60,33 @@ class OnceConfigVC: UIViewController {
             
             if let selectedReminder = UNService.shared.selectedReminder {
                 
-                if UNService.shared.alreadySetReminder! {
-                    UNService.shared.selectedReminder?.repeatMethod = RepeatMethod.once.rawValue
-                    UNService.shared.selectedReminder?.repeatInterval = 0
-                    UNService.shared.selectedReminder?.nextReminder = reminder.last?.repeatTrigger?.nextTriggerDate()
+                let reminderGroup = NotificationPersistedQueue.shared.notificationsQueue().filter { $0.notificationInfo.identifier == selectedReminder.ID }
+                
+                if reminderGroup.count > 0 {
+
+                    do {
+                        try realm.write {
+                            
+                            for reminder in reminderGroup {
+                                
+                                UNService.shared.cancel(withIdentifier: reminder.identifier)
+                                NotificationPersistedQueue.shared.remove(reminder)
+                            }
+                            
+                            UNService.shared.schedule(notifications: reminder)
+                            
+                            NotificationPersistedQueue.shared.insert(reminder)
+                            let _ = NotificationPersistedQueue.shared.saveQueue()
+                            
+                            UNService.shared.selectedReminder?.ID = (reminder.last?.notificationInfo.identifier)!
+                            UNService.shared.selectedReminder?.repeatMethod = RepeatMethod.once.rawValue
+                            UNService.shared.selectedReminder?.repeatInterval = 0
+                            UNService.shared.selectedReminder?.nextReminder = reminder.last?.repeatTrigger?.nextTriggerDate()
+                        }
+                    } catch {
+                        print("Error saving items \(error)")
+                    }
                     
-                    saveReminder(reminder: UNService.shared.selectedReminder!, category: UNService.shared.selectedCategory!)
                 } else {
                     let realmReminder = Reminder()
                     realmReminder.name = selectedReminder.name
@@ -75,9 +96,15 @@ class OnceConfigVC: UIViewController {
                     realmReminder.nextReminder = reminder.last?.repeatTrigger?.nextTriggerDate()
                     
                     saveReminder(reminder: realmReminder, category: UNService.shared.selectedCategory!)
+                    
+                    UNService.shared.schedule(notifications: reminder)
+                    
+                    NotificationPersistedQueue.shared.insert(reminder)
+                    let _ = NotificationPersistedQueue.shared.saveQueue()
+                    
+                    UNService.shared.selectedReminder = realmReminder
                 }
                 
-                UNService.shared.schedule(notifications: reminder)
             }
             
             self.dismiss(animated: true, completion: nil)

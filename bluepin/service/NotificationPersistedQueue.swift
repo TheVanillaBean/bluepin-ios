@@ -27,7 +27,6 @@ public class NotificationPersistedQueue: NSObject {
     }
     
     public func insert(_ notifications: [BluepinNotification]) {
-        print("ArchiveURL: \(ArchiveURL)")
         for notif in notifications {
             notifQueue.insert(notif)
         }

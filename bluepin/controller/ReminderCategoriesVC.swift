@@ -20,7 +20,7 @@ class ReminderCategoriesVC: UIViewController {
         loadCategories()
     }
     
-    func loadCategories(){
+    func loadCategories() {
         categories = presetRealm.objects(Category.self)
     }
 

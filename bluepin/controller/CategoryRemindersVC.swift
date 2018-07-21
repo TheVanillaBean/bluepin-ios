@@ -12,6 +12,8 @@ import RealmSwift
 class CategoryRemindersVC: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var categoryNameLbl: UILabel!
+    
     
     var presetReminders: Results<Reminder>?
     
@@ -23,6 +25,7 @@ class CategoryRemindersVC: UIViewController {
         tableView.delegate = self
         tableView.dataSource = self
         tableView.separatorStyle = .none
+        categoryNameLbl.text = selectedCategory.name
         
         loadReminders()
     
@@ -36,16 +39,12 @@ class CategoryRemindersVC: UIViewController {
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
-        let destinationVC = segue.destination as! ReminderDetailVC
-
         if let indexPath = tableView.indexPathForSelectedRow {
             
             if (UNService.shared.userReminders?.contains(where: { $0.name == presetReminders![indexPath.row].name }))! {
-                UNService.shared.alreadySetReminder = true
-                destinationVC.selectedReminder = UNService.shared.userReminders?[indexPath.row] //user reminder
+                UNService.shared.selectedReminder = UNService.shared.userReminders?[indexPath.row] //user reminder
             } else {
-                UNService.shared.alreadySetReminder = false
-                destinationVC.selectedReminder = presetReminders![indexPath.row] //preset reminder
+                UNService.shared.selectedReminder = presetReminders![indexPath.row] //preset reminder
             }
             
         }

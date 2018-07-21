@@ -15,12 +15,17 @@ class ReminderDetailVC: UIViewController {
     @IBOutlet weak var reminderDescLbl: UILabel!
     @IBOutlet weak var reminderDateLbl: UILabel!
     @IBOutlet weak var reminderRepeatDescLbl: UILabel!
-    @IBOutlet weak var checkmarkBtn: UIButton!
+//    @IBOutlet weak var checkmarkBtn: UIButton!
     @IBOutlet weak var reminderNameLbl: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         UNService.shared.requestAuthorization(forOptions: [.badge, .sound, .alert])
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+        selectedReminder = UNService.shared.selectedReminder
         configureViews()
     }
     
@@ -32,16 +37,16 @@ class ReminderDetailVC: UIViewController {
     }
     
     @IBAction func configureReminderBtnPressed(_ sender: Any) {
-        UNService.shared.selectedReminder = selectedReminder
         performSegue(withIdentifier: "goToReminderConfigurationVC", sender: nil)
     }
     
     @IBAction func backBtnPressed(_ sender: Any) {
+        UNService.shared.userReminders = UNService.shared.selectedCategory?.reminders.sorted(byKeyPath: "name")  //User Reminders
         dismiss(animated: true, completion: nil)
     }
     
-    @IBAction func checkmarkBtnPresed(_ sender: Any) {
-    }
-    
+//    @IBAction func checkmarkBtnPresed(_ sender: Any) {
+//    }
+//
     
 }

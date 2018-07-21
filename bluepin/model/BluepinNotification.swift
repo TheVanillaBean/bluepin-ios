@@ -114,16 +114,16 @@ public class BluepinNotification: NSObject, Codable {
         self.body = body
         self.title = title
         self.date = date
-        self.notificationInfo.identifier = identifier
         self.notificationInfo.date = self.date
         self.repeatTrigger = trigger(forTrigger: nil, date: date)
     }
     
-    public convenience init(identifier: String = UUID().uuidString, title: String, body: String, date: Date, repeatMethod: RepeatMethod, repeatInterval: Int, repeatTrigger: UNCalendarNotificationTrigger?, weekdaySet: IndexSet = IndexSet([1, 2])) {
+    public convenience init(identifier: String = UUID().uuidString, groupIdentifier: String, title: String, body: String, date: Date, repeatMethod: RepeatMethod, repeatInterval: Int, repeatTrigger: UNCalendarNotificationTrigger?, weekdaySet: IndexSet = IndexSet([1, 2])) {
         self.init(identifier: identifier, title: title, body: body, date: date)
         self.repeatMethod = repeatMethod
         self.repeatInterval = repeatInterval
         self.repeatTrigger = repeatTrigger != nil ? trigger(forTrigger: repeatTrigger, date: date) : self.repeatTrigger
+        self.notificationInfo.identifier = groupIdentifier
         self.notificationInfo.repeatMethod = self.repeatMethod
         self.notificationInfo.repeatInterval = self.repeatInterval
         if self.repeatMethod == .weekly {

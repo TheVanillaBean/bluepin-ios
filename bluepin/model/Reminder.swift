@@ -10,6 +10,7 @@ import Foundation
 import RealmSwift
 
 public class Reminder: Object {
+    @objc dynamic var ID: String = ""
     @objc dynamic var name: String = ""
     @objc dynamic var reminderDescription: String = ""
     @objc dynamic var repeatMethod: String = ""
@@ -34,7 +35,7 @@ public class Reminder: Object {
             formatString = "This reminder repeats once"
         }
         
-        if repeatInterval == 1 {
+        if repeatInterval == 1 && repeatMethod != RepeatMethod.once.rawValue {
             formatString.removeLast()
         }
         
@@ -56,7 +57,7 @@ public class Reminder: Object {
         
         let list = List<Int>()
 
-        for integer in set {
+        set.forEach { (integer) in
             list.append(integer)
         }
         

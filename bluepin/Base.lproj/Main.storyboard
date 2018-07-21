@@ -49,24 +49,14 @@
                                             <action selector="plusBtnPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="cGl-5K-GyQ"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CvJ-Zj-SnG">
-                                        <rect key="frame" x="8" y="30" width="32" height="32"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="32" id="gxt-E6-P1g"/>
-                                            <constraint firstAttribute="width" constant="32" id="vAt-39-Dld"/>
-                                        </constraints>
-                                        <state key="normal" image="Gear"/>
-                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" red="0.23921568627450979" green="0.73725490196078436" blue="0.61568627450980395" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstItem="IIY-C2-ZXn" firstAttribute="centerX" secondItem="ZKl-2j-i0w" secondAttribute="centerX" id="0sX-oo-1PX"/>
                                     <constraint firstAttribute="trailing" secondItem="1Gk-fC-DIp" secondAttribute="trailing" constant="8" id="GIG-uT-3Vo"/>
                                     <constraint firstAttribute="bottom" secondItem="IIY-C2-ZXn" secondAttribute="bottom" constant="16" id="SQF-xa-xvp"/>
-                                    <constraint firstItem="CvJ-Zj-SnG" firstAttribute="leading" secondItem="ZKl-2j-i0w" secondAttribute="leading" constant="8" id="Yqq-oa-Yph"/>
                                     <constraint firstItem="1Gk-fC-DIp" firstAttribute="centerY" secondItem="IIY-C2-ZXn" secondAttribute="centerY" id="hCd-BC-2Fr"/>
                                     <constraint firstAttribute="height" constant="75" id="plq-jc-oP3"/>
-                                    <constraint firstItem="IIY-C2-ZXn" firstAttribute="centerY" secondItem="CvJ-Zj-SnG" secondAttribute="centerY" id="wEX-ru-EUe"/>
                                 </constraints>
                             </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="sTC-v1-fBM">
@@ -129,7 +119,7 @@
                                                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="6" translatesAutoresizingMaskIntoConstraints="NO" id="FPa-aU-V8E">
                                                             <rect key="frame" x="307" y="10.5" width="60" height="65"/>
                                                             <subviews>
-                                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="clock-red" translatesAutoresizingMaskIntoConstraints="NO" id="3Ep-FL-6FF">
+                                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="clock-gray" translatesAutoresizingMaskIntoConstraints="NO" id="3Ep-FL-6FF">
                                                                     <rect key="frame" x="8" y="0.0" width="44" height="44.5"/>
                                                                     <constraints>
                                                                         <constraint firstAttribute="height" constant="44" id="pUP-lg-OXp"/>
@@ -142,7 +132,7 @@
                                                                         <constraint firstAttribute="width" constant="60" id="3qV-Cz-qDh"/>
                                                                     </constraints>
                                                                     <fontDescription key="fontDescription" name="Lato-Medium" family="Lato" pointSize="12"/>
-                                                                    <color key="textColor" red="1" green="0.0" blue="0.14509803921568626" alpha="1" colorSpace="calibratedRGB"/>
+                                                                    <color key="textColor" red="0.52549019607843139" green="0.52549019607843139" blue="0.52549019607843139" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
                                                             </subviews>
@@ -170,7 +160,7 @@
                                         <connections>
                                             <outlet property="clockImageView" destination="3Ep-FL-6FF" id="8XJ-zj-2OQ"/>
                                             <outlet property="dayLbl" destination="t5b-dO-IXz" id="6zo-2o-fKf"/>
-                                            <outlet property="monthYearLbl" destination="mxc-Yf-R6C" id="U7k-4V-nTf"/>
+                                            <outlet property="monthYearLbl" destination="Goj-Gl-RhJ" id="Rmy-iI-RhV"/>
                                             <outlet property="reminderDescLbl" destination="RW7-RB-AQP" id="NnY-2J-syK"/>
                                             <outlet property="reminderNameLbl" destination="nRl-TS-qdM" id="a1v-8u-jcn"/>
                                             <outlet property="reminderTimeLbl" destination="xOh-Vf-DT1" id="73w-5w-PCF"/>
@@ -219,7 +209,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ygM-Gj-s9Q">
-                                        <rect key="frame" x="8" y="30" width="32" height="32"/>
+                                        <rect key="frame" x="8" y="30.5" width="32" height="32"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="32" id="E5Z-dF-qNu"/>
                                             <constraint firstAttribute="width" constant="32" id="br4-bk-jAk"/>
@@ -552,6 +542,7 @@
                         <viewLayoutGuide key="safeArea" id="juE-lr-NHB"/>
                     </view>
                     <connections>
+                        <outlet property="categoryNameLbl" destination="bMP-1P-Emx" id="1QB-g9-g3e"/>
                         <outlet property="tableView" destination="9hy-Gp-sPs" id="09k-1g-ojo"/>
                         <segue destination="hYR-6Z-Mj3" kind="show" identifier="goToReminderDetailVC" id="8YQ-uh-wQZ"/>
                     </connections>
@@ -572,13 +563,13 @@
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="75"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Change Engine Oil" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="14" translatesAutoresizingMaskIntoConstraints="NO" id="gFV-q6-TTM">
-                                        <rect key="frame" x="99" y="33" width="177.5" height="26.5"/>
+                                        <rect key="frame" x="99.5" y="33" width="177.5" height="26.5"/>
                                         <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="22"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="imr-nf-3ZI">
-                                        <rect key="frame" x="8" y="30.5" width="32" height="32"/>
+                                        <rect key="frame" x="8" y="31" width="32" height="32"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="32" id="1B9-Nj-grY"/>
                                             <constraint firstAttribute="height" constant="32" id="PDY-mQ-7hJ"/>
@@ -630,17 +621,6 @@
                                 <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iSI-4S-4zs">
-                                <rect key="frame" x="309" y="593" width="50" height="50"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="50" id="3yd-b0-SHf"/>
-                                    <constraint firstAttribute="width" constant="50" id="hoF-mC-2G7"/>
-                                </constraints>
-                                <state key="normal" image="checkmark"/>
-                                <connections>
-                                    <action selector="checkmarkBtnPresed:" destination="hYR-6Z-Mj3" eventType="touchUpInside" id="WYp-3M-2o8"/>
-                                </connections>
-                            </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0UM-Ud-sot">
                                 <rect key="frame" x="339" y="354" width="20" height="20"/>
                                 <constraints>
@@ -653,7 +633,7 @@
                                 </connections>
                             </button>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="wtX-ec-gtd">
-                                <rect key="frame" x="62" y="339" width="252" height="50"/>
+                                <rect key="frame" x="61.5" y="339" width="252" height="50"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Thursday, September 17, 2018 at 6pm" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="USB-hP-R4b">
                                         <rect key="frame" x="0.0" y="0.0" width="252" height="27.5"/>
@@ -680,7 +660,6 @@
                             <constraint firstItem="AFj-Ax-OVZ" firstAttribute="top" secondItem="kox-lO-G0B" secondAttribute="top" id="6ou-G4-v0o"/>
                             <constraint firstItem="dqu-c6-BD9" firstAttribute="top" secondItem="AFj-Ax-OVZ" secondAttribute="bottom" constant="8" id="7fl-mX-0Xf"/>
                             <constraint firstItem="0UM-Ud-sot" firstAttribute="centerY" secondItem="wtX-ec-gtd" secondAttribute="centerY" id="CVO-mc-rOi"/>
-                            <constraint firstItem="fIB-gO-LZ7" firstAttribute="bottom" secondItem="iSI-4S-4zs" secondAttribute="bottom" constant="24" id="JfE-Jx-HDk"/>
                             <constraint firstItem="o22-H3-zkv" firstAttribute="centerX" secondItem="kox-lO-G0B" secondAttribute="centerX" id="M3j-OA-Lku"/>
                             <constraint firstItem="AFj-Ax-OVZ" firstAttribute="leading" secondItem="fIB-gO-LZ7" secondAttribute="leading" id="NLH-6W-uxP"/>
                             <constraint firstItem="wtX-ec-gtd" firstAttribute="centerX" secondItem="kox-lO-G0B" secondAttribute="centerX" id="RhW-tq-gih"/>
@@ -688,12 +667,10 @@
                             <constraint firstItem="AFj-Ax-OVZ" firstAttribute="trailing" secondItem="fIB-gO-LZ7" secondAttribute="trailing" id="hNM-du-sWi"/>
                             <constraint firstItem="wtX-ec-gtd" firstAttribute="top" secondItem="o22-H3-zkv" secondAttribute="bottom" constant="30" id="ja4-rJ-pJc"/>
                             <constraint firstItem="dqu-c6-BD9" firstAttribute="leading" secondItem="fIB-gO-LZ7" secondAttribute="leading" constant="16" id="kY9-EO-KZG"/>
-                            <constraint firstItem="fIB-gO-LZ7" firstAttribute="trailing" secondItem="iSI-4S-4zs" secondAttribute="trailing" constant="16" id="zFx-Ud-fsV"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="fIB-gO-LZ7"/>
                     </view>
                     <connections>
-                        <outlet property="checkmarkBtn" destination="iSI-4S-4zs" id="Flr-U7-rNe"/>
                         <outlet property="reminderDateLbl" destination="USB-hP-R4b" id="d1p-nD-5hj"/>
                         <outlet property="reminderDescLbl" destination="VJd-NF-3SB" id="Wzg-bC-J3v"/>
                         <outlet property="reminderNameLbl" destination="gFV-q6-TTM" id="Kav-4f-Y0v"/>
@@ -892,13 +869,13 @@
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="75"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Schedule Reminder" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rms-Cj-Op3">
-                                        <rect key="frame" x="95" y="33" width="186" height="26.5"/>
+                                        <rect key="frame" x="94.5" y="33" width="186" height="26.5"/>
                                         <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="22"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hbR-4Z-xpP">
-                                        <rect key="frame" x="8" y="31" width="32" height="32"/>
+                                        <rect key="frame" x="8" y="30.5" width="32" height="32"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="32" id="KKt-C6-yeX"/>
                                             <constraint firstAttribute="width" constant="32" id="MhJ-4d-epq"/>
@@ -1389,13 +1366,13 @@
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="75"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Schedule Reminder" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nOH-1T-q3b">
-                                        <rect key="frame" x="94.5" y="33" width="186" height="26.5"/>
+                                        <rect key="frame" x="95" y="33" width="186" height="26.5"/>
                                         <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="22"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uDl-Cv-3NH">
-                                        <rect key="frame" x="8" y="30.5" width="32" height="32"/>
+                                        <rect key="frame" x="8" y="31" width="32" height="32"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="32" id="Ycb-of-8pd"/>
                                             <constraint firstAttribute="width" constant="32" id="gBq-WZ-oBx"/>
@@ -1476,7 +1453,7 @@
                                 </constraints>
                             </stackView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="Bch-cD-B4L">
-                                <rect key="frame" x="78" y="183" width="219" height="75"/>
+                                <rect key="frame" x="78.5" y="183" width="219" height="75"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Repeat every:" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3vZ-dS-AC6">
                                         <rect key="frame" x="0.0" y="0.0" width="219" height="20"/>
@@ -1612,7 +1589,6 @@
         <image name="Daily" width="270" height="269"/>
         <image name="Daily-red" width="270" height="269"/>
         <image name="Fri" width="233" height="233"/>
-        <image name="Gear" width="233" height="237"/>
         <image name="Mon" width="233" height="233"/>
         <image name="Monthly" width="270" height="269"/>
         <image name="Monthly-red" width="270" height="269"/>
@@ -1628,8 +1604,7 @@
         <image name="Weekly-red" width="270" height="269"/>
         <image name="auto" width="236" height="236"/>
         <image name="cancel-white" width="233" height="233"/>
-        <image name="checkmark" width="233" height="233"/>
-        <image name="clock-red" width="233" height="225"/>
+        <image name="clock-gray" width="233" height="225"/>
         <image name="doctor" width="236" height="236"/>
         <image name="edit-settings" width="233" height="236"/>
         <image name="family" width="236" height="236"/>

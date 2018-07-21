@@ -23,28 +23,12 @@ enum RealmConfig {
     
     // MARK: - private configurations
     private static let mainConfig = Realm.Configuration(
-        fileURL: URL.inDocumentsFolder(fileName: "default.realm"),
-        schemaVersion: 1,
-        migrationBlock: { migration, oldSchemaVersion in
-            // We haven’t migrated anything yet, so oldSchemaVersion == 0
-            if (oldSchemaVersion < 1) {
-                // Nothing to do!
-                // Realm will automatically detect new properties and removed properties
-                // And will update the schema on disk automatically
-            }
-    })
-    
+        fileURL: URL.inDocumentsFolder(fileName: "main.realm"),
+        schemaVersion: 0)
+
     private static let presetConfig = Realm.Configuration(
-        fileURL: URL.inDocumentsFolder(fileName: "preset.realm"),
-        schemaVersion: 1,
-        migrationBlock: { migration, oldSchemaVersion in
-            // We haven’t migrated anything yet, so oldSchemaVersion == 0
-            if (oldSchemaVersion < 1) {
-                // Nothing to do!
-                // Realm will automatically detect new properties and removed properties
-                // And will update the schema on disk automatically
-            }
-    })
+        fileURL: Bundle.main.url(forResource: "preset-data", withExtension: "realm"),
+        schemaVersion: 0)
     
     // MARK: - enum cases
     case main
@@ -54,13 +38,49 @@ enum RealmConfig {
     var configuration: Realm.Configuration {
         switch self {
         case .main:
+            _ = RealmConfig.copyInitialFile
             return RealmConfig.mainConfig
         case .preset:
             return RealmConfig.presetConfig
         }
     }
 
+    private static var copyInitialFile: Void = {
+        copyInitialData(
+            Bundle.main.url(forResource: "preset-data", withExtension: "realm")!,
+            to: RealmConfig.mainConfig.fileURL!)
+    }()
+    
+    static func copyInitialData(_ from: URL, to: URL) {
+        let copy = {
+            _ = try? FileManager.default.removeItem(at: to)
+            try! FileManager.default.copyItem(at: from, to: to)
+            deletePresetReminders()
+        }
+        
+        let exists: Bool
+        do {
+            exists = try to.checkPromisedItemIsReachable()
+        } catch {
+            copy()
+            return
+        }
+        if !exists {
+            copy()
+        }
+    }
 
+    static func deletePresetReminders() {
+        let realm = try! Realm(configuration: mainConfig)
+        do {
+            try realm.write {
+                let presetReminder = realm.objects(Reminder.self)
+                realm.delete(presetReminder)
+            }
+        } catch {
+            print("error -------")
+        }
+    }
     
     
 }

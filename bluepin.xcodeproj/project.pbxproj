@@ -37,6 +37,7 @@
 		5A8B044920E9E95B0073387C /* MonthlyConfigVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A8B044820E9E95B0073387C /* MonthlyConfigVC.swift */; };
 		5A8B044B20E9E9720073387C /* OnceConfigVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A8B044A20E9E9720073387C /* OnceConfigVC.swift */; };
 		5A943E0720FC8D590099FD66 /* RealmConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A943E0620FC8D590099FD66 /* RealmConfig.swift */; };
+		5A988CFF2102E8EA00E75512 /* preset-data.realm in Resources */ = {isa = PBXBuildFile; fileRef = 5A988CFE2102E8EA00E75512 /* preset-data.realm */; };
 		5A9BABB720A5827A000F3976 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A9BABB620A5827A000F3976 /* AppDelegate.swift */; };
 		5A9BABB920A5827A000F3976 /* MyRemindersVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A9BABB820A5827A000F3976 /* MyRemindersVC.swift */; };
 		5A9BABBC20A5827A000F3976 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5A9BABBA20A5827A000F3976 /* Main.storyboard */; };
@@ -98,6 +99,7 @@
 		5A8B044820E9E95B0073387C /* MonthlyConfigVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonthlyConfigVC.swift; sourceTree = "<group>"; };
 		5A8B044A20E9E9720073387C /* OnceConfigVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnceConfigVC.swift; sourceTree = "<group>"; };
 		5A943E0620FC8D590099FD66 /* RealmConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmConfig.swift; sourceTree = "<group>"; };
+		5A988CFE2102E8EA00E75512 /* preset-data.realm */ = {isa = PBXFileReference; lastKnownFileType = file; name = "preset-data.realm"; path = "../../../../Bluepin/preset-data.realm"; sourceTree = "<group>"; };
 		5A9BABB320A5827A000F3976 /* bluepin.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = bluepin.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5A9BABB620A5827A000F3976 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5A9BABB820A5827A000F3976 /* MyRemindersVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyRemindersVC.swift; sourceTree = "<group>"; };
@@ -145,6 +147,14 @@
 				5AEBA5CA20F5A93300DB3A35 /* Category.swift */,
 			);
 			path = model;
+			sourceTree = "<group>";
+		};
+		5A4F2E3D210045EB0088E849 /* assets */ = {
+			isa = PBXGroup;
+			children = (
+				5A988CFE2102E8EA00E75512 /* preset-data.realm */,
+			);
+			path = assets;
 			sourceTree = "<group>";
 		};
 		5A68BB3B20A98EDD00BC0509 /* lato */ = {
@@ -263,6 +273,7 @@
 		5A9BABB520A5827A000F3976 /* bluepin */ = {
 			isa = PBXGroup;
 			children = (
+				5A4F2E3D210045EB0088E849 /* assets */,
 				5A68BB5A20B363C700BC0509 /* util */,
 				5A68BB5120AEB45100BC0509 /* service */,
 				5A68BB4D20ACD76A00BC0509 /* controller */,
@@ -393,6 +404,7 @@
 			files = (
 				5A68BB4320A98EDE00BC0509 /* Lato-Light.ttf in Resources */,
 				5A68BB4720A98EDE00BC0509 /* Lato-Thin.ttf in Resources */,
+				5A988CFF2102E8EA00E75512 /* preset-data.realm in Resources */,
 				5A68BB4620A98EDE00BC0509 /* Lato-Semibold.ttf in Resources */,
 				5A68BB4420A98EDE00BC0509 /* Lato-Medium.ttf in Resources */,
 				5A9BABC120A5827A000F3976 /* LaunchScreen.storyboard in Resources */,
