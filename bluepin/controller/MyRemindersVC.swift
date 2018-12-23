@@ -30,6 +30,7 @@ class MyRemindersVC: UIViewController {
         super.viewWillAppear(true)
         loadCategories()
         tableView.reloadData()
+        print(UNService.shared.printScheduled())
     }
     
     func loadCategories() {

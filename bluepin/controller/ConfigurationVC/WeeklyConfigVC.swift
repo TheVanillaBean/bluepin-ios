@@ -100,13 +100,13 @@ class WeeklyConfigVC: UIViewController {
             weekBtnImageNames[weekBtn.tag].append("-orange")
             weeklyIndexSet.insert(weekBtn.tag)
         }
-        
+        print("tag \(weekBtn.tag)")
         weekBtn.setImage(UIImage(named: weekBtnImageNames[weekBtn.tag]), for: .normal)
         
     }
     
     @IBAction func setBtnPressed(_ sender: Any) {
-        if let reminder = UNService.shared.reminder(withTitle: "Reminder", body: "Body", startingDate: selectedDate, repeatMethod: .weekly, repeatInterval: 1, weekdaySet: weeklyIndexSet){
+        if let reminder = UNService.shared.reminder(withTitle: (UNService.shared.selectedReminder?.name)!, body:  Reminder.repeatFormat(withMethod: .weekly, repeatInterval: 1), startingDate: selectedDate, repeatMethod: .weekly, repeatInterval: 1, weekdaySet: weeklyIndexSet) {
             
             if let selectedReminder = UNService.shared.selectedReminder {
                 
@@ -132,7 +132,7 @@ class WeeklyConfigVC: UIViewController {
                             UNService.shared.selectedReminder?.repeatMethod = RepeatMethod.weekly.rawValue
                             UNService.shared.selectedReminder?.repeatInterval = 1
                             UNService.shared.selectedReminder?.setValue(Reminder.toRealmList(withWeekdaySet: weeklyIndexSet), forKey: "weekdaySet")
-                            UNService.shared.selectedReminder?.nextReminder = reminder.last?.repeatTrigger?.nextTriggerDate()
+                            UNService.shared.selectedReminder?.nextReminder = reminder.first?.repeatTrigger?.nextTriggerDate()
                         }
                     } catch {
                         print("Error saving items \(error)")
@@ -140,12 +140,13 @@ class WeeklyConfigVC: UIViewController {
                     
                 } else {
                     let realmReminder = Reminder()
+                    realmReminder.ID = (reminder.last?.notificationInfo.identifier)!
                     realmReminder.name = selectedReminder.name
                     realmReminder.reminderDescription = selectedReminder.reminderDescription
                     realmReminder.repeatMethod = RepeatMethod.weekly.rawValue
                     realmReminder.repeatInterval = 1
                     realmReminder.weekdaySet = Reminder.toRealmList(withWeekdaySet: weeklyIndexSet)
-                    realmReminder.nextReminder = reminder.last?.repeatTrigger?.nextTriggerDate()
+                    realmReminder.nextReminder = reminder.first?.repeatTrigger?.nextTriggerDate()
                     
                     saveReminder(reminder: realmReminder, category: UNService.shared.selectedCategory!)
                     

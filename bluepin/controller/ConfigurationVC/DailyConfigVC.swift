@@ -81,7 +81,7 @@ class DailyConfigVC: UIViewController {
         
         let interval = Int(dayIntervalStepper.value)
         
-        if let reminder = UNService.shared.reminder(withTitle: (UNService.shared.selectedReminder?.name)!, body: "", startingDate: selectedDate, repeatMethod: .daily, repeatInterval: interval) {
+        if let reminder = UNService.shared.reminder(withTitle: (UNService.shared.selectedReminder?.name)!, body:  Reminder.repeatFormat(withMethod: .daily, repeatInterval: interval), startingDate: selectedDate, repeatMethod: .daily, repeatInterval: interval) {
             
             if let selectedReminder = UNService.shared.selectedReminder {
                 
@@ -106,7 +106,7 @@ class DailyConfigVC: UIViewController {
                             UNService.shared.selectedReminder?.ID = (reminder.last?.notificationInfo.identifier)!
                             UNService.shared.selectedReminder?.repeatMethod = RepeatMethod.daily.rawValue
                             UNService.shared.selectedReminder?.repeatInterval = interval
-                            UNService.shared.selectedReminder?.nextReminder = reminder.last?.repeatTrigger?.nextTriggerDate()
+                            UNService.shared.selectedReminder?.nextReminder = reminder.first?.repeatTrigger?.nextTriggerDate()
                         }
                     } catch {
                         print("Error saving items \(error)")
@@ -115,11 +115,12 @@ class DailyConfigVC: UIViewController {
                 } else {
                     
                     let realmReminder = Reminder()
+                    realmReminder.ID = (reminder.last?.notificationInfo.identifier)!
                     realmReminder.name = selectedReminder.name
                     realmReminder.reminderDescription = selectedReminder.reminderDescription
                     realmReminder.repeatMethod = RepeatMethod.daily.rawValue
                     realmReminder.repeatInterval = interval
-                    realmReminder.nextReminder = reminder.last?.repeatTrigger?.nextTriggerDate()
+                    realmReminder.nextReminder = reminder.first?.repeatTrigger?.nextTriggerDate()
                     
                     saveReminder(reminder: realmReminder, category: UNService.shared.selectedCategory!)
                     

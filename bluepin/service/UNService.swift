@@ -51,18 +51,6 @@ public class UNService: NSObject {
         }
     }
     
-    var _alreadySetReminder: Bool?
-    
-    var alreadySetReminder: Bool? {
-        get {
-            return _alreadySetReminder
-        }
-        
-        set(isSet) {
-            _alreadySetReminder = isSet
-        }
-    }
-    
     var _userCategories: Results<Category>?
     
     var userCategories: Results<Category>? {
@@ -98,20 +86,24 @@ public class UNService: NSObject {
                 print("User Denied Access for Notifications")
                 return
             }
-            
-            self.unCenter.delegate = self 
+            self.assignDelegate()
         }
         
     }
     
+    func assignDelegate() {
+        self.unCenter.delegate = self
+    }
+    
     private func weekday(weekdaySet: IndexSet, date: Date) -> Date{
+        
         let calendar = Calendar.current
         var weekday = calendar.component(.weekday, from: date)
         
         weekday = weekdaySet.integerGreaterThan(weekday) ?? weekdaySet.first!
         
         var components = calendar.dateComponents([.hour, .minute], from: date)
-        components.weekday = weekday
+        components.weekday = weekday + 1
         
         return calendar.nextDate(after: date, matching: components, matchingPolicy: .nextTime)!
     }
@@ -170,13 +162,13 @@ public class UNService: NSObject {
             
         } else if repeatMethod == .weekly && weekdaySet.count > 1 {
             
-            var startDate = startingDate + (repeatInterval - 1).weeks
+            var set = weekdaySet
 
             for i in 1...weekdaySet.count {
-                let nextFireDate = trigger(forStartingDate: startDate, repeatMethod: repeatMethod, repeatInterval: repeatInterval, weekdaySet: weekdaySet)
+                let nextFireDate = trigger(forStartingDate: startingDate, repeatMethod: repeatMethod, repeatInterval: repeatInterval, weekdaySet: set)
                 let notification = BluepinNotification(identifier: "\(identifer)_\(i)", groupIdentifier: identifer, title: title, body: body, date: nextFireDate.nextTriggerDate()!, repeatMethod: repeatMethod, repeatInterval: repeatInterval, repeatTrigger: nextFireDate, weekdaySet: weekdaySet)
                 notifications.append(notification)
-                startDate = nextFireDate.nextTriggerDate()!
+                set.remove(set.first!)
             }
             
         } else {
@@ -229,6 +221,7 @@ public class UNService: NSObject {
         content.userInfo                           = notification.notificationDictionary()
         
         content.badge                              = notification.badge
+        
         
         let trigger                                = notification.repeatTrigger
         
@@ -333,7 +326,7 @@ extension UNService: UNUserNotificationCenterDelegate {
     public func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
         print("UN WILL present")
         
-        let options: UNNotificationPresentationOptions = [.alert, .sound]
+        let options: UNNotificationPresentationOptions = [.alert, .badge, .sound]
         completionHandler(options)
     }
 }

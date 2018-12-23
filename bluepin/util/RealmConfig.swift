@@ -28,7 +28,9 @@ enum RealmConfig {
 
     private static let presetConfig = Realm.Configuration(
         fileURL: Bundle.main.url(forResource: "preset-data", withExtension: "realm"),
+        readOnly: true,
         schemaVersion: 0)
+    
     
     // MARK: - enum cases
     case main
@@ -78,7 +80,7 @@ enum RealmConfig {
                 realm.delete(presetReminder)
             }
         } catch {
-            print("error -------")
+            print("error")
         }
     }
     

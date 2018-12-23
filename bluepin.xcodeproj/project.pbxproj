@@ -37,7 +37,6 @@
 		5A8B044920E9E95B0073387C /* MonthlyConfigVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A8B044820E9E95B0073387C /* MonthlyConfigVC.swift */; };
 		5A8B044B20E9E9720073387C /* OnceConfigVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A8B044A20E9E9720073387C /* OnceConfigVC.swift */; };
 		5A943E0720FC8D590099FD66 /* RealmConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A943E0620FC8D590099FD66 /* RealmConfig.swift */; };
-		5A988CFF2102E8EA00E75512 /* preset-data.realm in Resources */ = {isa = PBXBuildFile; fileRef = 5A988CFE2102E8EA00E75512 /* preset-data.realm */; };
 		5A9BABB720A5827A000F3976 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A9BABB620A5827A000F3976 /* AppDelegate.swift */; };
 		5A9BABB920A5827A000F3976 /* MyRemindersVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A9BABB820A5827A000F3976 /* MyRemindersVC.swift */; };
 		5A9BABBC20A5827A000F3976 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5A9BABBA20A5827A000F3976 /* Main.storyboard */; };
@@ -46,6 +45,7 @@
 		5AAD5C8620BBDA4E00E86806 /* NotificationScheduleTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AAD5C8520BBDA4E00E86806 /* NotificationScheduleTests.swift */; };
 		5AAD5C8820BFD99600E86806 /* SortedArray.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AAD5C8720BFD99500E86806 /* SortedArray.swift */; };
 		5AB1EC5E20EF7630003F64C3 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AB1EC5D20EF7630003F64C3 /* Constants.swift */; };
+		5ADFC9B32116640000F2D705 /* preset-data.realm in Resources */ = {isa = PBXBuildFile; fileRef = 5ADFC9B22116640000F2D705 /* preset-data.realm */; };
 		5AEBA5C920F5A5EB00DB3A35 /* Reminder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AEBA5C820F5A5EB00DB3A35 /* Reminder.swift */; };
 		5AEBA5CB20F5A93300DB3A35 /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AEBA5CA20F5A93300DB3A35 /* Category.swift */; };
 		5AEBA5CD20F6C90B00DB3A35 /* Cells.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AEBA5CC20F6C90B00DB3A35 /* Cells.swift */; };
@@ -99,7 +99,6 @@
 		5A8B044820E9E95B0073387C /* MonthlyConfigVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonthlyConfigVC.swift; sourceTree = "<group>"; };
 		5A8B044A20E9E9720073387C /* OnceConfigVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnceConfigVC.swift; sourceTree = "<group>"; };
 		5A943E0620FC8D590099FD66 /* RealmConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmConfig.swift; sourceTree = "<group>"; };
-		5A988CFE2102E8EA00E75512 /* preset-data.realm */ = {isa = PBXFileReference; lastKnownFileType = file; name = "preset-data.realm"; path = "../../../../Bluepin/preset-data.realm"; sourceTree = "<group>"; };
 		5A9BABB320A5827A000F3976 /* bluepin.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = bluepin.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5A9BABB620A5827A000F3976 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5A9BABB820A5827A000F3976 /* MyRemindersVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyRemindersVC.swift; sourceTree = "<group>"; };
@@ -110,6 +109,7 @@
 		5AAD5C8520BBDA4E00E86806 /* NotificationScheduleTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationScheduleTests.swift; sourceTree = "<group>"; };
 		5AAD5C8720BFD99500E86806 /* SortedArray.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SortedArray.swift; sourceTree = "<group>"; };
 		5AB1EC5D20EF7630003F64C3 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		5ADFC9B22116640000F2D705 /* preset-data.realm */ = {isa = PBXFileReference; lastKnownFileType = file; name = "preset-data.realm"; path = "../../../../Reminder List/preset-data.realm"; sourceTree = "<group>"; };
 		5AEBA5C820F5A5EB00DB3A35 /* Reminder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reminder.swift; sourceTree = "<group>"; };
 		5AEBA5CA20F5A93300DB3A35 /* Category.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
 		5AEBA5CC20F6C90B00DB3A35 /* Cells.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cells.swift; sourceTree = "<group>"; };
@@ -152,7 +152,7 @@
 		5A4F2E3D210045EB0088E849 /* assets */ = {
 			isa = PBXGroup;
 			children = (
-				5A988CFE2102E8EA00E75512 /* preset-data.realm */,
+				5ADFC9B22116640000F2D705 /* preset-data.realm */,
 			);
 			path = assets;
 			sourceTree = "<group>";
@@ -404,7 +404,7 @@
 			files = (
 				5A68BB4320A98EDE00BC0509 /* Lato-Light.ttf in Resources */,
 				5A68BB4720A98EDE00BC0509 /* Lato-Thin.ttf in Resources */,
-				5A988CFF2102E8EA00E75512 /* preset-data.realm in Resources */,
+				5ADFC9B32116640000F2D705 /* preset-data.realm in Resources */,
 				5A68BB4620A98EDE00BC0509 /* Lato-Semibold.ttf in Resources */,
 				5A68BB4420A98EDE00BC0509 /* Lato-Medium.ttf in Resources */,
 				5A9BABC120A5827A000F3976 /* LaunchScreen.storyboard in Resources */,
@@ -566,12 +566,14 @@
 			baseConfigurationReference = 21BF6B9718972D558FA58FAB /* Pods-bluepinTests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = M2D39CNGJ2;
 				INFOPLIST_FILE = bluepinTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.bluepinapp.bluepinTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/bluepin.app/bluepin";
@@ -583,12 +585,14 @@
 			baseConfigurationReference = A177FD89C421EE26BCB0D26D /* Pods-bluepinTests.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = M2D39CNGJ2;
 				INFOPLIST_FILE = bluepinTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.bluepinapp.bluepinTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/bluepin.app/bluepin";
@@ -645,7 +649,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -698,7 +702,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
@@ -712,6 +716,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = M2D39CNGJ2;
@@ -724,7 +729,7 @@
 				SWIFT_OBJC_BRIDGING_HEADER = "";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -734,6 +739,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = M2D39CNGJ2;
@@ -745,7 +751,7 @@
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "";
 				SWIFT_VERSION = 4.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};

@@ -24,7 +24,7 @@ public class Reminder: Object {
         
         switch repeatMethod {
         case RepeatMethod.once.rawValue:
-            formatString = "This reminder repeats once"
+            formatString = "This reminder occurs once"
         case RepeatMethod.daily.rawValue:
             formatString = "This reminder repeats every \(repeatInterval) days"
         case RepeatMethod.weekly.rawValue:
@@ -32,10 +32,31 @@ public class Reminder: Object {
         case RepeatMethod.monthly.rawValue:
             formatString = "This reminder repeats every \(repeatInterval) months"
         default:
-            formatString = "This reminder repeats once"
+            formatString = "This reminder occurs once"
         }
         
         if repeatInterval == 1 && repeatMethod != RepeatMethod.once.rawValue {
+            formatString.removeLast()
+        }
+        
+        return formatString
+    }
+    
+    static func repeatFormat(withMethod method: RepeatMethod, repeatInterval: Int) -> String {
+        var formatString: String
+        
+        switch method {
+        case .once:
+            formatString = "This reminder occurs once"
+        case .daily:
+            formatString = "This reminder repeats every \(repeatInterval) days"
+        case .weekly:
+            formatString = "This reminder repeats every \(repeatInterval) weeks"
+        case .monthly:
+            formatString = "This reminder repeats every \(repeatInterval) months"
+        }
+        
+        if repeatInterval == 1 && method != .once {
             formatString.removeLast()
         }
         

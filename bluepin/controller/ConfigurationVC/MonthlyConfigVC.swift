@@ -80,7 +80,7 @@ class MonthlyConfigVC: UIViewController {
     @IBAction func setBtn(_ sender: Any) {
         let interval = Int(monthIntervalStepper.value)
         
-        if let reminder = UNService.shared.reminder(withTitle: (UNService.shared.selectedReminder?.name)!, body: "", startingDate: selectedDate, repeatMethod: .monthly, repeatInterval: interval) {
+        if let reminder = UNService.shared.reminder(withTitle: (UNService.shared.selectedReminder?.name)!, body:  Reminder.repeatFormat(withMethod: .monthly, repeatInterval: interval), startingDate: selectedDate, repeatMethod: .monthly, repeatInterval: interval) {
         
             if let selectedReminder = UNService.shared.selectedReminder {
                 
@@ -105,7 +105,7 @@ class MonthlyConfigVC: UIViewController {
                             UNService.shared.selectedReminder?.ID = (reminder.last?.notificationInfo.identifier)!
                             UNService.shared.selectedReminder?.repeatMethod = RepeatMethod.monthly.rawValue
                             UNService.shared.selectedReminder?.repeatInterval = interval
-                            UNService.shared.selectedReminder?.nextReminder = reminder.last?.repeatTrigger?.nextTriggerDate()
+                            UNService.shared.selectedReminder?.nextReminder = reminder.first?.repeatTrigger?.nextTriggerDate()
                             
                         }
                     } catch {
@@ -120,7 +120,7 @@ class MonthlyConfigVC: UIViewController {
                     realmReminder.reminderDescription = selectedReminder.reminderDescription
                     realmReminder.repeatMethod = RepeatMethod.monthly.rawValue
                     realmReminder.repeatInterval = interval
-                    realmReminder.nextReminder = reminder.last?.repeatTrigger?.nextTriggerDate()
+                    realmReminder.nextReminder = reminder.first?.repeatTrigger?.nextTriggerDate()
                     
                     saveReminder(reminder: realmReminder, category: UNService.shared.selectedCategory!)
 

@@ -56,7 +56,7 @@ class OnceConfigVC: UIViewController {
     }
     
     @IBAction func setBtnPressed(_ sender: Any) {
-        if let reminder = UNService.shared.reminder(withTitle: (UNService.shared.selectedReminder?.name)!, body: "", startingDate: datePicker.date) {
+        if let reminder = UNService.shared.reminder(withTitle: (UNService.shared.selectedReminder?.name)!, body: Reminder.repeatFormat(withMethod: .once, repeatInterval: 0), startingDate: datePicker.date) {
             
             if let selectedReminder = UNService.shared.selectedReminder {
                 
@@ -73,15 +73,16 @@ class OnceConfigVC: UIViewController {
                                 NotificationPersistedQueue.shared.remove(reminder)
                             }
                             
-                            UNService.shared.schedule(notifications: reminder)
-                            
                             NotificationPersistedQueue.shared.insert(reminder)
                             let _ = NotificationPersistedQueue.shared.saveQueue()
                             
                             UNService.shared.selectedReminder?.ID = (reminder.last?.notificationInfo.identifier)!
                             UNService.shared.selectedReminder?.repeatMethod = RepeatMethod.once.rawValue
                             UNService.shared.selectedReminder?.repeatInterval = 0
-                            UNService.shared.selectedReminder?.nextReminder = reminder.last?.repeatTrigger?.nextTriggerDate()
+                            UNService.shared.selectedReminder?.nextReminder = reminder.first?.repeatTrigger?.nextTriggerDate()
+                            
+                            UNService.shared.schedule(notifications: reminder)
+
                         }
                     } catch {
                         print("Error saving items \(error)")
@@ -89,11 +90,12 @@ class OnceConfigVC: UIViewController {
                     
                 } else {
                     let realmReminder = Reminder()
+                    realmReminder.ID = (reminder.last?.notificationInfo.identifier)!
                     realmReminder.name = selectedReminder.name
                     realmReminder.reminderDescription = selectedReminder.reminderDescription
                     realmReminder.repeatMethod = RepeatMethod.once.rawValue
                     realmReminder.repeatInterval = 0
-                    realmReminder.nextReminder = reminder.last?.repeatTrigger?.nextTriggerDate()
+                    realmReminder.nextReminder = reminder.first?.repeatTrigger?.nextTriggerDate()
                     
                     saveReminder(reminder: realmReminder, category: UNService.shared.selectedCategory!)
                     
