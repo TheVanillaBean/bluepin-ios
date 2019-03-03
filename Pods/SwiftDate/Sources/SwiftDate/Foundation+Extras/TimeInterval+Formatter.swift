@@ -36,6 +36,15 @@ public extension TimeInterval {
 		/// The preferred style for units.
 		/// By default is `.abbreviated`.
 		public var unitsStyle: DateComponentsFormatter.UnitsStyle = .abbreviated
+		
+		/// Locale of the formatter
+		public var locale: LocaleConvertible? {
+			set { self.calendar.locale = newValue?.toLocale() }
+			get { return self.calendar.locale }
+		}
+		
+		/// Calendar
+		public var calendar: Calendar = Calendar.autoupdatingCurrent
 
 		public func apply(toFormatter formatter: DateComponentsFormatter) {
 			formatter.allowsFractionalUnits = self.allowsFractionalUnits
@@ -43,7 +52,10 @@ public extension TimeInterval {
 			formatter.collapsesLargestUnit = self.collapsesLargestUnit
 			formatter.maximumUnitCount = self.maximumUnitCount
 			formatter.unitsStyle = self.unitsStyle
+			formatter.calendar = self.calendar
 		}
+		
+		public init() {}
 	}
 
 	/// Return the local thread shared formatter for date components
@@ -57,16 +69,31 @@ public extension TimeInterval {
 		})
 	}
 
+	@available(*, deprecated: 5.0.13, obsoleted: 5.1, message: "Use toIntervalString function instead")
+	public func toString(options callback: ((inout ComponentsFormatterOptions) -> Void)? = nil) -> String {
+		return self.toIntervalString(options: callback)
+	}
+	
 	/// Format a time interval in a string with desidered components with passed style.
 	///
 	/// - Parameters:
 	///   - units: units to include in string.
 	///   - style: style of the units, by default is `.abbreviated`
 	/// - Returns: string representation
-	public func toString(options callback: ((inout ComponentsFormatterOptions) -> Void)? = nil) -> String {
+	public func toIntervalString(options callback: ((inout ComponentsFormatterOptions) -> Void)? = nil) -> String {
 		let formatter = TimeInterval.sharedFormatter()
 		var options = ComponentsFormatterOptions()
 		callback?(&options)
+		options.apply(toFormatter: formatter)
+		return (formatter.string(from: self) ?? "")
+	}
+	
+	/// Format a time interval in a string with desidered components with passed style.
+	///
+	/// - Parameter options: options for formatting.
+	/// - Returns: string representation
+	public func toString(options: ComponentsFormatterOptions) -> String {
+		let formatter = TimeInterval.sharedFormatter()
 		options.apply(toFormatter: formatter)
 		return (formatter.string(from: self) ?? "")
 	}
@@ -76,18 +103,15 @@ public extension TimeInterval {
 	/// - Parameter zero: behaviour with zero.
 	/// - Returns: string representation
 	public func toClock(zero: DateComponentsFormatter.ZeroFormattingBehavior = .pad) -> String {
-		return self.toString(options: {
+		return self.toIntervalString(options: {
 			$0.unitsStyle = .positional
 			$0.zeroFormattingBehavior = zero
 		})
 	}
 
-	/// Extract requested time units from interval.
-	///
-	/// - Parameter units: units to extract
-	/// - Returns: dictionary with requested values
-
 	/// Extract requeste time units components from given interval.
+	/// Reference date's calendar is used to make the extraction.
+	///
 	/// NOTE:
 	///		Extraction is calendar/date based; if you specify a `refDate` calculation is made
 	/// 	between the `refDate` and `refDate + interval`.
@@ -98,13 +122,22 @@ public extension TimeInterval {
 	///   - units: units to extract
 	///   - from: starting reference date, `nil` means `now()` in the context of the default region set.
 	/// - Returns: dictionary with extracted components
-	public func toUnits(_ units: Set<Calendar.Component>, from refDate: DateInRegion? = nil) -> [Calendar.Component: Int] {
-		let date1 = (refDate ?? DateInRegion())
-		let date2 = date1.addingTimeInterval(self)
-
-		let cal = SwiftDate.defaultRegion.calendar
-		let components = cal.dateComponents(units, from: date1.date, to: date2.date)
+	public func toUnits(_ units: Set<Calendar.Component>, to refDate: DateInRegion? = nil) -> [Calendar.Component: Int] {
+		let dateTo = (refDate ?? DateInRegion())
+		let dateFrom = dateTo.addingTimeInterval(-self)
+		let components = dateFrom.calendar.dateComponents(units, from: dateFrom.date, to: dateTo.date)
 		return components.toDict()
 	}
 
+	/// Express a time interval (expressed in seconds) in another time unit you choose.
+	/// Reference date's calendar is used to make the extraction.
+	///
+	/// - parameter component: time unit in which you want to express the calendar component
+	/// - parameter from: starting reference date, `nil` means `now()` in the context of the default region set.
+	///
+	/// - returns: the value of interval expressed in selected `Calendar.Component`
+	public func toUnit(_ component: Calendar.Component, to refDate: DateInRegion? = nil) -> Int? {
+		return self.toUnits([component], to: refDate)[component]
+	}
+	
 }

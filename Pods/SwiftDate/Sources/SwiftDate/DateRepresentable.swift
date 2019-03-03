@@ -31,6 +31,12 @@ public protocol DateRepresentable {
 	/// Day of year unit of the receiver
 	var dayOfYear: Int { get }
 
+	/// The number of day in ordinal style format for the receiver in current locale.
+	/// For example, in the en_US locale, the number 3 is represented as 3rd;
+	/// in the fr_FR locale, the number 3 is represented as 3e.
+	@available(iOS 9.0, macOS 10.11, *)
+	var ordinalDay: String { get }
+
 	/// Hour unit of the receiver.
 	var hour: Int { get }
 
@@ -60,8 +66,9 @@ public protocol DateRepresentable {
 	/// Name of the weekday expressed in given format style.
 	///
 	/// - Parameter style: style to express the value.
+	/// - Parameter locale: locale to use; ignore it to use default's region locale.
 	/// - Returns: weekday name
-	func weekdayName(_ style: SymbolFormatStyle) -> String
+	func weekdayName(_ style: SymbolFormatStyle, locale: LocaleConvertible?) -> String
 
 	/// Week of a year of the receiver.
 	var weekOfYear: Int { get }
@@ -89,8 +96,9 @@ public protocol DateRepresentable {
 	/// Quarter name expressed in given format style.
 	///
 	/// - Parameter style: style to express the value.
+	/// - Parameter locale: locale to use; ignore it to use default's region locale.
 	/// - Returns: quarter name
-	func quarterName(_ style: SymbolFormatStyle) -> String
+	func quarterName(_ style: SymbolFormatStyle, locale: LocaleConvertible?) -> String
 
 	/// Era value of the receiver.
 	var era: Int { get }
@@ -98,8 +106,9 @@ public protocol DateRepresentable {
 	/// Name of the era expressed in given format style.
 	///
 	/// - Parameter style: style to express the value.
+	/// - Parameter locale: locale to use; ignore it to use default's region locale.
 	/// - Returns: era
-	func eraName(_ style: SymbolFormatStyle) -> String
+	func eraName(_ style: SymbolFormatStyle, locale: LocaleConvertible?) -> String
 
 	/// The current daylight saving time offset of the represented date.
 	var DSTOffset: TimeInterval { get }
@@ -335,6 +344,12 @@ public extension DateRepresentable {
 		return self.calendar.ordinality(of: .day, in: .year, for: self.date)!
 	}
 
+	@available(iOS 9.0, macOS 10.11, *)
+	public var ordinalDay: String {
+		let day = self.day
+		return DateFormatter.sharedOrdinalNumberFormatter(locale: self.region.locale).string(from: day as NSNumber) ?? "\(day)"
+	}
+
 	public var hour: Int {
 		return self.dateComponents.hour!
 	}
@@ -364,8 +379,10 @@ public extension DateRepresentable {
 		return self.dateComponents.weekday!
 	}
 
-	func weekdayName(_ style: SymbolFormatStyle) -> String {
-		let formatter = self.formatter(format: nil)
+	func weekdayName(_ style: SymbolFormatStyle, locale: LocaleConvertible? = nil) -> String {
+		let formatter = self.formatter(format: nil) {
+			$0.locale = (locale ?? self.region.locale).toLocale()
+		}
 		let idx = (self.weekday - 1)
 		switch style {
 		case .default:				return formatter.weekdaySymbols[idx]
@@ -402,7 +419,8 @@ public extension DateRepresentable {
 	}
 
 	public var quarter: Int {
-		return self.dateComponents.quarter!
+		let monthsInQuarter = Double(Calendar.current.monthSymbols.count) / 4.0
+		return Int(ceil( Double(self.month) / monthsInQuarter))
 	}
 
 	public var isToday: Bool {
@@ -429,9 +447,11 @@ public extension DateRepresentable {
 		return self.date > Date()
 	}
 
-	func quarterName(_ style: SymbolFormatStyle) -> String {
-		let formatter = self.formatter(format: nil)
-		let idx = self.quarter
+	func quarterName(_ style: SymbolFormatStyle, locale: LocaleConvertible? = nil) -> String {
+		let formatter = self.formatter(format: nil) {
+			$0.locale = (locale ?? self.region.locale).toLocale()
+		}
+		let idx = (self.quarter - 1)
 		switch style {
 		case .default:									return formatter.quarterSymbols[idx]
 		case .defaultStandalone:						return formatter.standaloneQuarterSymbols[idx]
@@ -444,8 +464,10 @@ public extension DateRepresentable {
 		return self.dateComponents.era!
 	}
 
-	func eraName(_ style: SymbolFormatStyle) -> String {
-		let formatter = self.formatter(format: nil)
+	func eraName(_ style: SymbolFormatStyle, locale: LocaleConvertible? = nil) -> String {
+		let formatter = self.formatter(format: nil) {
+			$0.locale = (locale ?? self.region.locale).toLocale()
+		}
 		let idx = (self.era - 1)
 		switch style {
 		case .default, .defaultStandalone:								return formatter.longEraSymbols[idx]
@@ -527,7 +549,7 @@ public extension DateRepresentable {
 		return DateInRegion(self.date, region: region)
 	}
 
-	// MARK: - Extrac Time Components
+	// MARK: - Extract Time Components
 
 	public func toUnits(_ units: Set<Calendar.Component>, to refDate: DateRepresentable) -> [Calendar.Component: Int] {
 		let cal = self.region.calendar

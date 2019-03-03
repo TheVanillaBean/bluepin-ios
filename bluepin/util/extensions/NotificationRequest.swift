@@ -38,7 +38,7 @@ extension UNNotificationRequest: SystemNotification {
         notification.badge         = content.badge
         
         if let sound = content.sound {
-            if sound != UNNotificationSound.default() {
+            if sound != UNNotificationSound.default {
                 notification.sound = NotificationSound(sound: sound)
             }
         }

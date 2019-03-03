@@ -32,6 +32,10 @@ public class NotificationPersistedQueue: NSObject {
         }
     }
     
+    public func insert(_ notification: BluepinNotification) {
+        notifQueue.insert(notification)
+    }
+    
     public func clear() {
         notifQueue.removeAll()
     }
@@ -60,6 +64,13 @@ public class NotificationPersistedQueue: NSObject {
     
     public func saveQueue() -> Bool {
         return NotificationPersistedQueue.shared.save()
+    }
+    
+    public func printQueue() {
+        for notif in notifQueue {
+            print(notif.title!)
+            print()
+        }
     }
     
     private func save() -> Bool {

@@ -45,7 +45,8 @@
 		5AAD5C8620BBDA4E00E86806 /* NotificationScheduleTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AAD5C8520BBDA4E00E86806 /* NotificationScheduleTests.swift */; };
 		5AAD5C8820BFD99600E86806 /* SortedArray.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AAD5C8720BFD99500E86806 /* SortedArray.swift */; };
 		5AB1EC5E20EF7630003F64C3 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AB1EC5D20EF7630003F64C3 /* Constants.swift */; };
-		5ADFC9B32116640000F2D705 /* preset-data.realm in Resources */ = {isa = PBXBuildFile; fileRef = 5ADFC9B22116640000F2D705 /* preset-data.realm */; };
+		5AC2F3C6221BF5CB00FAA482 /* preset-data.realm in Resources */ = {isa = PBXBuildFile; fileRef = 5AC2F3C5221BF5CB00FAA482 /* preset-data.realm */; };
+		5AC2F3C7221BF5CB00FAA482 /* preset-data.realm in Resources */ = {isa = PBXBuildFile; fileRef = 5AC2F3C5221BF5CB00FAA482 /* preset-data.realm */; };
 		5AEBA5C920F5A5EB00DB3A35 /* Reminder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AEBA5C820F5A5EB00DB3A35 /* Reminder.swift */; };
 		5AEBA5CB20F5A93300DB3A35 /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AEBA5CA20F5A93300DB3A35 /* Category.swift */; };
 		5AEBA5CD20F6C90B00DB3A35 /* Cells.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AEBA5CC20F6C90B00DB3A35 /* Cells.swift */; };
@@ -109,7 +110,7 @@
 		5AAD5C8520BBDA4E00E86806 /* NotificationScheduleTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationScheduleTests.swift; sourceTree = "<group>"; };
 		5AAD5C8720BFD99500E86806 /* SortedArray.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SortedArray.swift; sourceTree = "<group>"; };
 		5AB1EC5D20EF7630003F64C3 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
-		5ADFC9B22116640000F2D705 /* preset-data.realm */ = {isa = PBXFileReference; lastKnownFileType = file; name = "preset-data.realm"; path = "../../../../Reminder List/preset-data.realm"; sourceTree = "<group>"; };
+		5AC2F3C5221BF5CB00FAA482 /* preset-data.realm */ = {isa = PBXFileReference; lastKnownFileType = file; path = "preset-data.realm"; sourceTree = "<group>"; };
 		5AEBA5C820F5A5EB00DB3A35 /* Reminder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reminder.swift; sourceTree = "<group>"; };
 		5AEBA5CA20F5A93300DB3A35 /* Category.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
 		5AEBA5CC20F6C90B00DB3A35 /* Cells.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cells.swift; sourceTree = "<group>"; };
@@ -152,7 +153,7 @@
 		5A4F2E3D210045EB0088E849 /* assets */ = {
 			isa = PBXGroup;
 			children = (
-				5ADFC9B22116640000F2D705 /* preset-data.realm */,
+				5AC2F3C5221BF5CB00FAA482 /* preset-data.realm */,
 			);
 			path = assets;
 			sourceTree = "<group>";
@@ -361,12 +362,13 @@
 				TargetAttributes = {
 					5A68BB6520BA907600BC0509 = {
 						CreatedOnToolsVersion = 9.2;
+						LastSwiftMigration = 1010;
 						ProvisioningStyle = Automatic;
 						TestTargetID = 5A9BABB220A5827A000F3976;
 					};
 					5A9BABB220A5827A000F3976 = {
 						CreatedOnToolsVersion = 9.2;
-						LastSwiftMigration = 0940;
+						LastSwiftMigration = 1010;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -395,6 +397,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5AC2F3C7221BF5CB00FAA482 /* preset-data.realm in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -404,7 +407,7 @@
 			files = (
 				5A68BB4320A98EDE00BC0509 /* Lato-Light.ttf in Resources */,
 				5A68BB4720A98EDE00BC0509 /* Lato-Thin.ttf in Resources */,
-				5ADFC9B32116640000F2D705 /* preset-data.realm in Resources */,
+				5AC2F3C6221BF5CB00FAA482 /* preset-data.realm in Resources */,
 				5A68BB4620A98EDE00BC0509 /* Lato-Semibold.ttf in Resources */,
 				5A68BB4420A98EDE00BC0509 /* Lato-Medium.ttf in Resources */,
 				5A9BABC120A5827A000F3976 /* LaunchScreen.storyboard in Resources */,
@@ -574,7 +577,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.bluepinapp.bluepinTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/bluepin.app/bluepin";
 			};
@@ -593,7 +596,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.bluepinapp.bluepinTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/bluepin.app/bluepin";
 			};
@@ -649,7 +652,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -702,7 +705,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
@@ -721,14 +724,14 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = M2D39CNGJ2;
 				INFOPLIST_FILE = bluepin/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.bluepinapp.bluepin;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
@@ -744,13 +747,13 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = M2D39CNGJ2;
 				INFOPLIST_FILE = bluepin/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.bluepinapp.bluepin;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;

@@ -8,7 +8,7 @@
 
 import Foundation
 
-public struct DateInRegion: DateRepresentable, Codable, CustomStringConvertible, Comparable, Hashable {
+public struct DateInRegion: DateRepresentable, Decodable, Encodable, CustomStringConvertible, Comparable, Hashable {
 
 	/// Absolute date represented. This date is not associated with any timezone or calendar
 	/// but represent the absolute number of seconds since Jan 1, 2001 at 00:00:00 UTC.
@@ -17,15 +17,10 @@ public struct DateInRegion: DateRepresentable, Codable, CustomStringConvertible,
 	/// Associated region which define where the date is represented into the world.
 	public let region: Region
 
-	/// Allows to generate an unique hash vaalue for an instance of `DateInRegion`
-	public var hashValue: Int {
-		return combineHashes([self.date.hashValue, self.region.hashValue])
-	}
-
 	/// Formatter used to transform this object in a string. By default is `nil` because SwiftDate
 	/// uses the thread shared formatter in order to avoid expensive init of the `DateFormatter` object.
 	/// However, if you need of a custom behaviour you can set a valid value.
-	public var customFormatter: DateFormatter?
+	public var customFormatter: DateFormatter? = nil
 
 	/// Extract date components by taking care of the region in which the date is expressed.
 	public var dateComponents: DateComponents {
@@ -103,7 +98,7 @@ public struct DateInRegion: DateRepresentable, Codable, CustomStringConvertible,
 	///   - interval: seconds since the Unix Epoch timestamp.
 	///   - region: region in which the date must be expressed, `nil` uses the default region at UTC timezone
 	public init(milliseconds interval: Int, region: Region = Region.UTC) {
-		self.date = Date(timeIntervalSince1970: TimeInterval(interval / 1000))
+		self.date = Date(timeIntervalSince1970: TimeInterval(interval) / 1000)
 		self.region = region
 	}
 

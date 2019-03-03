@@ -8,7 +8,7 @@ target 'bluepin' do
   # Pods for bluepin
 
   pod 'SwiftDate', '~> 5.0'
-  pod 'Pageboy', '~> 2.0'
+  pod 'Pageboy', '~> 3.0'
   pod 'PopupDialog', '~> 0.7'
   pod 'RealmSwift'
 

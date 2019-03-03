@@ -52,7 +52,7 @@ public extension Date {
 	///   - granularity: smallest unit that must, along with all larger units, be less for the given dates
 	/// - Returns: Boolean
 	public func isBeforeDate(_ refDate: Date, orEqual: Bool = false, granularity: Calendar.Component) -> Bool {
-		return self.inDefaultRegion().isBeforeDate(refDate.inDefaultRegion(), granularity: granularity)
+		return self.inDefaultRegion().isBeforeDate(refDate.inDefaultRegion(), orEqual: orEqual, granularity: granularity)
 	}
 
 	/// Compares whether the receiver is after `date` based on their components down to a given unit granularity.
@@ -63,7 +63,7 @@ public extension Date {
 	///   - granularity: Smallest unit that must, along with all larger units, be greater for the given dates.
 	/// - Returns: Boolean
 	public func isAfterDate(_ refDate: Date, orEqual: Bool = false, granularity: Calendar.Component) -> Bool {
-		return self.inDefaultRegion().isAfterDate(refDate.inDefaultRegion(), granularity: granularity)
+		return self.inDefaultRegion().isAfterDate(refDate.inDefaultRegion(), orEqual: orEqual, granularity: granularity)
 	}
 
 	/// Return true if receiver data is contained in the range specified by two dates.
@@ -75,7 +75,19 @@ public extension Date {
 	///   - granularity: smallest unit that must, along with all larger units, be greater for the given dates.
 	/// - Returns: Boolean
 	public func isInRange(date startDate: Date, and endDate: Date, orEqual: Bool = false, granularity: Calendar.Component = .nanosecond) -> Bool {
-		return self.inDefaultRegion().isInRange(date: startDate.inDefaultRegion(), and: endDate.inDefaultRegion())
+		return self.inDefaultRegion().isInRange(date: startDate.inDefaultRegion(), and: endDate.inDefaultRegion(), granularity: granularity)
+	}
+	
+	/// Compares equality of two given dates based on their components down to a given unit
+	/// granularity.
+	///
+	/// - parameter date:        date to compare
+	/// - parameter granularity: The smallest unit that must, along with all larger units, be equal for the given
+	///         dates to be considered the same.
+	///
+	/// - returns: `true` if the dates are the same down to the given granularity, otherwise `false`
+	public func isInside(date: Date, granularity: Calendar.Component) -> Bool {
+		return (self.compare(toDate: date, granularity: granularity) == .orderedSame)
 	}
 
 	// MARK: - Date Earlier/Later

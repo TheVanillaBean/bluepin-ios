@@ -25,7 +25,6 @@ enum RealmConfig {
     private static let mainConfig = Realm.Configuration(
         fileURL: URL.inDocumentsFolder(fileName: "main.realm"),
         schemaVersion: 0)
-
     private static let presetConfig = Realm.Configuration(
         fileURL: Bundle.main.url(forResource: "preset-data", withExtension: "realm"),
         readOnly: true,

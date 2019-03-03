@@ -19,6 +19,11 @@ public class Reminder: Object {
     @objc dynamic var nextReminder: Date? = nil
     var parentCategory = LinkingObjects(fromType: Category.self, property: "reminders")
     
+    override public static func primaryKey() -> String? {
+        return "ID"
+    }
+    
+    //Repeat method formating
     func repeatFormat() -> String {
         var formatString: String
         
@@ -42,6 +47,7 @@ public class Reminder: Object {
         return formatString
     }
     
+    //Repeat method formating
     static func repeatFormat(withMethod method: RepeatMethod, repeatInterval: Int) -> String {
         var formatString: String
         
@@ -62,7 +68,8 @@ public class Reminder: Object {
         
         return formatString
     }
-    
+
+    //convert weekday list (Realm data structure) to IndexSet (Swift)
     func toIndexSet() -> IndexSet{
         
         var indexSet = IndexSet()
@@ -74,6 +81,7 @@ public class Reminder: Object {
         return indexSet
     }
     
+    //convert IndexSet (Swift) to list (Realm data structure)
     static func toRealmList(withWeekdaySet set: IndexSet) -> List<Int>{
         
         let list = List<Int>()

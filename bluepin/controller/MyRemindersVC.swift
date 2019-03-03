@@ -23,7 +23,6 @@ class MyRemindersVC: UIViewController {
         tableView.delegate = self
         tableView.dataSource = self
         tableView.separatorStyle = .none
-
     }
     
     override func viewWillAppear(_ animated: Bool) {

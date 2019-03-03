@@ -19,7 +19,7 @@ public enum RepeatMethod: String, Codable {
 
 public class BluepinNotification: NSObject, Codable {
     
-    fileprivate(set) public var identifier: String!
+    public var identifier: String!
     
     public var body: String!
     
