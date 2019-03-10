@@ -19,3 +19,5 @@ public let RepeatMethodKey: String = "NotificationRepeatMethod"
 public let RepeatIntervalKey: String = "NotificationRepeatInterval"
 
 public let RepeatWeekdayKey: String = "NotificationRepeatWeekdaySet"
+
+public let NoGroupID: String = "No_GroupID"

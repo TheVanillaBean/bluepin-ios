@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -63,7 +63,7 @@
                                 <rect key="frame" x="0.0" y="75" width="375" height="592"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="MyRemindersCell" rowHeight="85" id="7T8-kW-jFL" customClass="MyRemindersCell" customModule="bluepin" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="MyRemindersCell" rowHeight="85" id="7T8-kW-jFL" customClass="MyRemindersCell" customModule="bluepin">
                                         <rect key="frame" x="0.0" y="28" width="375" height="85"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="7T8-kW-jFL" id="pmt-bj-XNG">
@@ -74,7 +74,7 @@
                                                     <rect key="frame" x="0.0" y="0.0" width="375" height="84.5"/>
                                                     <subviews>
                                                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="1fH-La-qWH">
-                                                            <rect key="frame" x="8" y="14" width="75" height="58"/>
+                                                            <rect key="frame" x="8" y="13.5" width="75" height="58"/>
                                                             <subviews>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="t5b-dO-IXz">
                                                                     <rect key="frame" x="0.0" y="0.0" width="75" height="34"/>
@@ -117,17 +117,17 @@
                                                             </subviews>
                                                         </stackView>
                                                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="6" translatesAutoresizingMaskIntoConstraints="NO" id="FPa-aU-V8E">
-                                                            <rect key="frame" x="307" y="10.5" width="60" height="65"/>
+                                                            <rect key="frame" x="307" y="10" width="60" height="64.5"/>
                                                             <subviews>
                                                                 <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="clock-gray" translatesAutoresizingMaskIntoConstraints="NO" id="3Ep-FL-6FF">
-                                                                    <rect key="frame" x="8" y="0.0" width="44" height="44.5"/>
+                                                                    <rect key="frame" x="8" y="0.0" width="44" height="44"/>
                                                                     <constraints>
                                                                         <constraint firstAttribute="height" constant="44" id="pUP-lg-OXp"/>
                                                                         <constraint firstAttribute="width" constant="44" id="wnh-eO-fUe"/>
                                                                     </constraints>
                                                                 </imageView>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="10:30am" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xOh-Vf-DT1">
-                                                                    <rect key="frame" x="0.0" y="50.5" width="60" height="14.5"/>
+                                                                    <rect key="frame" x="0.0" y="50" width="60" height="14.5"/>
                                                                     <constraints>
                                                                         <constraint firstAttribute="width" constant="60" id="3qV-Cz-qDh"/>
                                                                     </constraints>
@@ -185,11 +185,12 @@
                     <connections>
                         <outlet property="tableView" destination="sTC-v1-fBM" id="1De-tF-P2z"/>
                         <segue destination="T8G-Qp-GXs" kind="show" identifier="goToReminderCategoriesVC" id="Bsa-8m-Hgv"/>
+                        <segue destination="hYR-6Z-Mj3" kind="show" identifier="goToReminderDetailVC" id="pRv-A5-4tK"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="136.80000000000001" y="133.5832083958021"/>
+            <point key="canvasLocation" x="84" y="134"/>
         </scene>
         <!--Reminder CategoriesVC-->
         <scene sceneID="ovO-he-rzu">
@@ -209,7 +210,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ygM-Gj-s9Q">
-                                        <rect key="frame" x="8" y="30.5" width="32" height="32"/>
+                                        <rect key="frame" x="8" y="30" width="32" height="32"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="32" id="E5Z-dF-qNu"/>
                                             <constraint firstAttribute="width" constant="32" id="br4-bk-jAk"/>
@@ -447,7 +448,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kHu-o8-xPO" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="924" y="133.5832083958021"/>
+            <point key="canvasLocation" x="887" y="134"/>
         </scene>
         <!--Category RemindersVC-->
         <scene sceneID="8Ji-wy-qEU">
@@ -461,13 +462,13 @@
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="75"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Automotive" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bMP-1P-Emx">
-                                        <rect key="frame" x="131" y="33" width="114" height="26"/>
+                                        <rect key="frame" x="130.5" y="33" width="114" height="26"/>
                                         <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="22"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xT1-zU-hw0">
-                                        <rect key="frame" x="8" y="30.5" width="32" height="32"/>
+                                        <rect key="frame" x="8" y="30" width="32" height="32"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="32" id="Ish-ic-QQ0"/>
                                             <constraint firstAttribute="width" constant="32" id="pN9-M0-ikl"/>
@@ -500,14 +501,14 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="right-arrow" translatesAutoresizingMaskIntoConstraints="NO" id="adf-0Y-soM">
-                                                    <rect key="frame" x="334" y="9" width="25" height="25"/>
+                                                    <rect key="frame" x="334" y="9.5" width="25" height="25"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="25" id="3rY-vI-qFa"/>
                                                         <constraint firstAttribute="width" constant="25" id="r0b-ke-C1x"/>
                                                     </constraints>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Appt w/ mechanic" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="12" translatesAutoresizingMaskIntoConstraints="NO" id="g4E-Yc-DTA">
-                                                    <rect key="frame" x="16" y="10.5" width="144.5" height="22"/>
+                                                    <rect key="frame" x="16" y="11" width="144.5" height="22"/>
                                                     <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="18"/>
                                                     <color key="textColor" red="0.29019607843137252" green="0.29019607843137252" blue="0.29019607843137252" alpha="0.80000000000000004" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
@@ -563,13 +564,13 @@
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="75"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Change Engine Oil" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="14" translatesAutoresizingMaskIntoConstraints="NO" id="gFV-q6-TTM">
-                                        <rect key="frame" x="99.5" y="33" width="177.5" height="26.5"/>
+                                        <rect key="frame" x="99" y="32.5" width="177.5" height="26.5"/>
                                         <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="22"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="imr-nf-3ZI">
-                                        <rect key="frame" x="8" y="31" width="32" height="32"/>
+                                        <rect key="frame" x="8" y="30" width="32" height="32"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="32" id="1B9-Nj-grY"/>
                                             <constraint firstAttribute="height" constant="32" id="PDY-mQ-7hJ"/>
@@ -680,7 +681,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="h6E-sq-YzS" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2440.8000000000002" y="133.5832083958021"/>
+            <point key="canvasLocation" x="2449" y="134"/>
         </scene>
         <!--Reminder ConfigurationVC-->
         <scene sceneID="SeP-ar-8Gy">
@@ -709,13 +710,13 @@
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="75"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Schedule Reminder" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Yfa-1e-0LL">
-                                        <rect key="frame" x="94.5" y="33" width="186" height="26.5"/>
+                                        <rect key="frame" x="94.5" y="32.5" width="186" height="26.5"/>
                                         <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="22"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qR6-E1-iWf">
-                                        <rect key="frame" x="8" y="30.5" width="32" height="32"/>
+                                        <rect key="frame" x="8" y="30" width="32" height="32"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="32" id="bam-SL-QmI"/>
                                             <constraint firstAttribute="width" constant="32" id="iA1-1g-URV"/>
@@ -816,7 +817,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2NU-hV-bne">
-                                <rect key="frame" x="137" y="404" width="100" height="100"/>
+                                <rect key="frame" x="137.5" y="404" width="100" height="100"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="100" id="1jK-vj-rR9"/>
                                     <constraint firstAttribute="height" constant="100" id="u20-g7-SUz"/>
@@ -869,13 +870,13 @@
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="75"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Schedule Reminder" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rms-Cj-Op3">
-                                        <rect key="frame" x="94.5" y="33" width="186" height="26.5"/>
+                                        <rect key="frame" x="94.5" y="32.5" width="186" height="26.5"/>
                                         <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="22"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hbR-4Z-xpP">
-                                        <rect key="frame" x="8" y="30.5" width="32" height="32"/>
+                                        <rect key="frame" x="8" y="30" width="32" height="32"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="32" id="KKt-C6-yeX"/>
                                             <constraint firstAttribute="width" constant="32" id="MhJ-4d-epq"/>
@@ -1045,7 +1046,7 @@
                                 </constraints>
                             </stackView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IKL-YQ-b00">
-                                <rect key="frame" x="138" y="398" width="100" height="100"/>
+                                <rect key="frame" x="137.5" y="398" width="100" height="100"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="100" id="NhE-qe-dqA"/>
                                     <constraint firstAttribute="height" constant="100" id="OGZ-UA-Gvn"/>
@@ -1096,13 +1097,13 @@
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="75"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Schedule Reminder" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5sm-2t-fsr">
-                                        <rect key="frame" x="94.5" y="33" width="186" height="26.5"/>
+                                        <rect key="frame" x="94.5" y="32.5" width="186" height="26.5"/>
                                         <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="22"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="g5l-wL-Wrb">
-                                        <rect key="frame" x="8" y="30.5" width="32" height="32"/>
+                                        <rect key="frame" x="8" y="30" width="32" height="32"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="32" id="E0F-ta-vEj"/>
                                             <constraint firstAttribute="width" constant="32" id="jeR-Od-Imn"/>
@@ -1141,7 +1142,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" alignment="center" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="O4r-OM-dQn">
-                                <rect key="frame" x="17" y="251" width="340" height="40"/>
+                                <rect key="frame" x="17.5" y="251" width="340" height="40"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PgO-xu-Uuk">
                                         <rect key="frame" x="0.0" y="0.0" width="40" height="40"/>
@@ -1226,7 +1227,7 @@
                                 </constraints>
                             </stackView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GKI-W9-hOg">
-                                <rect key="frame" x="137" y="401" width="100" height="100"/>
+                                <rect key="frame" x="137.5" y="401" width="100" height="100"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="100" id="79G-aI-xGd"/>
                                     <constraint firstAttribute="height" constant="100" id="fO3-k7-1i4"/>
@@ -1289,7 +1290,7 @@
                                 </constraints>
                             </stackView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="qz2-fE-fts">
-                                <rect key="frame" x="62" y="313" width="252" height="70"/>
+                                <rect key="frame" x="61.5" y="313" width="252" height="70"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="This reminder starts:" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7uB-3T-dSh">
                                         <rect key="frame" x="59" y="0.0" width="134.5" height="35"/>
@@ -1366,13 +1367,13 @@
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="75"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Schedule Reminder" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nOH-1T-q3b">
-                                        <rect key="frame" x="95" y="33" width="186" height="26.5"/>
+                                        <rect key="frame" x="94.5" y="32.5" width="186" height="26.5"/>
                                         <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="22"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uDl-Cv-3NH">
-                                        <rect key="frame" x="8" y="31" width="32" height="32"/>
+                                        <rect key="frame" x="8" y="30" width="32" height="32"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="32" id="Ycb-of-8pd"/>
                                             <constraint firstAttribute="width" constant="32" id="gBq-WZ-oBx"/>
@@ -1453,7 +1454,7 @@
                                 </constraints>
                             </stackView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="Bch-cD-B4L">
-                                <rect key="frame" x="78.5" y="183" width="219" height="75"/>
+                                <rect key="frame" x="78" y="183" width="219" height="75"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Repeat every:" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3vZ-dS-AC6">
                                         <rect key="frame" x="0.0" y="0.0" width="219" height="20"/>
@@ -1583,37 +1584,95 @@
             </objects>
             <point key="canvasLocation" x="4922" y="532"/>
         </scene>
+        <!--View Controller-->
+        <scene sceneID="B5a-hc-wIL">
+            <objects>
+                <viewController id="qun-NI-a13" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Aci-Go-8WC">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Are you sure?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZSh-e6-Ls4">
+                                <rect key="frame" x="135.5" y="28" width="104.5" height="20.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <stackView opaque="NO" contentMode="scaleToFill" spacing="50" translatesAutoresizingMaskIntoConstraints="NO" id="wzL-Le-YAc">
+                                <rect key="frame" x="102.5" y="72.5" width="170" height="60"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="D5z-NB-Tq5">
+                                        <rect key="frame" x="0.0" y="0.0" width="60" height="60"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="60" id="9lp-FA-ppe"/>
+                                            <constraint firstAttribute="height" constant="60" id="zzj-xR-EpO"/>
+                                        </constraints>
+                                        <state key="normal" title="Button" image="are-u-sure-checkmark"/>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ApH-ac-yIt">
+                                        <rect key="frame" x="110" y="0.0" width="60" height="60"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="60" id="PVq-to-Sa2"/>
+                                            <constraint firstAttribute="width" constant="60" id="bA0-Oy-alm"/>
+                                        </constraints>
+                                        <state key="normal" title="Button" image="are-u-sure-cancel"/>
+                                    </button>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="60" id="fhf-kj-3lx"/>
+                                </constraints>
+                            </stackView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="wzL-Le-YAc" firstAttribute="top" secondItem="ZSh-e6-Ls4" secondAttribute="bottom" constant="24" id="PXI-AT-bTo"/>
+                            <constraint firstItem="ZSh-e6-Ls4" firstAttribute="centerX" secondItem="Aci-Go-8WC" secondAttribute="centerX" id="Vx9-4K-wRK"/>
+                            <constraint firstItem="ZSh-e6-Ls4" firstAttribute="top" secondItem="G35-Tv-ca2" secondAttribute="top" constant="8" id="cUv-WX-OOM"/>
+                            <constraint firstItem="wzL-Le-YAc" firstAttribute="centerX" secondItem="Aci-Go-8WC" secondAttribute="centerX" id="f4m-sz-Ppp"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="G35-Tv-ca2"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="bY5-zQ-6yy" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="5997.6000000000004" y="151.57421289355324"/>
+        </scene>
     </scenes>
     <resources>
-        <image name="Add-new" width="233" height="237"/>
-        <image name="Daily" width="270" height="269"/>
-        <image name="Daily-red" width="270" height="269"/>
-        <image name="Fri" width="233" height="233"/>
-        <image name="Mon" width="233" height="233"/>
-        <image name="Monthly" width="270" height="269"/>
-        <image name="Monthly-red" width="270" height="269"/>
-        <image name="Once" width="270" height="269"/>
-        <image name="Once-red" width="270" height="269"/>
-        <image name="Sat" width="233" height="233"/>
-        <image name="Set-green" width="252" height="252"/>
-        <image name="Sun" width="233" height="233"/>
-        <image name="Thu" width="233" height="233"/>
-        <image name="Tue" width="233" height="233"/>
-        <image name="Wed" width="233" height="233"/>
-        <image name="Weekly" width="270" height="269"/>
-        <image name="Weekly-red" width="270" height="269"/>
-        <image name="auto" width="236" height="236"/>
-        <image name="cancel-white" width="233" height="233"/>
-        <image name="clock-gray" width="233" height="225"/>
-        <image name="doctor" width="236" height="236"/>
-        <image name="edit-settings" width="233" height="236"/>
-        <image name="family" width="236" height="236"/>
-        <image name="finance" width="236" height="236"/>
-        <image name="fitness" width="236" height="236"/>
-        <image name="go-back" width="233" height="233"/>
-        <image name="home" width="236" height="236"/>
-        <image name="personal" width="236" height="236"/>
-        <image name="pets" width="236" height="236"/>
-        <image name="right-arrow" width="233" height="442"/>
+        <image name="Add-new" width="233.5" height="237.5"/>
+        <image name="Daily" width="270.5" height="269.5"/>
+        <image name="Daily-red" width="270.5" height="269.5"/>
+        <image name="Fri" width="233.5" height="233.5"/>
+        <image name="Mon" width="233.5" height="233.5"/>
+        <image name="Monthly" width="270.5" height="269.5"/>
+        <image name="Monthly-red" width="270.5" height="269.5"/>
+        <image name="Once" width="270.5" height="269.5"/>
+        <image name="Once-red" width="270.5" height="269.5"/>
+        <image name="Sat" width="233.5" height="233.5"/>
+        <image name="Set-green" width="252.5" height="252.5"/>
+        <image name="Sun" width="233.5" height="233.5"/>
+        <image name="Thu" width="233.5" height="233.5"/>
+        <image name="Tue" width="233.5" height="233.5"/>
+        <image name="Wed" width="233.5" height="233.5"/>
+        <image name="Weekly" width="270.5" height="269.5"/>
+        <image name="Weekly-red" width="270.5" height="269.5"/>
+        <image name="are-u-sure-cancel" width="233.5" height="233.5"/>
+        <image name="are-u-sure-checkmark" width="233.5" height="233.5"/>
+        <image name="auto" width="236.5" height="236.5"/>
+        <image name="cancel-white" width="233.5" height="233.5"/>
+        <image name="clock-gray" width="233.5" height="225"/>
+        <image name="doctor" width="236.5" height="236.5"/>
+        <image name="edit-settings" width="233.5" height="236.5"/>
+        <image name="family" width="236.5" height="236.5"/>
+        <image name="finance" width="236.5" height="236.5"/>
+        <image name="fitness" width="236.5" height="236.5"/>
+        <image name="go-back" width="233.5" height="233.5"/>
+        <image name="home" width="236.5" height="236.5"/>
+        <image name="personal" width="236.5" height="236.5"/>
+        <image name="pets" width="236.5" height="236.5"/>
+        <image name="right-arrow" width="233.5" height="442.5"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="pRv-A5-4tK"/>
+    </inferredMetricsTieBreakers>
 </document>

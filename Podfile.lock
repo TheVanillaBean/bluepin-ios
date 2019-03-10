@@ -9,12 +9,14 @@ PODS:
   - RealmSwift (3.13.0):
     - Realm (= 3.13.0)
   - SwiftDate (5.0.13)
+  - SwipeCellKit (2.5.1)
 
 DEPENDENCIES:
   - Pageboy (~> 3.0)
   - PopupDialog (~> 0.7)
   - RealmSwift
   - SwiftDate (~> 5.0)
+  - SwipeCellKit
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
@@ -24,6 +26,7 @@ SPEC REPOS:
     - Realm
     - RealmSwift
     - SwiftDate
+    - SwipeCellKit
 
 SPEC CHECKSUMS:
   DynamicBlurView: b1df5415f9bd31897549e5d7077e5ec120a4d636
@@ -32,7 +35,8 @@ SPEC CHECKSUMS:
   Realm: 5edd2ee65406aef591a4f9895de5a3440e51b3d8
   RealmSwift: be5ebc7930e37cd3376b41cec7f21984528aaa16
   SwiftDate: f4aea5fa9dee812485f34041121a4cbde01b0dee
+  SwipeCellKit: 30fd6a4f8a8b8ac864ea389c8b4c8bac5ba5471a
 
-PODFILE CHECKSUM: be8bf32f76c0506fef4decd54d4bd886fb465910
+PODFILE CHECKSUM: 12ae1491c53b67b216b1fbe64998eadc26ac74b0
 
 COCOAPODS: 1.5.3

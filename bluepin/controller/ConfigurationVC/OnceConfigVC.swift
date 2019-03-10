@@ -62,7 +62,16 @@ class OnceConfigVC: UIViewController {
             return
         }
         
-        guard let reminder = UNService.shared.reminder(withTitle: selectedReminder.name, body: Reminder.repeatFormat(withMethod: .once, repeatInterval: 0), startingDate: datePicker.date) else {
+        var groupID = NoGroupID
+        
+        //Check if this reminder was set before and if so cancel it and remove it from the queue as it will be rescheuled and reinserted
+        let persistedReminderGroup = NotificationPersistedQueue.shared.notificationsQueue().filter { $0.notificationInfo.identifier == selectedReminder.ID }
+        
+        if persistedReminderGroup.count > 0 {
+            groupID = persistedReminderGroup.first?.notificationInfo.identifier ?? NoGroupID //GroupID is specified in notifInfo
+        }
+        
+        guard let reminder = UNService.shared.reminder(withTitle: selectedReminder.name, body: Reminder.repeatFormat(withMethod: .once, repeatInterval: 0), startingDate: datePicker.date, groupIdentifer: groupID) else {
             self.dismiss(animated: true, completion: nil)
             return
         }
@@ -75,37 +84,19 @@ class OnceConfigVC: UIViewController {
         realmReminder.repeatInterval = 0
         realmReminder.nextReminder = reminder.first?.repeatTrigger?.nextTriggerDate()
         
-        //Check if this reminder was set before and if so cancel it and remove it from the queue as it will be rescheuled and reinserted
-        let persistedReminderGroup = NotificationPersistedQueue.shared.notificationsQueue().filter { $0.notificationInfo.identifier == selectedReminder.ID }
-        
         if persistedReminderGroup.count > 0 {
             
             for notification in persistedReminderGroup {
                 
-                UNService.shared.cancel(withIdentifier: notification.identifier)
+                UNService.shared.cancel(notification: notification)
                 NotificationPersistedQueue.shared.remove(notification)
             }
             
-            for notification in reminder {
-                notification.identifier = selectedReminder.ID
-                notification.notificationInfo.identifier = selectedReminder.ID
-            }
-            
-            realmReminder.ID = selectedReminder.ID
-            
-            
-            //If max allowed notifications is reached or the reminder will fire in greater than a week, then return nill. It is still persisted to the queue so it isn't lost.
-            //Then create a background service that runs every day (maybe every two days) that will go through every item in the list until one week from then (its already sorted so isnt really
-            //expensive) and check weather its scheudled or not, if it is not scheuled then scheule it.
-            //It's essentially just a background notification scheduler :)
         }
         
         saveReminder(reminder: realmReminder, category: UNService.shared.selectedCategory!)
         
         UNService.shared.schedule(notifications: reminder) //Make inserting into the queue part of this function
-        
-        NotificationPersistedQueue.shared.insert(reminder)
-        let _ = NotificationPersistedQueue.shared.saveQueue()
         
         UNService.shared.selectedReminder = realmReminder
         

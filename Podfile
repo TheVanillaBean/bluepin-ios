@@ -11,6 +11,7 @@ target 'bluepin' do
   pod 'Pageboy', '~> 3.0'
   pod 'PopupDialog', '~> 0.7'
   pod 'RealmSwift'
+  pod 'SwipeCellKit'
 
   target 'bluepinTests' do
     inherit! :search_paths

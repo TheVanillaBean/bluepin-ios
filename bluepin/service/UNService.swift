@@ -11,7 +11,7 @@ import UserNotifications
 import SwiftDate
 import RealmSwift
 
-internal let MAX_ALLOWED_NOTIFICATIONS = 60
+internal let MAX_ALLOWED_NOTIFICATIONS = 64
 
 public class UNService: NSObject {
     
@@ -115,14 +115,14 @@ public class UNService: NSObject {
         var nextFireDate: Date!
         
         switch repeatMethod {
-        case .daily:
-            nextFireDate = date + repeatInterval.days
-        case .weekly:
-            nextFireDate = weekday(weekdaySet: weekdaySet, date: date)
-        case .monthly:
-            nextFireDate = date + repeatInterval.months
-        case .once:
-            nextFireDate = date
+            case .daily:
+                nextFireDate = date + repeatInterval.days
+            case .weekly:
+                nextFireDate = weekday(weekdaySet: weekdaySet, date: date)
+            case .monthly:
+                nextFireDate = date + repeatInterval.months
+            case .once:
+                nextFireDate = date
         }
         
         dateComponents = calendar.dateComponents([.year, .month, .day, .hour, .minute], from: nextFireDate)
@@ -131,32 +131,25 @@ public class UNService: NSObject {
         return UNCalendarNotificationTrigger(dateMatching: dateComponents, repeats: false)
     }
 
-    func reminder(withTitle title: String, body: String, startingDate: Date, repeatMethod: RepeatMethod = .once, repeatInterval: Int = 0, weekdaySet: IndexSet = IndexSet([1, 2])) -> [BluepinNotification]? {
+    func reminder(withTitle title: String, body: String, startingDate: Date, repeatMethod: RepeatMethod = .once, repeatInterval: Int = 0, weekdaySet: IndexSet = IndexSet([1, 2]), groupIdentifer: String = UUID().uuidString) -> [BluepinNotification]? {
         
-        let identifer: String = UUID().uuidString
-    
-//        //hold off on below logic if next reminder will be in two weeks or longer
-//        if startingDate >= Date() + 2.weeks {
-//            let notification = BluepinNotification(identifier: "\(identifer)_1", groupIdentifier: identifer, title: title, body: body, date: startingDate, repeatMethod: repeatMethod, repeatInterval: repeatInterval, repeatTrigger: nil, weekdaySet: weekdaySet)
-//            return [notification]
-//        }
+        let identifer: String = groupIdentifer == NoGroupID ? UUID().uuidString : groupIdentifer
         
-        //Create a group of notifications (representing one reminder) that will be either all scheduled or added to NotificationPersistedQueue
+        //Create a group of notifications (representing one reminder) that will either be all scheduled, partially scheduled, not scheduled, and all will be added to NotificationPersistedQueue
         var notifications = [BluepinNotification]()
         
-        //one time reminder
+        //----ONCE -----//
         if repeatMethod == .once {
             let notification = BluepinNotification(identifier: "\(identifer)", groupIdentifier: identifer, title: title, body: body, date: startingDate, repeatMethod: repeatMethod, repeatInterval: repeatInterval, repeatTrigger: nil)
             notifications.append(notification)
-        }
-        
-        //----DAILY -----//
-        if repeatMethod == .daily {
             
-            /* if starting date is not the current date (+ 5.minutes because technically even if a second goes by then it will always be true), subtract the repeat days
+        //----DAILY -----//
+        } else if repeatMethod == .daily {
+            
+            /* if starting date is not the current date (+ 3.minutes - arbitrary - because technically even if a second goes by then it will always be true), subtract the repeat days
              because they will be added back anyways
              */
-            var startDate = startingDate > Date() + 5.minutes ? startingDate - repeatInterval.days : startingDate
+            var startDate = startingDate > Date() + 3.minutes ? startingDate - repeatInterval.days : startingDate
 
             for i in 1...7 {
                 let nextFireDate = trigger(forStartingDate: startDate, repeatMethod: repeatMethod, repeatInterval: repeatInterval, weekdaySet: weekdaySet)
@@ -164,11 +157,9 @@ public class UNService: NSObject {
                 notifications.append(notification)
                 startDate = nextFireDate.nextTriggerDate()!
             }
-            
-        }
         
         //----Weekly -----//
-        if repeatMethod == .weekly && weekdaySet.count > 1 {
+        } else if repeatMethod == .weekly {
             
             var startDate = startingDate + (repeatInterval - 1).weeks
             
@@ -178,11 +169,9 @@ public class UNService: NSObject {
                 notifications.append(notification)
                 startDate = nextFireDate.nextTriggerDate()!
             }
-        
-        }
-        
+            
         //----MONTHLY -----//
-        if repeatMethod == .monthly {
+        } else if repeatMethod == .monthly {
             
             let nextFireDate = trigger(forStartingDate: startingDate, repeatMethod: repeatMethod, repeatInterval: repeatInterval, weekdaySet: weekdaySet)
             let notification = BluepinNotification(identifier: "\(identifer)_1", groupIdentifier: identifer, title: title, body: body, date: nextFireDate.nextTriggerDate()!, repeatMethod: repeatMethod, repeatInterval: repeatInterval, repeatTrigger: nextFireDate, weekdaySet: weekdaySet)
@@ -205,14 +194,7 @@ public class UNService: NSObject {
             return nil
         }
         
-        if (notification.repeatTrigger?.nextTriggerDate())! > Date() + 3.weeks {
-            NotificationPersistedQueue.shared.insert(notification)
-            let _ = NotificationPersistedQueue.shared.saveQueue()
-            return nil
-        }
-        
-        if (self.scheduledCount() >= MAX_ALLOWED_NOTIFICATIONS) {
-            
+        if (notification.repeatTrigger?.nextTriggerDate())! > Date() + 2.weeks || (self.scheduledCount() >= MAX_ALLOWED_NOTIFICATIONS) {
             NotificationPersistedQueue.shared.insert(notification)
             let _ = NotificationPersistedQueue.shared.saveQueue()
             return nil
@@ -250,6 +232,9 @@ public class UNService: NSObject {
         unCenter.add(request, withCompletionHandler: nil)
         
         notification.scheduled                     = true
+        
+        NotificationPersistedQueue.shared.insert(notification)
+        let _ = NotificationPersistedQueue.shared.saveQueue()
         
         return notification
        
@@ -332,6 +317,40 @@ public class UNService: NSObject {
         }
         
         let _ = semaphore.wait(timeout: DispatchTime.distantFuture)
+    }
+    
+    func scheduleReminders(_ date: Date = Date()) -> Int {
+        
+        var scheduled = 0
+        
+        print("Pre - Count: \(NotificationPersistedQueue.shared.notificationsQueue().count)")
+        
+        //loop through all persisted notifications with trigger dates after the current date
+        for notification in NotificationPersistedQueue.shared.notificationsQueue().filter({ $0.date > date && $0.date < date + 1.weeks}) {
+            
+            if !notification.scheduled {
+                print("Schedule notification: \(String(describing: notification.title))")
+            }
+            
+            let  _ = UNService.shared.schedule(notification: notification) //schedule the notification
+            scheduled = scheduled + 1
+        }
+        
+        print("Post - Count: \(scheduled)")
+
+        
+        return scheduled
+    }
+    
+    func scheduledRemindersFromQueue(_ date: Date = Date()) -> Int {
+        
+        var scheduled = 0
+        
+        for _ in NotificationPersistedQueue.shared.notificationsQueue().filter({ $0.scheduled == false}) {
+            scheduled = scheduled + 1
+        }
+        
+        return scheduled
     }
     
 }

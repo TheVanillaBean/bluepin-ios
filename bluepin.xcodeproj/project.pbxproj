@@ -10,6 +10,9 @@
 		5A03A4B020E8CEFF00BC46EC /* BPNotificationInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A03A4AF20E8CEFF00BC46EC /* BPNotificationInfo.swift */; };
 		5A175BC320ECA6240007DC67 /* GMStepper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A175BC220ECA6240007DC67 /* GMStepper.swift */; };
 		5A175BC520ED71A40007DC67 /* DatePickerPopupVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A175BC420ED71A40007DC67 /* DatePickerPopupVC.swift */; };
+		5A1FC10D2234A72400A1CF40 /* UI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A1FC10C2234A72400A1CF40 /* UI.swift */; };
+		5A1FC10F2234CB0A00A1CF40 /* DeleteWarningPopup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A1FC10E2234CB0A00A1CF40 /* DeleteWarningPopup.swift */; };
+		5A1FC1112234DF4500A1CF40 /* DeleteWarningPopupVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A1FC1102234DF4500A1CF40 /* DeleteWarningPopupVC.swift */; };
 		5A3F09CA20EC20FD0041AA49 /* ReminderDescBorder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A3F09C920EC20FD0041AA49 /* ReminderDescBorder.swift */; };
 		5A68BB4220A98EDE00BC0509 /* Lato-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5A68BB3C20A98EDD00BC0509 /* Lato-Bold.ttf */; };
 		5A68BB4320A98EDE00BC0509 /* Lato-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5A68BB3D20A98EDD00BC0509 /* Lato-Light.ttf */; };
@@ -37,6 +40,7 @@
 		5A8B044920E9E95B0073387C /* MonthlyConfigVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A8B044820E9E95B0073387C /* MonthlyConfigVC.swift */; };
 		5A8B044B20E9E9720073387C /* OnceConfigVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A8B044A20E9E9720073387C /* OnceConfigVC.swift */; };
 		5A943E0720FC8D590099FD66 /* RealmConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A943E0620FC8D590099FD66 /* RealmConfig.swift */; };
+		5A9728D1222B945200ACFBBC /* ScheduleTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A9728D0222B945200ACFBBC /* ScheduleTests.swift */; };
 		5A9BABB720A5827A000F3976 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A9BABB620A5827A000F3976 /* AppDelegate.swift */; };
 		5A9BABB920A5827A000F3976 /* MyRemindersVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A9BABB820A5827A000F3976 /* MyRemindersVC.swift */; };
 		5A9BABBC20A5827A000F3976 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5A9BABBA20A5827A000F3976 /* Main.storyboard */; };
@@ -71,6 +75,9 @@
 		5A03A4AF20E8CEFF00BC46EC /* BPNotificationInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BPNotificationInfo.swift; sourceTree = "<group>"; };
 		5A175BC220ECA6240007DC67 /* GMStepper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GMStepper.swift; sourceTree = "<group>"; };
 		5A175BC420ED71A40007DC67 /* DatePickerPopupVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatePickerPopupVC.swift; sourceTree = "<group>"; };
+		5A1FC10C2234A72400A1CF40 /* UI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UI.swift; sourceTree = "<group>"; };
+		5A1FC10E2234CB0A00A1CF40 /* DeleteWarningPopup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteWarningPopup.swift; sourceTree = "<group>"; };
+		5A1FC1102234DF4500A1CF40 /* DeleteWarningPopupVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteWarningPopupVC.swift; sourceTree = "<group>"; };
 		5A3F09C920EC20FD0041AA49 /* ReminderDescBorder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReminderDescBorder.swift; sourceTree = "<group>"; };
 		5A511E4120D050D1002EAC07 /* ReminderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReminderTests.swift; sourceTree = "<group>"; };
 		5A68BB3C20A98EDD00BC0509 /* Lato-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-Bold.ttf"; sourceTree = "<group>"; };
@@ -100,6 +107,7 @@
 		5A8B044820E9E95B0073387C /* MonthlyConfigVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonthlyConfigVC.swift; sourceTree = "<group>"; };
 		5A8B044A20E9E9720073387C /* OnceConfigVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnceConfigVC.swift; sourceTree = "<group>"; };
 		5A943E0620FC8D590099FD66 /* RealmConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmConfig.swift; sourceTree = "<group>"; };
+		5A9728D0222B945200ACFBBC /* ScheduleTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleTests.swift; sourceTree = "<group>"; };
 		5A9BABB320A5827A000F3976 /* bluepin.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = bluepin.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5A9BABB620A5827A000F3976 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5A9BABB820A5827A000F3976 /* MyRemindersVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyRemindersVC.swift; sourceTree = "<group>"; };
@@ -222,6 +230,7 @@
 			children = (
 				5A68BB5C20B363E500BC0509 /* Date+Scheduler.swift */,
 				5A68BB6020B36DF600BC0509 /* NotificationRequest.swift */,
+				5A1FC10C2234A72400A1CF40 /* UI.swift */,
 			);
 			path = extensions;
 			sourceTree = "<group>";
@@ -233,6 +242,7 @@
 				5A68BB7020BA90C900BC0509 /* NotificationTests.swift */,
 				5AAD5C8520BBDA4E00E86806 /* NotificationScheduleTests.swift */,
 				5A68BB6820BA907800BC0509 /* bluepinTests.swift */,
+				5A9728D0222B945200ACFBBC /* ScheduleTests.swift */,
 				5A68BB6A20BA907900BC0509 /* Info.plist */,
 			);
 			path = bluepinTests;
@@ -247,6 +257,8 @@
 				5A8B044620E9E94B0073387C /* WeeklyConfigVC.swift */,
 				5A8B044820E9E95B0073387C /* MonthlyConfigVC.swift */,
 				5A175BC420ED71A40007DC67 /* DatePickerPopupVC.swift */,
+				5A1FC10E2234CB0A00A1CF40 /* DeleteWarningPopup.swift */,
+				5A1FC1102234DF4500A1CF40 /* DeleteWarningPopupVC.swift */,
 			);
 			path = ConfigurationVC;
 			sourceTree = "<group>";
@@ -470,6 +482,7 @@
 				"${BUILT_PRODUCTS_DIR}/Realm/Realm.framework",
 				"${BUILT_PRODUCTS_DIR}/RealmSwift/RealmSwift.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftDate/SwiftDate.framework",
+				"${BUILT_PRODUCTS_DIR}/SwipeCellKit/SwipeCellKit.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
@@ -479,6 +492,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Realm.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RealmSwift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftDate.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwipeCellKit.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -495,6 +509,7 @@
 				5A68BB7120BA90C900BC0509 /* NotificationTests.swift in Sources */,
 				5A68BB6920BA907800BC0509 /* bluepinTests.swift in Sources */,
 				5AAD5C8620BBDA4E00E86806 /* NotificationScheduleTests.swift in Sources */,
+				5A9728D1222B945200ACFBBC /* ScheduleTests.swift in Sources */,
 				5A741DE420E43926000790C8 /* ReminderTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -511,17 +526,20 @@
 				5A68BB4F20ACD7A000BC0509 /* CategoryBtnShadow.swift in Sources */,
 				5A68BB5F20B364A900BC0509 /* NotificationSound.swift in Sources */,
 				5A943E0720FC8D590099FD66 /* RealmConfig.swift in Sources */,
+				5A1FC10F2234CB0A00A1CF40 /* DeleteWarningPopup.swift in Sources */,
 				5A3F09CA20EC20FD0041AA49 /* ReminderDescBorder.swift in Sources */,
 				5A68BB5920B362F100BC0509 /* BluepinNotification.swift in Sources */,
 				5AEBA5CB20F5A93300DB3A35 /* Category.swift in Sources */,
 				5AAD5C8820BFD99600E86806 /* SortedArray.swift in Sources */,
 				5A68BB5720B3606C00BC0509 /* NotificationAuthorizationOptions.swift in Sources */,
+				5A1FC1112234DF4500A1CF40 /* DeleteWarningPopupVC.swift in Sources */,
 				5A68BB5320AEB46700BC0509 /* UNService.swift in Sources */,
 				5AEBA5CD20F6C90B00DB3A35 /* Cells.swift in Sources */,
 				5A8B043E20E9D7D10073387C /* CategoryRemindersVC.swift in Sources */,
 				5A8B043C20E9D7830073387C /* ReminderCategoriesVC.swift in Sources */,
 				5A8B044720E9E94B0073387C /* WeeklyConfigVC.swift in Sources */,
 				5A8B044520E9E9390073387C /* DailyConfigVC.swift in Sources */,
+				5A1FC10D2234A72400A1CF40 /* UI.swift in Sources */,
 				5A175BC520ED71A40007DC67 /* DatePickerPopupVC.swift in Sources */,
 				5A9BABB720A5827A000F3976 /* AppDelegate.swift in Sources */,
 				5A741DE320E41134000790C8 /* NotificationPersistedQueue.swift in Sources */,
@@ -724,7 +742,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = M2D39CNGJ2;
 				INFOPLIST_FILE = bluepin/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.bluepinapp.bluepin;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -747,7 +765,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = M2D39CNGJ2;
 				INFOPLIST_FILE = bluepin/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.bluepinapp.bluepin;
 				PRODUCT_NAME = "$(TARGET_NAME)";

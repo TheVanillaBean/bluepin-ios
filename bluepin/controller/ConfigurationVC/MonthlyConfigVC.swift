@@ -86,10 +86,16 @@ class MonthlyConfigVC: UIViewController {
             return
         }
         
-        //check if in queue first before guard so correct ID is passed in
-
+        var groupID = NoGroupID
         
-        guard let reminder = UNService.shared.reminder(withTitle: selectedReminder.name, body:  Reminder.repeatFormat(withMethod: .monthly, repeatInterval: interval), startingDate: selectedDate, repeatMethod: .monthly, repeatInterval: interval) else {
+        //Check if this reminder was set before and if so cancel it and remove it from the queue as it will be rescheuled and reinserted
+        let persistedReminderGroup = NotificationPersistedQueue.shared.notificationsQueue().filter { $0.notificationInfo.identifier == selectedReminder.ID }
+
+        if persistedReminderGroup.count > 0 {
+            groupID = persistedReminderGroup.first?.notificationInfo.identifier ?? NoGroupID //GroupID is specified in notifInfo
+        }
+        
+        guard let reminder = UNService.shared.reminder(withTitle: selectedReminder.name, body:  Reminder.repeatFormat(withMethod: .monthly, repeatInterval: interval), startingDate: selectedDate, repeatMethod: .monthly, repeatInterval: interval, groupIdentifer: groupID) else {
             self.dismiss(animated: true, completion: nil)
             return
         }
@@ -103,9 +109,6 @@ class MonthlyConfigVC: UIViewController {
         realmReminder.repeatInterval = interval
         realmReminder.nextReminder = reminder.first?.repeatTrigger?.nextTriggerDate()
         
-        //Check if this reminder was set before and if so cancel it and remove it from the queue as it will be rescheuled and reinserted
-        let persistedReminderGroup = NotificationPersistedQueue.shared.notificationsQueue().filter { $0.notificationInfo.identifier == selectedReminder.ID }
-
         if persistedReminderGroup.count > 0 {
             
             for notification in persistedReminderGroup {
@@ -114,12 +117,6 @@ class MonthlyConfigVC: UIViewController {
                 NotificationPersistedQueue.shared.remove(notification)
             }
             
-            for notification in reminder {
-                notification.identifier = selectedReminder.ID
-                notification.notificationInfo.identifier = selectedReminder.ID
-            }
-            
-            realmReminder.ID = selectedReminder.ID
         }
         
         saveReminder(reminder: realmReminder, category: UNService.shared.selectedCategory!)

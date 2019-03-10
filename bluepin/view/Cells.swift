@@ -8,6 +8,7 @@
 
 import UIKit
 import SwiftDate
+import SwipeCellKit
 
 class CategoryRemindersCell: UITableViewCell {
     
@@ -23,7 +24,7 @@ class CategoryRemindersCell: UITableViewCell {
     
 }
 
-class MyRemindersCell: UITableViewCell {
+class MyRemindersCell: SwipeTableViewCell{
     
     @IBOutlet weak var dayLbl: UILabel!
     
@@ -59,5 +60,6 @@ class MyRemindersCell: UITableViewCell {
         }
         
     }
+    
     
 }

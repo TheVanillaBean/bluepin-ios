@@ -42,6 +42,7 @@ public class NotificationPersistedQueue: NSObject {
     
     public func remove(_ element: BluepinNotification) {
         notifQueue.remove(element)
+        let _ = saveQueue()
     }
     
     public func count() -> Int {

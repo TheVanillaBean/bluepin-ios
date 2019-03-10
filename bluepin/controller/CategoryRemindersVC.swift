@@ -41,7 +41,7 @@ class CategoryRemindersVC: UIViewController {
         
         if let indexPath = tableView.indexPathForSelectedRow {
 
-            if let realmReminder = UNService.shared.userReminders?.filter({  $0.name == self.presetReminders![indexPath.row].name }), realmReminder.count > 0{
+            if let realmReminder = UNService.shared.userReminders?.filter({ $0.name == self.presetReminders![indexPath.row].name }), realmReminder.count > 0{
                 UNService.shared.selectedReminder = realmReminder.last //user reminder
             } else {
                 UNService.shared.selectedReminder = presetReminders![indexPath.row] //preset reminder

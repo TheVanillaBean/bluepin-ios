@@ -56,7 +56,7 @@ class ReminderTests: XCTestCase {
         for notifcation in reminders! {
             print("Reminder FireDate: \(notifcation.date.inDefaultRegion())")
         }
-        XCTAssertTrue(reminders?.count == 1)
+        XCTAssertTrue(reminders?.count == 7)
     }
     
     func testReminderDaily2() {
@@ -65,7 +65,7 @@ class ReminderTests: XCTestCase {
         for notifcation in reminders! {
             print("Reminder FireDate: \(notifcation.date.inDefaultRegion())")
         }
-        XCTAssertTrue(reminders?.count == 4)
+        XCTAssertTrue(reminders?.count == 7)
     }
     
     func testReminderDaily3(){
@@ -74,7 +74,7 @@ class ReminderTests: XCTestCase {
         for notifcation in reminders! {
             print("Reminder FireDate: \(notifcation.date.inDefaultRegion())")
         }
-        XCTAssertTrue(reminders?.count == 1)
+        XCTAssertTrue(reminders?.count == 7)
     }
     
     func testReminderDaily4(){
@@ -84,7 +84,7 @@ class ReminderTests: XCTestCase {
         for notifcation in reminders! {
             print("Reminder FireDate: \(notifcation.date.inDefaultRegion())")
         }
-        XCTAssertTrue(reminders?.count == 4)
+        XCTAssertTrue(reminders?.count == 7)
     }
     
     //--------------WEEKLY-------------------
@@ -97,7 +97,7 @@ class ReminderTests: XCTestCase {
             print("Reminder FireDate: \(notifcation.date.inDefaultRegion())")
             print("FireDate: Weekday: \(notifcation.date.inDefaultRegion().weekdayName)")
         }
-        XCTAssertTrue(reminders?.count == 1)
+        XCTAssertTrue(reminders?.count == 2)
     }
     
     func testReminderWeekly2(){
