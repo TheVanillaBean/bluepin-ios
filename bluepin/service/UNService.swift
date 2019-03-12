@@ -329,7 +329,6 @@ public class UNService: NSObject {
      It also creates a new notification of the same group identifier family and appends it to the queue
     */
     func scheduleReminders(_ date: Date = Date()) {
-        
         //loop through all persisted notifications with trigger dates after the current date
         for notification in NotificationPersistedQueue.shared.notificationsQueue().filter({ $0.scheduled == false && $0.date > date && $0.date < date + 1.weeks}) {
             let  _ = UNService.shared.schedule(notification: notification) //schedule the notification

@@ -14,6 +14,6 @@ extension String {
         guard let afterUnderScore = Int(String(self.suffix(from: index))) else { return self }
         let beforeUnderScore = String(self.prefix(upTo: index))
         
-        return "\(beforeUnderScore)_\(afterUnderScore + 1)"
+        return "\(beforeUnderScore)\(afterUnderScore + 1)"
     }
 }

@@ -115,7 +115,7 @@ class WeeklyConfigVC: UIViewController {
     
     @IBAction func setBtnPressed(_ sender: Any) {
         
-        guard let selectedReminder = UNService.shared.selectedReminder else  {
+        guard let selectedReminder = UNService.shared.selectedReminder else {
             self.dismiss(animated: true, completion: nil)
             return
         }
