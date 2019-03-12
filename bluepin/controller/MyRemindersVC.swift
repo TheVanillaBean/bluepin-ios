@@ -35,8 +35,7 @@ class MyRemindersVC: UIViewController {
         super.viewWillAppear(true)
         loadCategories()
         tableView.reloadData()
-        print(NotificationPersistedQueue.shared.printQueue())
-
+        //UNService.shared.scheduleReminders()
     }
     
     func loadCategories() {
@@ -60,6 +59,42 @@ class MyRemindersVC: UIViewController {
         UNService.shared.userReminders = category.reminders.sorted(byKeyPath: "name")
         
         UNService.shared.selectedReminder = reminders?[indexPath.row]
+    }
+    
+    func postponeReminder() {
+        
+        //Check if this reminder was set before and if so cancel it and remove it from the queue as it will be rescheuled and reinserted
+        let persistedReminderGroup = NotificationPersistedQueue.shared.notificationsQueue().filter { $0.notificationInfo.identifier == selectedReminder.ID }
+        
+        if persistedReminderGroup.count > 0 {
+            
+            guard let category = UNService.shared.userCategories?.filter("ANY reminders.ID = '\(selectedReminder.ID)'").first else { return }
+            
+            guard let notification = persistedReminderGroup.first else { return }
+            
+            NotificationPersistedQueue.shared.remove(notification)
+            
+            let trigger = UNService.shared.trigger(forStartingDate: notification.date, repeatMethod: RepeatMethod.daily, repeatInterval: 1, weekdaySet: IndexSet([1, 2]))
+            
+            notification.repeatTrigger = trigger
+            notification.date = trigger.nextTriggerDate()
+            notification.notificationInfo.date = trigger.nextTriggerDate()!
+            
+            var _ = UNService.shared.reschedule(notification: notification)
+        
+            do {
+                try realm.write {
+                    selectedReminder.nextReminder = trigger.nextTriggerDate()
+                    realm.add(selectedReminder, update: true)
+                    category.reminders.append(selectedReminder)
+                }
+            } catch {
+                print("Error saving items \(error)")
+            }
+            
+            tableView.reloadData()
+        }
+        
     }
     
     func startDeletePopup() {
@@ -95,9 +130,10 @@ class MyRemindersVC: UIViewController {
                 print("Error deleting category, \(error)")
             }
             
+            tableView.reloadData()
+            
         }
         
-        tableView.reloadData()
         popup.dismiss(animated: true, completion: nil)
     }
 
@@ -119,22 +155,19 @@ extension MyRemindersVC: UITableViewDelegate, UITableViewDataSource, SwipeTableV
         guard orientation == .right else { return nil }
         
         let deleteAction = SwipeAction(style: .default, title: "Delete") { action, indexPath in
-            if let categoryForDeletion = self.reminders?[indexPath.row]{
-                print("Delete Action \(categoryForDeletion.name)")
-                guard let reminder = self.reminders?[indexPath.row] else { return }
-                self.selectedReminder = reminder
-                self.startDeletePopup()
-            }
+            guard let reminder = self.reminders?[indexPath.row] else { return }
+            self.selectedReminder = reminder
+            self.startDeletePopup()
         }
         
         deleteAction.image = UIImage(named: "trash")?.resizeImage(CGFloat(40), opaque: false, contentMode: .scaleAspectFit)
         deleteAction.backgroundColor = #colorLiteral(red: 0.9417466521, green: 0.2130946517, blue: 0.3412085176, alpha: 1)
         deleteAction.font = UIFont(name: "Lato-Light", size: 16)
 
-        let clockAction = SwipeAction(style: .default, title: "+15 min") { action, indexPath in
-            if let categoryForDeletion = self.reminders?[indexPath.row]{
-                print("Clock Action \(categoryForDeletion.name)")
-            }
+        let clockAction = SwipeAction(style: .default, title: "+1 day") { action, indexPath in
+            guard let reminder = self.reminders?[indexPath.row] else { return }
+            self.selectedReminder = reminder
+            self.postponeReminder()
         }
         
         clockAction.image = UIImage(named: "clock-white")?.resizeImage(CGFloat(40), opaque: false, contentMode: .scaleAspectFit)

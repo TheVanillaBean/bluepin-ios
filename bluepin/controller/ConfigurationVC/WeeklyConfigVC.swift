@@ -100,8 +100,16 @@ class WeeklyConfigVC: UIViewController {
             weekBtnImageNames[weekBtn.tag].append("-orange")
             weeklyIndexSet.insert(weekBtn.tag)
         }
-        print("tag \(weekBtn.tag)")
+        
         weekBtn.setImage(UIImage(named: weekBtnImageNames[weekBtn.tag]), for: .normal)
+        
+        if weeklyIndexSet.count == 0 {
+            weeklyIndexSet.insert(integersIn: 0...6)
+            weekBtnImageNames = ["Sun-orange", "Mon-orange", "Tue-orange", "Wed-orange", "Thu-orange", "Fri-orange", "Sat-orange"]
+            for index in weeklyIndexSet {
+                weekdayBtns[index].setImage(UIImage(named: weekBtnImageNames[index]), for: .normal)
+            }
+        }
         
     }
     

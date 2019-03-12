@@ -69,8 +69,8 @@ public class NotificationPersistedQueue: NSObject {
     
     public func printQueue() {
         for notif in notifQueue {
-            print(notif.title!)
-            print()
+            print("Notification: Title - \(notif.title) -- Date - \(notif.date)")
+            print("---")
         }
     }
     
