@@ -27,9 +27,5 @@ class DeleteWarningPopupVC: UIViewController {
     override func loadView() {
         view = deleteWarning
     }
-    
-    func yesBtnPressed(sender: UIButton) {
-        print("Yes Btn Pressed")
-    }
 
 }

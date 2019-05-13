@@ -32,6 +32,7 @@
 		5A68BB7120BA90C900BC0509 /* NotificationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A68BB7020BA90C900BC0509 /* NotificationTests.swift */; };
 		5A741DE320E41134000790C8 /* NotificationPersistedQueue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A741DE220E41134000790C8 /* NotificationPersistedQueue.swift */; };
 		5A741DE420E43926000790C8 /* ReminderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A511E4120D050D1002EAC07 /* ReminderTests.swift */; };
+		5A77245D2255392500D7265A /* BPInputBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A77245C2255392500D7265A /* BPInputBar.swift */; };
 		5A8B043C20E9D7830073387C /* ReminderCategoriesVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A8B043B20E9D7830073387C /* ReminderCategoriesVC.swift */; };
 		5A8B043E20E9D7D10073387C /* CategoryRemindersVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A8B043D20E9D7D10073387C /* CategoryRemindersVC.swift */; };
 		5A8B044020E9D8460073387C /* ReminderDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A8B043F20E9D8460073387C /* ReminderDetailVC.swift */; };
@@ -100,6 +101,7 @@
 		5A68BB6A20BA907900BC0509 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5A68BB7020BA90C900BC0509 /* NotificationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationTests.swift; sourceTree = "<group>"; };
 		5A741DE220E41134000790C8 /* NotificationPersistedQueue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationPersistedQueue.swift; sourceTree = "<group>"; };
+		5A77245C2255392500D7265A /* BPInputBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BPInputBar.swift; sourceTree = "<group>"; };
 		5A8B043B20E9D7830073387C /* ReminderCategoriesVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReminderCategoriesVC.swift; sourceTree = "<group>"; };
 		5A8B043D20E9D7D10073387C /* CategoryRemindersVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryRemindersVC.swift; sourceTree = "<group>"; };
 		5A8B043F20E9D8460073387C /* ReminderDetailVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReminderDetailVC.swift; sourceTree = "<group>"; };
@@ -184,6 +186,7 @@
 		5A68BB4C20ACD76600BC0509 /* view */ = {
 			isa = PBXGroup;
 			children = (
+				5A77245C2255392500D7265A /* BPInputBar.swift */,
 				5A175BC220ECA6240007DC67 /* GMStepper.swift */,
 				5A68BB4E20ACD7A000BC0509 /* CategoryBtnShadow.swift */,
 				5A3F09C920EC20FD0041AA49 /* ReminderDescBorder.swift */,
@@ -480,21 +483,25 @@
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-bluepin/Pods-bluepin-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/DynamicBlurView/DynamicBlurView.framework",
+				"${BUILT_PRODUCTS_DIR}/InputBarAccessoryView/InputBarAccessoryView.framework",
 				"${BUILT_PRODUCTS_DIR}/Pageboy/Pageboy.framework",
 				"${BUILT_PRODUCTS_DIR}/PopupDialog/PopupDialog.framework",
 				"${BUILT_PRODUCTS_DIR}/Realm/Realm.framework",
 				"${BUILT_PRODUCTS_DIR}/RealmSwift/RealmSwift.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftDate/SwiftDate.framework",
+				"${BUILT_PRODUCTS_DIR}/SwiftEventBus/SwiftEventBus.framework",
 				"${BUILT_PRODUCTS_DIR}/SwipeCellKit/SwipeCellKit.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/DynamicBlurView.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/InputBarAccessoryView.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Pageboy.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PopupDialog.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Realm.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RealmSwift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftDate.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftEventBus.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwipeCellKit.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -538,6 +545,7 @@
 				5A68BB5720B3606C00BC0509 /* NotificationAuthorizationOptions.swift in Sources */,
 				5A1FC1112234DF4500A1CF40 /* DeleteWarningPopupVC.swift in Sources */,
 				5A68BB5320AEB46700BC0509 /* UNService.swift in Sources */,
+				5A77245D2255392500D7265A /* BPInputBar.swift in Sources */,
 				5AEBA5CD20F6C90B00DB3A35 /* Cells.swift in Sources */,
 				5A8B043E20E9D7D10073387C /* CategoryRemindersVC.swift in Sources */,
 				5A8B043C20E9D7830073387C /* ReminderCategoriesVC.swift in Sources */,

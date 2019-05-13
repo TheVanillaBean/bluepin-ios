@@ -1,5 +1,6 @@
 PODS:
   - DynamicBlurView (3.0.1)
+  - InputBarAccessoryView (4.2.0)
   - Pageboy (3.0.1)
   - PopupDialog (0.9.2):
     - DynamicBlurView (~> 3.0.1)
@@ -9,18 +10,22 @@ PODS:
   - RealmSwift (3.13.0):
     - Realm (= 3.13.0)
   - SwiftDate (5.0.13)
+  - SwiftEventBus (5.0.0)
   - SwipeCellKit (2.5.1)
 
 DEPENDENCIES:
+  - InputBarAccessoryView
   - Pageboy (~> 3.0)
   - PopupDialog (~> 0.7)
   - RealmSwift
   - SwiftDate (~> 5.0)
+  - SwiftEventBus (from `https://github.com/cesarferreira/SwiftEventBus.git`, tag `5.0.0`)
   - SwipeCellKit
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
     - DynamicBlurView
+    - InputBarAccessoryView
     - Pageboy
     - PopupDialog
     - Realm
@@ -28,15 +33,27 @@ SPEC REPOS:
     - SwiftDate
     - SwipeCellKit
 
+EXTERNAL SOURCES:
+  SwiftEventBus:
+    :git: https://github.com/cesarferreira/SwiftEventBus.git
+    :tag: 5.0.0
+
+CHECKOUT OPTIONS:
+  SwiftEventBus:
+    :git: https://github.com/cesarferreira/SwiftEventBus.git
+    :tag: 5.0.0
+
 SPEC CHECKSUMS:
   DynamicBlurView: b1df5415f9bd31897549e5d7077e5ec120a4d636
+  InputBarAccessoryView: 2f6adae6699d2fd7769678d9b4287f481ae18ebb
   Pageboy: ec0170fd880ea6fa3589219edfd64b554443ff6e
   PopupDialog: f4bb461bf70ff422be0b56656566424ee9273080
   Realm: 5edd2ee65406aef591a4f9895de5a3440e51b3d8
   RealmSwift: be5ebc7930e37cd3376b41cec7f21984528aaa16
   SwiftDate: f4aea5fa9dee812485f34041121a4cbde01b0dee
+  SwiftEventBus: b30f617a6aca5a9336464b4d3f5931034762f2d5
   SwipeCellKit: 30fd6a4f8a8b8ac864ea389c8b4c8bac5ba5471a
 
-PODFILE CHECKSUM: 12ae1491c53b67b216b1fbe64998eadc26ac74b0
+PODFILE CHECKSUM: 1c94cb827ca481518c8931c68206612a0edd119e
 
 COCOAPODS: 1.5.3

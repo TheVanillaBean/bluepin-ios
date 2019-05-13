@@ -12,6 +12,8 @@ target 'bluepin' do
   pod 'PopupDialog', '~> 0.7'
   pod 'RealmSwift'
   pod 'SwipeCellKit'
+  pod 'InputBarAccessoryView'
+  pod 'SwiftEventBus', :tag => '5.0.0', :git => 'https://github.com/cesarferreira/SwiftEventBus.git'
 
   target 'bluepinTests' do
     inherit! :search_paths
