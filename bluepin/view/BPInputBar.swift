@@ -21,39 +21,51 @@ class BPInputBar: InputBarAccessoryView {
         fatalError("init(coder:) has not been implemented")
     }
     
+    fileprivate func toggleSelectedButton(_ items: [InputBarButtonItem], i: Int) {
+        items[i].onSelected { (item) in
+            items.forEach { $0.tintColor = .lightGray }
+            item.tintColor = UIColor(red: 15/255, green: 135/255, blue: 255/255, alpha: 1.0)
+        }
+        print("count: \(i)")
+    }
+    
     func configure() {
         let items = [
-            makeButton(named: "ic_camera").onTextViewDidChange { button, textView in
-                button.isEnabled = textView.text.isEmpty
-                }.onSelected {
-                    $0.tintColor = UIColor(red: 15/255, green: 135/255, blue: 255/255, alpha: 1.0)
-                    SwiftEventBus.post("personFetchEvent", sender: )
+            makeButton(named: "ic_camera").onSelected {
+                $0.tintColor = UIColor(red: 15/255, green: 135/255, blue: 255/255, alpha: 1.0)
+                SwiftEventBus.post("inputbarDurationSelected", sender: InputBarDuration.ten_minutes)
             },
             makeButton(named: "ic_at").onSelected {
                 self.inputPlugins.forEach { _ = $0.handleInput(of: "@" as AnyObject) }
                 $0.tintColor = UIColor(red: 15/255, green: 135/255, blue: 255/255, alpha: 1.0)
+                SwiftEventBus.post("inputbarDurationSelected", sender: InputBarDuration.one_hours)
             },
             makeButton(named: "ic_hashtag").onSelected {
                 self.inputPlugins.forEach { _ = $0.handleInput(of: "#" as AnyObject) }
                 $0.tintColor = UIColor(red: 15/255, green: 135/255, blue: 255/255, alpha: 1.0)
+                SwiftEventBus.post("inputbarDurationSelected", sender: InputBarDuration.six_hours)
             },
-            makeButton(named: "ic_camera").onTextViewDidChange { button, textView in
-                button.isEnabled = textView.text.isEmpty
-                }.onSelected {
+            makeButton(named: "ic_camera").onSelected {
                     $0.tintColor = UIColor(red: 15/255, green: 135/255, blue: 255/255, alpha: 1.0)
+                    SwiftEventBus.post("inputbarDurationSelected", sender: InputBarDuration.one_days)
             },
             .flexibleSpace,
             makeButton(named: "ic_at").onSelected {
                 self.inputPlugins.forEach { _ = $0.handleInput(of: "@" as AnyObject) }
                 $0.tintColor = UIColor(red: 15/255, green: 135/255, blue: 255/255, alpha: 1.0)
-            },
+                SwiftEventBus.post("inputbarDurationSelected", sender: InputBarDuration.custom)
+            }
         ]
         items.forEach { $0.tintColor = .lightGray }
         
-        // We can change the container insets if we want
-        inputTextView.textContainerInset = UIEdgeInsets(top: 8, left: 0, bottom: 8, right: 0)
-        inputTextView.placeholderLabelInsets = UIEdgeInsets(top: 8, left: 5, bottom: 8, right: 5)
-        
+        //used for toggling which button is tinted. When one button is selected, all others should have tints set back to default
+        for i in 0...items.count - 1 {
+            items[i].onSelected { (item) in
+                items.forEach { $0.tintColor = .lightGray }
+                item.tintColor = UIColor(red: 15/255, green: 135/255, blue: 255/255, alpha: 1.0)
+                SwiftEventBus.post("inputbarDurationSelected", sender: i)
+            }
+        }
         
         sendButton
             .configure {
@@ -63,20 +75,23 @@ class BPInputBar: InputBarAccessoryView {
                 $0.setTitleColor(.white, for: .normal)
                 $0.setTitleColor(.white, for: .highlighted)
                 $0.setSize(CGSize(width: 52, height: 20), animated: false)
-            }.onDisabled {
-                $0.layer.borderColor = $0.titleColor(for: .disabled)?.cgColor
-                $0.backgroundColor = .white
-            }.onEnabled {
-                $0.backgroundColor = UIColor(red: 15/255, green: 135/255, blue: 255/255, alpha: 1.0)
-                $0.layer.borderColor = UIColor.clear.cgColor
-            }.onSelected {
-                // We use a transform becuase changing the size would cause the other views to relayout
-                $0.transform = CGAffineTransform(scaleX: 1.2, y: 1.2)
-            }.onDeselected {
-                $0.transform = CGAffineTransform.identity
-        }
+                $0.title = "Add"
+                }.onDisabled {
+                    $0.layer.borderColor = $0.titleColor(for: .disabled)?.cgColor
+                    $0.backgroundColor = .white
+                }.onEnabled {
+                    $0.backgroundColor = UIColor(red: 15/255, green: 135/255, blue: 255/255, alpha: 1.0)
+                    $0.layer.borderColor = UIColor.clear.cgColor
+                }.onSelected {
+                    // We use a transform becuase changing the size would cause the other views to relayout
+                    $0.transform = CGAffineTransform(scaleX: 1.2, y: 1.2)
+                }.onDeselected {
+                    $0.transform = CGAffineTransform.identity
+            }
         
-        sendButton.title = "Add"
+        // We can change the container insets if we want
+        inputTextView.textContainerInset = UIEdgeInsets(top: 8, left: 0, bottom: 8, right: 0)
+        inputTextView.placeholderLabelInsets = UIEdgeInsets(top: 8, left: 5, bottom: 8, right: 5)
         
         let maxSizeItem = InputBarButtonItem()
             .configure {
@@ -89,6 +104,7 @@ class BPInputBar: InputBarAccessoryView {
                 self.setShouldForceMaxTextViewHeight(to: !oldValue, animated: true)
         }
         
+        
         rightStackView.alignment = .top
         setStackViewItems([maxSizeItem, sendButton], forStack: .right, animated: false)
         setRightStackViewWidthConstant(to: 82, animated: false)
@@ -100,7 +116,6 @@ class BPInputBar: InputBarAccessoryView {
         topStackView.isLayoutMarginsRelativeArrangement = true
         setStackViewItems(items, forStack: .top, animated: false)
         
-
     }
     
     override func calculateMaxTextViewHeight() -> CGFloat {
@@ -116,14 +131,7 @@ class BPInputBar: InputBarAccessoryView {
                 $0.spacing = .fixed(20)
                 $0.image = UIImage(named: named)?.withRenderingMode(.alwaysTemplate)
                 $0.setSize(CGSize(width: 30, height: 30), animated: false)
-            }.onSelected {
-                $0.tintColor = UIColor(red: 15/255, green: 135/255, blue: 255/255, alpha: 1.0)
-            }.onDeselected {
-                $0.tintColor = UIColor.lightGray
-            }.onTouchUpInside { _ in
-                print("Item Tapped")
-
-        }
+            }
     }
     
 }

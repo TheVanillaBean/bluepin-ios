@@ -14,6 +14,7 @@
 		5A1FC10F2234CB0A00A1CF40 /* DeleteWarningPopup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A1FC10E2234CB0A00A1CF40 /* DeleteWarningPopup.swift */; };
 		5A1FC1112234DF4500A1CF40 /* DeleteWarningPopupVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A1FC1102234DF4500A1CF40 /* DeleteWarningPopupVC.swift */; };
 		5A1FC1132235FA1800A1CF40 /* Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A1FC1122235FA1800A1CF40 /* Util.swift */; };
+		5A3A341322892A1900560918 /* Enum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A3A341222892A1900560918 /* Enum.swift */; };
 		5A3F09CA20EC20FD0041AA49 /* ReminderDescBorder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A3F09C920EC20FD0041AA49 /* ReminderDescBorder.swift */; };
 		5A68BB4220A98EDE00BC0509 /* Lato-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5A68BB3C20A98EDD00BC0509 /* Lato-Bold.ttf */; };
 		5A68BB4320A98EDE00BC0509 /* Lato-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5A68BB3D20A98EDD00BC0509 /* Lato-Light.ttf */; };
@@ -81,6 +82,7 @@
 		5A1FC10E2234CB0A00A1CF40 /* DeleteWarningPopup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteWarningPopup.swift; sourceTree = "<group>"; };
 		5A1FC1102234DF4500A1CF40 /* DeleteWarningPopupVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteWarningPopupVC.swift; sourceTree = "<group>"; };
 		5A1FC1122235FA1800A1CF40 /* Util.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Util.swift; sourceTree = "<group>"; };
+		5A3A341222892A1900560918 /* Enum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Enum.swift; sourceTree = "<group>"; };
 		5A3F09C920EC20FD0041AA49 /* ReminderDescBorder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReminderDescBorder.swift; sourceTree = "<group>"; };
 		5A511E4120D050D1002EAC07 /* ReminderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReminderTests.swift; sourceTree = "<group>"; };
 		5A68BB3C20A98EDD00BC0509 /* Lato-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-Bold.ttf"; sourceTree = "<group>"; };
@@ -226,6 +228,7 @@
 				5AAD5C8720BFD99500E86806 /* SortedArray.swift */,
 				5AB1EC5D20EF7630003F64C3 /* Constants.swift */,
 				5A943E0620FC8D590099FD66 /* RealmConfig.swift */,
+				5A3A341222892A1900560918 /* Enum.swift */,
 			);
 			path = util;
 			sourceTree = "<group>";
@@ -558,6 +561,7 @@
 				5A68BB6120B36DF600BC0509 /* NotificationRequest.swift in Sources */,
 				5A8B044B20E9E9720073387C /* OnceConfigVC.swift in Sources */,
 				5A68BB5D20B363E500BC0509 /* Date+Scheduler.swift in Sources */,
+				5A3A341322892A1900560918 /* Enum.swift in Sources */,
 				5A8B044220E9D85E0073387C /* ReminderConfigurationVC.swift in Sources */,
 				5A175BC320ECA6240007DC67 /* GMStepper.swift in Sources */,
 				5AB1EC5E20EF7630003F64C3 /* Constants.swift in Sources */,

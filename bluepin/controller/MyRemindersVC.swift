@@ -11,6 +11,7 @@ import RealmSwift
 import SwipeCellKit
 import PopupDialog
 import InputBarAccessoryView
+import SwiftEventBus
 
 class MyRemindersVC: UIViewController {
 
@@ -32,13 +33,13 @@ class MyRemindersVC: UIViewController {
         return manager
     }()
     
-    lazy var autocompleteManager: AutocompleteManager = { [unowned self] in
-        let manager = AutocompleteManager(for: self.inputBar.inputTextView)
-        manager.delegate = self as AutocompleteManagerDelegate
-        manager.dataSource = self as AutocompleteManagerDataSource
-        manager.maxSpaceCountDuringCompletion = 1
-        return manager
-    }()
+//    lazy var autocompleteManager: AutocompleteManager = { [unowned self] in
+//        let manager = AutocompleteManager(for: self.inputBar.inputTextView)
+//        manager.delegate = self as AutocompleteManagerDelegate
+//        manager.dataSource = self as AutocompleteManagerDataSource
+//        manager.maxSpaceCountDuringCompletion = 1
+//        return manager
+//    }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -53,10 +54,24 @@ class MyRemindersVC: UIViewController {
         inputBar.inputTextView.autocorrectionType = .no
         inputBar.inputTextView.autocapitalizationType = .none
         inputBar.inputTextView.keyboardType = .twitter
-        let size = UIFont.preferredFont(forTextStyle: .body).pointSize
-        autocompleteManager.register(prefix: "@", with: [.font: UIFont.preferredFont(forTextStyle: .body),.foregroundColor: UIColor(red: 0, green: 122/255, blue: 1, alpha: 1),.backgroundColor: UIColor(red: 0, green: 122/255, blue: 1, alpha: 0.1)])
-        autocompleteManager.register(prefix: "#", with: [.font: UIFont.boldSystemFont(ofSize: size)])
-        inputBar.inputPlugins = [autocompleteManager, attachmentManager]
+//        let size = UIFont.preferredFont(forTextStyle: .body).pointSize
+//        autocompleteManager.register(prefix: "@", with: [.font: UIFont.preferredFont(forTextStyle: .body),.foregroundColor: UIColor(red: 0, green: 122/255, blue: 1, alpha: 1),.backgroundColor: UIColor(red: 0, green: 122/255, blue: 1, alpha: 0.1)])
+//        autocompleteManager.register(prefix: "#", with: [.font: UIFont.boldSystemFont(ofSize: size)])
+//        inputBar.inputPlugins = [autocompleteManager, attachmentManager]
+        
+        //events
+        SwiftEventBus.onMainThread(self, name:"inputbarDurationSelected") { result in
+            let durationRawValue : Int = result!.object as! Int
+            
+            let duration = InputBarDuration.init(rawValue: durationRawValue)
+            print("printed \(duration)")
+        }
+    }
+
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+        SwiftEventBus.unregister(self)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -191,6 +206,8 @@ class MyRemindersVC: UIViewController {
         inputBar.sendButton.stopAnimating()
     }
     
+
+    
 }
 
 extension MyRemindersVC: UITableViewDelegate, UITableViewDataSource, SwipeTableViewCellDelegate{
@@ -286,40 +303,40 @@ extension MyRemindersVC: InputBarAccessoryViewDelegate {
     
 }
 
-extension MyRemindersVC: AutocompleteManagerDelegate, AutocompleteManagerDataSource {
-    
-    // MARK: - AutocompleteManagerDataSource
-    func autocompleteManager(_ manager: AutocompleteManager, autocompleteSourceFor prefix: String) -> [AutocompleteCompletion] {
-        return ["InputBarAccessoryView", "iOS"].map { AutocompleteCompletion(text: $0) }
-    }
-    
-    func autocompleteManager(_ manager: AutocompleteManager, tableView: UITableView, cellForRowAt indexPath: IndexPath, for session: AutocompleteSession) -> UITableViewCell {
-        
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: AutocompleteCell.reuseIdentifier, for: indexPath) as? AutocompleteCell else {
-            fatalError("Oops, some unknown error occurred")
-        }
-        cell.textLabel?.attributedText = manager.attributedText(matching: session, fontSize: 15, keepPrefix: session.prefix == "#" )
-        return cell
-    }
-    
-    // MARK: - AutocompleteManagerDelegate
-    func autocompleteManager(_ manager: AutocompleteManager, shouldBecomeVisible: Bool) {
-        setAutocompleteManager(active: shouldBecomeVisible)
-    }
-    
-    // MARK: - AutocompleteManagerDelegate Helper
-    func setAutocompleteManager(active: Bool) {
-        let topStackView = inputBar.topStackView
-        if active && !topStackView.arrangedSubviews.contains(autocompleteManager.tableView) {
-            topStackView.insertArrangedSubview(autocompleteManager.tableView, at: topStackView.arrangedSubviews.count)
-            topStackView.layoutIfNeeded()
-        } else if !active && topStackView.arrangedSubviews.contains(autocompleteManager.tableView) {
-            topStackView.removeArrangedSubview(autocompleteManager.tableView)
-            topStackView.layoutIfNeeded()
-        }
-        inputBar.invalidateIntrinsicContentSize()
-    }
-}
+//extension MyRemindersVC: AutocompleteManagerDelegate, AutocompleteManagerDataSource {
+//
+//    // MARK: - AutocompleteManagerDataSource
+//    func autocompleteManager(_ manager: AutocompleteManager, autocompleteSourceFor prefix: String) -> [AutocompleteCompletion] {
+//        return ["InputBarAccessoryView", "iOS"].map { AutocompleteCompletion(text: $0) }
+//    }
+//
+//    func autocompleteManager(_ manager: AutocompleteManager, tableView: UITableView, cellForRowAt indexPath: IndexPath, for session: AutocompleteSession) -> UITableViewCell {
+//
+//        guard let cell = tableView.dequeueReusableCell(withIdentifier: AutocompleteCell.reuseIdentifier, for: indexPath) as? AutocompleteCell else {
+//            fatalError("Oops, some unknown error occurred")
+//        }
+//        cell.textLabel?.attributedText = manager.attributedText(matching: session, fontSize: 15, keepPrefix: session.prefix == "#" )
+//        return cell
+//    }
+//
+//    // MARK: - AutocompleteManagerDelegate
+//    func autocompleteManager(_ manager: AutocompleteManager, shouldBecomeVisible: Bool) {
+//        setAutocompleteManager(active: shouldBecomeVisible)
+//    }
+//
+//    // MARK: - AutocompleteManagerDelegate Helper
+//    func setAutocompleteManager(active: Bool) {
+//        let topStackView = inputBar.topStackView
+//        if active && !topStackView.arrangedSubviews.contains(autocompleteManager.tableView) {
+//            topStackView.insertArrangedSubview(autocompleteManager.tableView, at: topStackView.arrangedSubviews.count)
+//            topStackView.layoutIfNeeded()
+//        } else if !active && topStackView.arrangedSubviews.contains(autocompleteManager.tableView) {
+//            topStackView.removeArrangedSubview(autocompleteManager.tableView)
+//            topStackView.layoutIfNeeded()
+//        }
+//        inputBar.invalidateIntrinsicContentSize()
+//    }
+//}
 
 extension MyRemindersVC: AttachmentManagerDelegate {
     
