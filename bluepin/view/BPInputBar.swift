@@ -21,40 +21,13 @@ class BPInputBar: InputBarAccessoryView {
         fatalError("init(coder:) has not been implemented")
     }
     
-    fileprivate func toggleSelectedButton(_ items: [InputBarButtonItem], i: Int) {
-        items[i].onSelected { (item) in
-            items.forEach { $0.tintColor = .lightGray }
-            item.tintColor = UIColor(red: 15/255, green: 135/255, blue: 255/255, alpha: 1.0)
-        }
-        print("count: \(i)")
-    }
-    
     func configure() {
         let items = [
-            makeButton(named: "ic_camera").onSelected {
-                $0.tintColor = UIColor(red: 15/255, green: 135/255, blue: 255/255, alpha: 1.0)
-                SwiftEventBus.post("inputbarDurationSelected", sender: InputBarDuration.ten_minutes)
-            },
-            makeButton(named: "ic_at").onSelected {
-                self.inputPlugins.forEach { _ = $0.handleInput(of: "@" as AnyObject) }
-                $0.tintColor = UIColor(red: 15/255, green: 135/255, blue: 255/255, alpha: 1.0)
-                SwiftEventBus.post("inputbarDurationSelected", sender: InputBarDuration.one_hours)
-            },
-            makeButton(named: "ic_hashtag").onSelected {
-                self.inputPlugins.forEach { _ = $0.handleInput(of: "#" as AnyObject) }
-                $0.tintColor = UIColor(red: 15/255, green: 135/255, blue: 255/255, alpha: 1.0)
-                SwiftEventBus.post("inputbarDurationSelected", sender: InputBarDuration.six_hours)
-            },
-            makeButton(named: "ic_camera").onSelected {
-                    $0.tintColor = UIColor(red: 15/255, green: 135/255, blue: 255/255, alpha: 1.0)
-                    SwiftEventBus.post("inputbarDurationSelected", sender: InputBarDuration.one_days)
-            },
-            .flexibleSpace,
-            makeButton(named: "ic_at").onSelected {
-                self.inputPlugins.forEach { _ = $0.handleInput(of: "@" as AnyObject) }
-                $0.tintColor = UIColor(red: 15/255, green: 135/255, blue: 255/255, alpha: 1.0)
-                SwiftEventBus.post("inputbarDurationSelected", sender: InputBarDuration.custom)
-            }
+            makeButton(named: "10 mins"),
+            makeButton(named: "1 hour"),
+            makeButton(named: "6 hours"),
+            makeButton(named: "1 day"),
+            makeButton(named: "Custom")
         ]
         items.forEach { $0.tintColor = .lightGray }
         
@@ -64,6 +37,12 @@ class BPInputBar: InputBarAccessoryView {
                 items.forEach { $0.tintColor = .lightGray }
                 item.tintColor = UIColor(red: 15/255, green: 135/255, blue: 255/255, alpha: 1.0)
                 SwiftEventBus.post("inputbarDurationSelected", sender: i)
+            }
+            
+            items[i].onTextViewDidChange { (item, inputTextView) in
+                if inputTextView.text == "" {
+                    items.forEach { $0.tintColor = .lightGray }
+                }
             }
         }
         
@@ -114,7 +93,7 @@ class BPInputBar: InputBarAccessoryView {
         topStackView.axis = .horizontal
         topStackView.layoutMargins = UIEdgeInsets(top: 10, left: 5, bottom: 10, right: 5)
         topStackView.isLayoutMarginsRelativeArrangement = true
-        setStackViewItems(items, forStack: .top, animated: false)
+        setStackViewItems([items[0], items[1], items[2], items[3], .flexibleSpace, items[4]], forStack: .top, animated: false)
         
     }
     
@@ -130,7 +109,7 @@ class BPInputBar: InputBarAccessoryView {
             .configure {
                 $0.spacing = .fixed(20)
                 $0.image = UIImage(named: named)?.withRenderingMode(.alwaysTemplate)
-                $0.setSize(CGSize(width: 30, height: 30), animated: false)
+                $0.setSize(CGSize(width: 45, height: 45), animated: false)
             }
     }
     

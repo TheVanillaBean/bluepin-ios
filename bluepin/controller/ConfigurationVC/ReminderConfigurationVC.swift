@@ -11,6 +11,10 @@ import Pageboy
 
 class ReminderConfigurationVC: PageboyViewController {
     
+    var reminderViewModel: ReminderViewModel!
+    
+    var reminderDelegate: ReminderViewModelState?
+    
     let pageControllers: [UIViewController] = {
         var viewControllers = [UIViewController]()
         let storyboard = UIStoryboard(name: "Main", bundle: Bundle.main)
@@ -31,6 +35,19 @@ class ReminderConfigurationVC: PageboyViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        (pageControllers[0] as! OnceConfigVC).reminderViewModel = reminderViewModel
+        (pageControllers[1] as! DailyConfigVC).reminderViewModel = reminderViewModel
+        (pageControllers[2] as! WeeklyConfigVC).reminderViewModel = reminderViewModel
+        (pageControllers[3] as! MonthlyConfigVC).reminderViewModel = reminderViewModel
+        
+        if reminderDelegate != nil {
+            (pageControllers[0] as! OnceConfigVC).reminderDelegate = reminderDelegate
+            (pageControllers[1] as! DailyConfigVC).reminderDelegate = reminderDelegate
+            (pageControllers[2] as! WeeklyConfigVC).reminderDelegate = reminderDelegate
+            (pageControllers[3] as! MonthlyConfigVC).reminderDelegate = reminderDelegate
+        }
+
+
         self.dataSource = self
         self.delegate = self
         
@@ -38,7 +55,7 @@ class ReminderConfigurationVC: PageboyViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
-        if let selectedReminder = UNService.shared.selectedReminder {
+        if let selectedReminder = reminderViewModel.realmReminder {
             switch selectedReminder.repeatMethod {
             case RepeatMethod.once.rawValue:
                 scrollToPage(.at(index: 0), animated: true)

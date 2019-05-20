@@ -14,10 +14,11 @@ class CategoryRemindersVC: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var categoryNameLbl: UILabel!
     
-    
     var presetReminders: Results<Reminder>?
     
     var selectedCategory: Category!
+    
+    var reminderViewModel: ReminderViewModel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,26 +28,33 @@ class CategoryRemindersVC: UIViewController {
         tableView.separatorStyle = .none
         categoryNameLbl.text = selectedCategory.name
         
-        loadReminders()
+    }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+        loadReminders()
     }
     
     func loadReminders() {
-        UNService.shared.userReminders = UNService.shared.selectedCategory?.reminders.sorted(byKeyPath: "name")  //User Reminders
+        reminderViewModel.userReminders = reminderViewModel.selectedCategory?.reminders.sorted(byKeyPath: "name")  //User Reminders
         presetReminders = selectedCategory.reminders.sorted(byKeyPath: "name") //Preset Reminders
         tableView.reloadData()
     }
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
-        if let indexPath = tableView.indexPathForSelectedRow {
-
-            if let realmReminder = UNService.shared.userReminders?.filter({ $0.name == self.presetReminders![indexPath.row].name }), realmReminder.count > 0{
-                UNService.shared.selectedReminder = realmReminder.last //user reminder
-            } else {
-                UNService.shared.selectedReminder = presetReminders![indexPath.row] //preset reminder
+        if let reminderDetailVC = segue.destination as? ReminderDetailVC {
+            
+            if let indexPath = tableView.indexPathForSelectedRow {
+                if let realmReminder = reminderViewModel.userReminders?.filter({ $0.name == self.presetReminders![indexPath.row].name }), realmReminder.count > 0{
+                    reminderViewModel.realmReminder = realmReminder.last //user reminder
+                } else {
+                    reminderViewModel.realmReminder = presetReminders![indexPath.row] //preset reminder
+                }
+                
             }
             
+            reminderDetailVC.reminderViewModel = self.reminderViewModel
         }
 
     }

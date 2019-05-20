@@ -15,6 +15,8 @@ class ReminderCategoriesVC: UIViewController {
     
     var categories: Results<Category>?
     
+    var reminderViewModel: ReminderViewModel!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         loadCategories()
@@ -25,9 +27,11 @@ class ReminderCategoriesVC: UIViewController {
     }
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        let destinationVC = segue.destination as! CategoryRemindersVC
-        UNService.shared.selectedCategory  = UNService.shared.userCategories?[sender as! Int] //user
-        destinationVC.selectedCategory = categories![sender as! Int] //preset
+        if let categoryRemindersVC = segue.destination as? CategoryRemindersVC {
+            reminderViewModel.selectedCategory = reminderViewModel.userCategories?[sender as! Int] //from main user realm
+            categoryRemindersVC.selectedCategory = categories![sender as! Int] //from preset bundled realm
+            categoryRemindersVC.reminderViewModel = self.reminderViewModel
+        }
     }
  
     @IBAction func categoryBtnPressed(_ categoryBtn: UIButton) {

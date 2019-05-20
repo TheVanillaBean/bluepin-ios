@@ -18,6 +18,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         SwiftDate.defaultRegion = Region.local
         UNService.shared.assignDelegate()
+        if let MyRemindersVC = window?.rootViewController as? MyRemindersVC {
+            MyRemindersVC.reminderViewModel = ReminderViewModel()
+        }
         return true
     }
     

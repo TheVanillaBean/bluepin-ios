@@ -15,43 +15,32 @@ class WeeklyConfigVC: UIViewController {
 
     @IBOutlet weak var setBtn: UIButton!
     @IBOutlet weak var dateLblBtn: UIButton!
-    
     @IBOutlet var weekdayBtns: [UIButton]!
+    
+    var reminderViewModel: ReminderViewModel!
+    var reminderDelegate: ReminderViewModelState?
     
     var weekBtnImageNames = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"]
     var weeklyIndexSet = IndexSet()
     var selectedDate: Date!
-    
-    lazy var realm = try! Realm(configuration: RealmConfig.main.configuration)
-    
-    override func viewWillAppear(_ animated: Bool) {
-        if let selectedReminder = UNService.shared.selectedReminder {
-            self.selectedDate = selectedReminder.nextReminder?.date ?? Date()
-            configureWeekdaySet(withReminder: selectedReminder)
-            configureViews(wihReminder: selectedReminder)
-        }
+
+    override func viewDidLoad() {
+        let reminder = reminderViewModel.realmReminder
+
+        configureWeekdaySet(withReminder: reminder)
+        configureViews(withReminder: reminder)
     }
     
-    func configureViews(wihReminder reminder: Reminder){
+    func configureViews(withReminder reminder: Reminder?) {
+        self.selectedDate = reminder?.nextReminder?.date ?? Date()
         self.dateLblBtn.setTitle(self.selectedDate.relativeFormat(), for: .normal)
     }
     
-    func configureWeekdaySet(withReminder reminder: Reminder){
-        self.weeklyIndexSet = reminder.toIndexSet()
+    func configureWeekdaySet(withReminder reminder: Reminder?){
+        self.weeklyIndexSet = reminder?.toIndexSet() ?? [0, 1, 2, 3, 4, 5, 6]
         for index in self.weeklyIndexSet {
             weekBtnImageNames[index].append("-orange")
             weekdayBtns[index].setImage(UIImage(named: weekBtnImageNames[index]), for: .normal)
-        }
-    }
-    
-    func saveReminder(reminder: Reminder, category: Category) {
-        do {
-            try realm.write {
-                realm.add(reminder, update: true)
-                category.reminders.append(reminder)
-            }
-        } catch {
-            print("Error saving items \(error)")
         }
     }
 
@@ -115,51 +104,53 @@ class WeeklyConfigVC: UIViewController {
     
     @IBAction func setBtnPressed(_ sender: Any) {
         
-        guard let selectedReminder = UNService.shared.selectedReminder else {
-            self.dismiss(animated: true, completion: nil)
-            return
-        }
-        
-        var groupID = NoGroupID
-        
-        //Check if this reminder was set before and if so cancel it and remove it from the queue as it will be rescheuled and reinserted
-        let persistedReminderGroup = NotificationPersistedQueue.shared.notificationsQueue().filter { $0.notificationInfo.identifier == selectedReminder.ID }
-        
-        if persistedReminderGroup.count > 0 {
-            groupID = persistedReminderGroup.first?.notificationInfo.identifier ?? NoGroupID //GroupID is specified in notifInfo
-        }
-        
-        guard let reminder = UNService.shared.reminder(withTitle: selectedReminder.name, body:  Reminder.repeatFormat(withMethod: .weekly, repeatInterval: 1), startingDate: selectedDate, repeatMethod: .weekly, repeatInterval: 1, weekdaySet: weeklyIndexSet, groupIdentifer: groupID)  else {
-            self.dismiss(animated: true, completion: nil)
-            return
-        }
-        
-        let realmReminder = Reminder()
-        realmReminder.ID = (reminder.last?.notificationInfo.identifier)!
-        realmReminder.name = selectedReminder.name
-        realmReminder.reminderDescription = selectedReminder.reminderDescription
-        realmReminder.repeatMethod = RepeatMethod.weekly.rawValue
-        realmReminder.repeatInterval = 1
-        realmReminder.weekdaySet = Reminder.toRealmList(withWeekdaySet: weeklyIndexSet)
-        realmReminder.nextReminder = reminder.first?.repeatTrigger?.nextTriggerDate()
-        
-        if persistedReminderGroup.count > 0 {
-            
-            for notification in persistedReminderGroup {
-                
-                UNService.shared.cancel(notification: notification)
-                NotificationPersistedQueue.shared.remove(notification)
+        UNService.shared.requestAuthorization(forOptions: [.badge, .sound, .alert]) { (success) in
+            guard success == true else {
+                print("Can't set reminder unless permitted")
+                return
             }
             
+            let groupID = self.reminderViewModel.groupID(from: self.reminderViewModel.realmReminder ?? nil)
+            
+            let realmReminder = self.reminderViewModel.realmReminder ?? nil
+            
+            self.reminderViewModel.createReminder(groupID: groupID, repeatFormat: Reminder.repeatFormat(withMethod: .weekly, repeatInterval: 1),
+                                                  triggerDate: self.selectedDate, repeatMethod: .weekly, repeatInterval: 1,
+                                                  weekdaySet: self.weeklyIndexSet) { (success) in
+                                                
+                guard success == true else {
+                    print("Did Not Successfully Create a Reminder...")
+                    self.dismiss(animated: true, completion: nil)
+                    return
+                }
+
+                if let duration = self.reminderViewModel.selectedDuration, duration == InputBarDuration.custom {
+                    print("Custom Duration...")
+                    self.reminderDelegate?.set(with: self.reminderViewModel)
+                    self.dismiss(animated: true, completion: nil)
+                } else {
+                    
+                    self.reminderViewModel.updateReminder(reminder: self.reminderViewModel?.reminderNotif, title: realmReminder?.name, desc:
+                        realmReminder?.reminderDescription, completionHandler: { (success) in
+                            
+                            guard success == true else {
+                                print("Did Not Successfully Update a Reminder")
+                                self.dismiss(animated: true, completion: nil)
+                                return
+                            }
+                            
+                            self.reminderViewModel.deletePreviousNotifications()
+                            
+                            self.reminderViewModel.saveReminder(reminder: self.reminderViewModel.realmReminder!, category: self.reminderViewModel.selectedCategory!)
+                            
+                            UNService.shared.schedule(notifications: self.reminderViewModel.reminderNotif!)
+                            
+                            self.dismiss(animated: true, completion: nil)
+                    })
+                    
+                }
+            }
         }
-        
-        saveReminder(reminder: realmReminder, category: UNService.shared.selectedCategory!)
-        
-        UNService.shared.schedule(notifications: reminder) //Make inserting into the queue part of this function
-        
-        UNService.shared.selectedReminder = realmReminder
-        
-        self.dismiss(animated: true, completion: nil)
         
     }
     

@@ -21,3 +21,7 @@ public let RepeatIntervalKey: String = "NotificationRepeatInterval"
 public let RepeatWeekdayKey: String = "NotificationRepeatWeekdaySet"
 
 public let NoGroupID: String = "No_GroupID"
+
+public let NoTitle: String = "No_Title"
+
+public let NoDesc: String = "Custom Reminder. No Description."

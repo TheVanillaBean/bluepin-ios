@@ -16,31 +16,22 @@ class DailyConfigVC: UIViewController {
     @IBOutlet weak var dateLblBtn: UIButton!
     @IBOutlet weak var dayIntervalStepper: GMStepper!
     
-    lazy var realm = try! Realm(configuration: RealmConfig.main.configuration)
-    
+    var reminderViewModel: ReminderViewModel!
+    var reminderDelegate: ReminderViewModelState?
+
     var selectedDate: Date!
     
     override func viewWillAppear(_ animated: Bool) {
-        if let selectedReminder = UNService.shared.selectedReminder {
-            self.selectedDate = selectedReminder.nextReminder?.date ?? Date()
-            configureViews(wihReminder: selectedReminder)
-        }
+        configureViews()
     }
     
-    func configureViews(wihReminder reminder: Reminder){
+    func configureViews(){
+        let reminder = reminderViewModel.realmReminder
+
+        self.selectedDate = reminder?.nextReminder?.date ?? Date()
+
         self.dateLblBtn.setTitle(self.selectedDate.relativeFormat(), for: .normal)
-        self.dayIntervalStepper.value = Double(reminder.repeatInterval)
-    }
-    
-    func saveReminder(reminder: Reminder, category: Category) {
-        do {
-            try realm.write {
-                realm.add(reminder, update: true)
-                category.reminders.append(reminder)
-            }
-        } catch {
-            print("Error saving items \(error)")
-        }
+        self.dayIntervalStepper.value = Double(reminder?.repeatInterval ?? 1)
     }
   
     @IBAction func onceBtnPressed(_ sender: Any) {
@@ -79,55 +70,56 @@ class DailyConfigVC: UIViewController {
     
     @IBAction func setBtnPressed(_ sender: Any) {
         
-        let interval = Int(dayIntervalStepper.value)
-        
-        guard let selectedReminder = UNService.shared.selectedReminder else  {
-            self.dismiss(animated: true, completion: nil)
-            return
-        }
-        
-        var groupID = NoGroupID
-        
-        //Check if this reminder was set before and if so cancel it and remove it from the queue as it will be rescheuled and reinserted
-        let persistedReminderGroup = NotificationPersistedQueue.shared.notificationsQueue().filter { $0.notificationInfo.identifier == selectedReminder.ID }
-        
-        if persistedReminderGroup.count > 0 {
-            groupID = persistedReminderGroup.first?.notificationInfo.identifier ?? NoGroupID //GroupID is specified in notifInfo
-        }
-        
-        guard let reminder = UNService.shared.reminder(withTitle: selectedReminder.name, body:  Reminder.repeatFormat(withMethod: .daily, repeatInterval: interval), startingDate: selectedDate, repeatMethod: .daily, repeatInterval: interval, groupIdentifer: groupID)  else {
-            self.dismiss(animated: true, completion: nil)
-            return
-        }
-        
-        let realmReminder = Reminder()
-        realmReminder.ID = (reminder.last?.notificationInfo.identifier)!
-        realmReminder.name = selectedReminder.name
-        realmReminder.reminderDescription = selectedReminder.reminderDescription
-        realmReminder.repeatMethod = RepeatMethod.daily.rawValue
-        realmReminder.repeatInterval = interval
-        realmReminder.nextReminder = reminder.first?.repeatTrigger?.nextTriggerDate()
-        
-        if persistedReminderGroup.count > 0 {
-            
-            for notification in persistedReminderGroup {
-                
-                UNService.shared.cancel(notification: notification)
-                NotificationPersistedQueue.shared.remove(notification)
+        UNService.shared.requestAuthorization(forOptions: [.badge, .sound, .alert]) { (success) in
+            guard success == true else {
+                print("Can't set reminder unless permitted")
+                return
             }
             
+            let interval = Int(self.dayIntervalStepper.value)
+            
+            let groupID = self.reminderViewModel.groupID(from: self.reminderViewModel.realmReminder ?? nil)
+            
+            let realmReminder = self.reminderViewModel.realmReminder ?? nil
+            
+            self.reminderViewModel.createReminder(groupID: groupID, repeatFormat: Reminder.repeatFormat(withMethod: .daily, repeatInterval: interval),
+                                                  triggerDate: self.selectedDate, repeatMethod: .daily, repeatInterval: interval) { (success) in
+                                                
+                guard success == true else {
+                    print("Did Not Successfully Create a Reminder...")
+                    self.dismiss(animated: true, completion: nil)
+                    return
+                }
+
+                if let duration = self.reminderViewModel.selectedDuration, duration == InputBarDuration.custom {
+                    print("Custom Duration...")
+                    self.reminderDelegate?.set(with: self.reminderViewModel)
+                    self.dismiss(animated: true, completion: nil)
+                } else {
+                    
+                    self.reminderViewModel.updateReminder(reminder: self.reminderViewModel?.reminderNotif, title: realmReminder?.name, desc:
+                        realmReminder?.reminderDescription, completionHandler: { (success) in
+                            
+                            guard success == true else {
+                                print("Did Not Successfully Update a Reminder")
+                                self.dismiss(animated: true, completion: nil)
+                                return
+                            }
+                            
+                            self.reminderViewModel.deletePreviousNotifications()
+                            
+                            self.reminderViewModel.saveReminder(reminder: self.reminderViewModel.realmReminder!, category: self.reminderViewModel.selectedCategory!)
+                            
+                            UNService.shared.schedule(notifications: self.reminderViewModel.reminderNotif!)
+                            
+                            self.dismiss(animated: true, completion: nil)
+                    })
+                    
+                }
+            }
         }
         
-        saveReminder(reminder: realmReminder, category: UNService.shared.selectedCategory!)
-        
-        UNService.shared.schedule(notifications: reminder) 
-
-        UNService.shared.selectedReminder = realmReminder
-        
-        self.dismiss(animated: true, completion: nil)
-        
     }
-    
     
     @IBAction func backBtnPressed(_ sender: Any) {
         self.dismiss(animated: true, completion: nil)

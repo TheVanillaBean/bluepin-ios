@@ -18,14 +18,15 @@ class ReminderDetailVC: UIViewController {
 //    @IBOutlet weak var checkmarkBtn: UIButton!
     @IBOutlet weak var reminderNameLbl: UILabel!
     
+    var reminderViewModel: ReminderViewModel!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        UNService.shared.requestAuthorization(forOptions: [.badge, .sound, .alert])
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
-        selectedReminder = UNService.shared.selectedReminder
+        selectedReminder = reminderViewModel.realmReminder
         configureViews()
     }
     
@@ -41,9 +42,23 @@ class ReminderDetailVC: UIViewController {
     }
     
     @IBAction func backBtnPressed(_ sender: Any) {
-        UNService.shared.userReminders = UNService.shared.selectedCategory?.reminders.sorted(byKeyPath: "name")  //User Reminders
+//        UNService.shared.userReminders = UNService.shared.selectedCategory?.reminders.sorted(byKeyPath: "name")  //User Reminders
         dismiss(animated: true, completion: nil)
     }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+    
+        if segue.identifier == "goToReminderConfigurationVC" {
+            
+            if let reminderConfigVC = segue.destination as? ReminderConfigurationVC {
+                reminderConfigVC.reminderViewModel = reminderViewModel
+                reminderConfigVC.reminderDelegate = nil
+            }
+            
+        }
+        
+    }
+    
     
 //    @IBAction func checkmarkBtnPresed(_ sender: Any) {
 //    }

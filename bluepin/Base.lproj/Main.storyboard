@@ -186,6 +186,7 @@
                         <outlet property="tableView" destination="sTC-v1-fBM" id="1De-tF-P2z"/>
                         <segue destination="T8G-Qp-GXs" kind="show" identifier="goToReminderCategoriesVC" id="Bsa-8m-Hgv"/>
                         <segue destination="hYR-6Z-Mj3" kind="show" identifier="goToReminderDetailVC" id="pRv-A5-4tK"/>
+                        <segue destination="ghf-0y-9DW" kind="show" identifier="MyReminderToReminderConfigVC" id="mEo-VR-Xht"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -1673,6 +1674,7 @@
         <image name="right-arrow" width="233.5" height="442.5"/>
     </resources>
     <inferredMetricsTieBreakers>
+        <segue reference="ILZ-Os-jNR"/>
         <segue reference="pRv-A5-4tK"/>
     </inferredMetricsTieBreakers>
 </document>

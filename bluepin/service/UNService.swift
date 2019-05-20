@@ -74,19 +74,62 @@ public class UNService: NSObject {
             _userReminders = reminders
         }
     }
+    
+    var _selectedDuration: InputBarDuration?
+    
+    var selectedDuration: InputBarDuration? {
+        get {
+            return _selectedDuration
+        }
+        
+        set(duration) {
+            _selectedDuration = duration
+        }
+    }
+    
+    var _reminderForInputBar: [BluepinNotification]?
+    
+    var reminderForInputBar: [BluepinNotification]? {
+        get {
+            return _reminderForInputBar
+        }
+        
+        set(reminder) {
+            _reminderForInputBar = reminder
+        }
+    }
+    
+    var _realmReminderForInputBar: Reminder?
+    
+    var realmReminderForInputBar: Reminder? {
+        get {
+            return _realmReminderForInputBar
+        }
+        
+        set(reminder) {
+            _realmReminderForInputBar = reminder
+        }
+    }
+
 
     //-----------------------------------
     
-    func requestAuthorization(forOptions options: NotificationAuthorizationOptions) {
+    func requestAuthorization(forOptions options: NotificationAuthorizationOptions, completionHandler: @escaping (Bool) -> Void) {
         let authorizationOptions: UNAuthorizationOptions = UNAuthorizationOptions(rawValue: options.rawValue)
         
         unCenter.requestAuthorization(options: authorizationOptions) { (granted, error) in
             print(error ?? "Successfully Requested Authorization for Local Notifications")
             guard granted else {
                 print("User Denied Access for Notifications")
+                DispatchQueue.main.async {
+                    completionHandler(false)
+                }
                 return
             }
             self.assignDelegate()
+            DispatchQueue.main.async {
+                completionHandler(true)
+            }
         }
         
     }
@@ -125,8 +168,9 @@ public class UNService: NSObject {
                 nextFireDate = date
         }
         
-        dateComponents = calendar.dateComponents([.year, .month, .day, .hour, .minute], from: nextFireDate)
-        dateComponents.second = 0
+        dateComponents = calendar.dateComponents([.year, .month, .day, .hour, .minute, .second], from: nextFireDate)
+//        dateComponents.second = 0
+        
         
         return UNCalendarNotificationTrigger(dateMatching: dateComponents, repeats: false)
     }
@@ -140,7 +184,9 @@ public class UNService: NSObject {
         
         //----ONCE -----//
         if repeatMethod == .once {
-            let notification = BluepinNotification(identifier: "\(identifer)", groupIdentifier: identifer, title: title, body: body, date: startingDate, repeatMethod: repeatMethod, repeatInterval: repeatInterval, repeatTrigger: nil)
+            let nextFireDate = trigger(forStartingDate: startingDate, repeatMethod: repeatMethod, repeatInterval: repeatInterval, weekdaySet: weekdaySet)
+        
+            let notification = BluepinNotification(identifier: "\(identifer)", groupIdentifier: identifer, title: title, body: body, date: startingDate, repeatMethod: repeatMethod, repeatInterval: repeatInterval, repeatTrigger: nextFireDate)
             notifications.append(notification)
             
         //----DAILY -----//
@@ -195,7 +241,15 @@ public class UNService: NSObject {
             return nil
         }
         
-        if (notification.repeatTrigger?.nextTriggerDate())! > Date() + 2.weeks || (self.scheduledCount() >= MAX_ALLOWED_NOTIFICATIONS) {
+        if let triggerDate = notification.repeatTrigger?.nextTriggerDate() {
+            if triggerDate >  Date() + 2.weeks {
+                NotificationPersistedQueue.shared.insert(notification)
+                let _ = NotificationPersistedQueue.shared.saveQueue()
+                return nil
+            }
+        }
+        
+        if (self.scheduledCount() >= MAX_ALLOWED_NOTIFICATIONS) {
             NotificationPersistedQueue.shared.insert(notification)
             let _ = NotificationPersistedQueue.shared.saveQueue()
             return nil

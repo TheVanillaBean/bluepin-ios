@@ -50,3 +50,11 @@ extension UIImage {
         return newImage
     }
 }
+
+extension UITableView {
+    
+    func setBottomInset(value: CGFloat) {
+        self.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: value, right: 0)
+        self.scrollIndicatorInsets = UIEdgeInsets(top: 0, left: 0, bottom: value, right: 0)
+    }
+}
